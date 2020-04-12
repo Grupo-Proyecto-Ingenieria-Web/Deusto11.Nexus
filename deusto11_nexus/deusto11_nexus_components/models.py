@@ -26,7 +26,6 @@ class Tickets(models.Model):
 
     def __str__(self):
         return f"id={self.id}, numero_referencia={self.numero_referencia}, titulo={self.titulo}, descripcion={self.descripcion}, fecha_apertura={self.fecha_apertura}, fecha_resolucion={self.fecha_resolucion}, nivel_urgencia={self.nivel_urgencia}, tipo={self.tipo}, estado={self.estado}, empleado={self.empleado}, comentario={self.comentario}"
-
 #clase equipo
 class Equipo(models.Model):
     numero_serie=models.IntegerField(null=True, blank=True)
@@ -42,3 +41,5 @@ class Equipo(models.Model):
 
     def __str__(self):
         return f"id={self.id}, numero_serie={self.numero_serie}, modelo={self.modelo}, marca={self.marca}, tipo_equipo={self.tipo_equipo}, fecha_adquisicion={self.fecha_adquisicion}, fecha_puesta_en_marcha={self.fecha_puesta_en_marcha}, proveedor_nombre={self.proveedor_nombre}, proveedor_telefono={self.proveedor_telefono}, planta={self.planta}, ticket={self.ticket}"
+
+

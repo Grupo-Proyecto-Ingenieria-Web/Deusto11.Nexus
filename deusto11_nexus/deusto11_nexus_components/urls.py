@@ -6,4 +6,5 @@ urlpatterns = [
     path('empleado', views.Empleado, name='Empleado'),
     path('tickets', views.Tickets, name='Tickets'),
     path('vlog', views.Vlog, name='Vlog'),
+    path('empleado/nuevoEmpleado', views.show_empleado_form, name='show_empleado_form'),
 ]

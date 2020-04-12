@@ -16,6 +16,7 @@ def post_form(request):
 def show_empleado_form(request):
     form=EmpleadoForm()
     return render(request,'empleado_form.html', {'form':form})
+    
 def post_empleado_form(request):
     form=EmpleadoForm(request.POST)
     if form.is_valid(): 
