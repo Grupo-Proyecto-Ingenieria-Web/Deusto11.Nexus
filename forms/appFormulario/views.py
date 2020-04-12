@@ -25,3 +25,21 @@ def post_empleado_form(request):
         telefono=form.cleaned_data['telefono']
         email=form.cleaned_data['email']
         return HttpResponse(f"El empleado es {nombre}, los apellidos {apellidos}, su dni es {dni} , su telefono es {telefono} y el email {email}")
+
+
+def show_tickets(request):
+    return render(request,'tickets_nexus.html')
+
+def post_tickets(request):
+    referencia=request.POST["referencia"]
+    titulo=request.POST["titulo"]
+    descripcion=request.POST["descripcion"]
+    fechaapertura=request.POST["fechaapertura"]
+    horaapertura=request.POST["horaapertura"]
+    fecharesolucion=request.POST["fecharesolucion"]
+    horaresolucion=request.POST["horaresolucion"]
+    urgencia=request.POST["urgencia"]
+    tipo=request.POST["tipo"]
+    estado=request.POST["estado"]
+    comentario=request.POST["comentario"]
+    return HttpResponse(f"La referencia del ticket es {referencia}, su titulo es {titulo}, su descripcion es {descripcion}, su fecha de apertura es {fechaapertura} y su hora de apertura es {horaapertura}, su fecha de resolucion es {fecharesolucion} y su hora de resolucion es {horaresolucion},su urgencia es {urgencia}, el tipo de ticket es {tipo}, el estado del tickets es {estado} y los comentarios puestps son {comentario} ")
