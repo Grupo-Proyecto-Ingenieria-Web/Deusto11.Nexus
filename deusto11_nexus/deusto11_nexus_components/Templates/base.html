@@ -1,7 +1,9 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="{% static "../static/styles.css" %}"/>
         <title>{% block titulo %}Gestor de Articulos{% endblock %}</title>
     </head>
     <body>
