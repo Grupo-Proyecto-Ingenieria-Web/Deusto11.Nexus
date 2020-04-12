@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import EmpleadoForm
+from .forms import EmpleadoForm,TicketsForm
 # Create your views here.
 def show_form(request):
     return render(request,'empleado_nexus.html')
@@ -43,3 +43,23 @@ def post_tickets(request):
     estado=request.POST["estado"]
     comentario=request.POST["comentario"]
     return HttpResponse(f"La referencia del ticket es {referencia}, su titulo es {titulo}, su descripcion es {descripcion}, su fecha de apertura es {fechaapertura} y su hora de apertura es {horaapertura}, su fecha de resolucion es {fecharesolucion} y su hora de resolucion es {horaresolucion},su urgencia es {urgencia}, el tipo de ticket es {tipo}, el estado del tickets es {estado} y los comentarios puestps son {comentario} ")
+
+def show_tickets_form(request):
+    form=TicketsForm()
+    return render(request,'tickets_form.html', {'form':form})
+
+def post_tickets_form(request):
+    form=TicketsForm(request.POST)
+    if form.is_valid(): 
+        referencia=form.cleaned_data['referencia']
+        titulo=form.cleaned_data['titulo']
+        descripcion=form.cleaned_data['descripcion']
+        fechaapertura=form.cleaned_data['fechaapertura']
+        horaapertura=form.cleaned_data['horaapertura']
+        fecharesolucion=form.cleaned_data['fecharesolucion']
+        horaresolucion=form.cleaned_data['horaresolucion']
+        urgencia=form.cleaned_data['urgencia']
+        tipo=form.cleaned_data['tipo']
+        estado=form.cleaned_data['estado']
+        comentario=form.cleaned_data['comentario']
+        return HttpResponse(f"La referencia del ticket es {referencia}, su titulo es {titulo}, su descripcion es {descripcion}, su fecha de apertura es {fechaapertura} y su hora de apertura es {horaapertura}, su fecha de resolucion es {fecharesolucion} y su hora de resolucion es {horaresolucion},su urgencia es {urgencia}, el tipo de ticket es {tipo}, el estado del tickets es {estado} y los comentarios puestps son {comentario} ")

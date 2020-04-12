@@ -8,4 +8,6 @@ urlpatterns=[
     path('post_empleado',views.post_empleado_form, name='post_empleado_form'),
     path('registro_tickets/',views.show_tickets, name='registro_tickets'),
     path('registrar_tickets/',views.post_tickets, name='registrar_tickets'),
+    path('tickets/',views.show_tickets_form, name='tickets_form'),
+    path('post_tickets',views.post_tickets_form, name='post_tickets_form'),
 ]
