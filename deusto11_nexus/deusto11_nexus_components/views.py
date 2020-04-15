@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 # import deusto11_nexus_services as nexus_services
 from .models import Employee, Ticket, Machine
-from .forms import EmpleadoForm,TicketsForm
+from .forms import EmployerForm, TicketForm, MachineForm
 
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
@@ -32,11 +32,11 @@ def post_form(request):
     return HttpResponse(f"El usuario es {nombre}, los apellidos {apellidos}, su dni es {dni}  y el email es {email} y su telefono es {telefono}")
 
 def show_empleado_form(request):
-    form=EmpleadoForm()
+    form=EmployerForm()
     return render(request,'empleado_form.html', {'form':form})
     
 def post_empleado_form(request):
-    form=EmpleadoForm(request.POST)
+    form=EmployerForm(request.POST)
     if form.is_valid(): 
         nombre=form.cleaned_data['nombre']
         apellidos=form.cleaned_data['apellidos']
@@ -63,11 +63,11 @@ def post_tickets(request):
     return HttpResponse(f"La referencia del ticket es {referencia}, su titulo es {titulo}, su descripcion es {descripcion}, su fecha de apertura es {fechaapertura} y su hora de apertura es {horaapertura}, su fecha de resolucion es {fecharesolucion} y su hora de resolucion es {horaresolucion},su urgencia es {urgencia}, el tipo de ticket es {tipo}, el estado del tickets es {estado} y los comentarios puestps son {comentario} ")
 
 def show_tickets_form(request):
-    form=TicketsForm()
+    form=TicketForm()
     return render(request,'tickets_form.html', {'form':form})
 
 def post_tickets_form(request):
-    form=TicketsForm(request.POST)
+    form=TicketForm(request.POST)
     if form.is_valid(): 
         referencia=form.cleaned_data['referencia']
         titulo=form.cleaned_data['titulo']
