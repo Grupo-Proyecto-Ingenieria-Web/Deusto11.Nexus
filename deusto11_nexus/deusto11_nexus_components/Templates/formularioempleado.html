@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>NUEVO EMPLEADO</h1>
+<P>Rellena el siguiente formulario para añadir un nuevo empleado:</P>
+<fieldset>
+    <legend>Datos del empleado</legend>
+    <br>
+    <form>
+        Tecnico asignado:<input type="text">
+        <br><br>
+        E-mail del tecnico asignado:<input type="text">
+        <br><br>
+        <label for="incidencia">¿Es la primera vez que ocurre esta incidencia?</label>
+        <br><br>
+        <input type="radio" name="si_primera" id="incidencia" value="es_primera">Si, es la primera vez
+        <input type="radio" name="si_primera" id="incidencia" value="noes_primera">No, ya se ha repetido en otras ocasiones
+        <br><br>
+
+        Nivel de prioridad:<select id="prioridad" name="prioridad">
+            <option>Prioridad de primer grado</option>
+            <option selected>Prioridad de segundo grado</option>
+            <option>Prioridad de tercer grado</option>
+        </select>
+        <br><br>
+        Nivel de gravedad:<select id="gravedad" name="gravedad">
+            <option>Leve</option>
+            <option selected>Medio</option>
+            <option>Grave</option>
+        </select>
+        <br><br>
+        <p>Selecciona la fecha y hora de la incidencia </p>
+        <label for="fecha">
+            <input type="date" id="fecha" name="fecha_incidencia" />
+        </label>
+        <label for="hora">
+            <input type="time" id="hora" name="hora_incidencia" />
+        </label>
+        <br><br>
+        <label for="comentario">Comentarios/Descripcion corta
+            <input type="placeholder" id="comentario" name="comentario" />
+        </label>
+    </form>
+    <div id="enviar">
+    <input type="submit" value="Enviar">
+    </div>
+</fieldset>
+    </div>
+{% endblock %}

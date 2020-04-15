@@ -1,13 +1,135 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <link rel="stylesheet" href="style.css">
-        <title>{% block titulo %}Gestor de Articulos{% endblock %}</title>
+        <title>Nexus Aplicacion Web</title>
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
     </head>
     <body>
-        <div id="content">
-	     <h1>Gestor de Articulos html</h1>
-            {% block contenido %}{% endblock %}
+        <header id="header">
+            <img src="https://image.freepik.com/vector-gratis/plantilla-logotipo-letra-n-flecha_23987-64.jpg" alt="Nexus" width="200px" height="200px">
+            <h2 id="titulo">Deustomach Innovation S.L.</h2>
+            <h2 id="tel">+34 785967463</h2>
+        </header>
+        <main>
+        <div id="cuerpo">
+            <div id="presentacion">
+            <h1 id="nexus">NEXUS</h1>
+            <h2 id="sistema">Sistema de Gestión de Mantenimiento de Equipos</h2>
+            <p id="descr">Te ofrecemos el más completo software de gestión empresarial. Nexus asegura el futuro de la organización por su escalabilidad, flexibilidad y adaptación a todos los negocios.</p>
+            </div>
+
+            <form>
+                <h3 id="login">Login</h3>
+                Email:<br><input type="text"><br><br>
+                Contraseña:<br><input type="password"><br>
+                <br><input type="submit" value="Entrar"><br>
+                <br><input type="submit" value="Registrarse">
+            </form>
         </div>
+        <article>
+            <h2 id="caracteristicas">Caracteristicas</h2>
+        
+        <div id="parrafo">
+            <ul>   
+                <li>Cloud, toda la información desde un único punto de acceso web</li><br>
+                <li>Modular, 100% personalizable y adaptable</li><br>   
+                <li>Plena fiabilidad y máxima funcionalidad</li> <br>  
+                <li>Total flexibilidad para el crecimiento</li><br>   
+                <li>Control de acceso por perfiles y según necesidades</li><br>
+                <li>Cumplimiento RGPD</li>
+            </ul>
+
+        </div>
+        <div id="imagen">
+        <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_platform.png" alt="Nexus" width="650px" height="300px">
+        </div>
+        
+        </article>
+        
+        <article id="parte1">
+            
+            <div id="texto">
+                <h2 id="solucion">Solucion Modular</h2><br><br>
+                <h3>Todo lo que necesitas o únicamente lo que necesitas</h3>
+                <p>Ahora o en un futuro, con Nexus, sí es posible. Dadas las características del software, Cloud Computing Multitenant; podemos ofrecerte una mejora real, constante y sin costes añadidos.</p>
+                <p>Mediante la colaboración y confianza de todos sus clientes, el software evoluciona y se adapta a nuevos sectores, a las exigencias del mercado y a las de sus propios clientes.</p>
+       
+             </div>
+        <div id="imagen2">
+        <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_solucion_c.png" alt="Nexus" width="600px" height="350px">
+        </div>
+        </article>
+        <article id="precio">
+         <div>
+            <h2 id="version">100 % cloud, sin versiones</h2>
+            <p id="parrafo1">Pago mensual por uso para la evolucón permanente y sin límites de tu herramienta de gestión empresarial. Total integración de todas las áreas del negocio; máxima automatización y eficiencia.</p>
+            <br>
+            <p id="parrafo2">Multiempresa, multipaís, multimoneda, multidioma.</p>
+            <div id="precio1">
+                <h3>Sin costes ocultos ni gastos añadidos</h3>
+            </div>
+            <div id="precio2">
+                <h3>Gestión centralizada y global del negocio
+                </h3>
+            </div>
+         </div>
+        </article>
+        </main>
+        <footer>
+            <div id="letras">
+            <h3>Contacto</h3>
+            <p id="contacto">Estos son los datos de contacto en cada pais:</p>
+            <br>
+            <div class='centraTabla'>
+            <table>
+                <tr>
+                    <th>Pais</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <td>España</td>
+                    <td>Gran via n6, Madrid</td>
+                    <td>947583657</td>
+                    <td>españa@gmail.es</td>
+                </tr>
+                <tr>
+                    <td>Alemania</td>
+                    <td>Unter den 24, Berlin</td>
+                    <td>987635748</td>
+                    <td>alemania@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>EEUU</td>
+                    <td>5th Avenue 937, New York</td>
+                    <td>987085647</td>
+                    <td>eeuu@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Rusia</td>
+                    <td>calle Arbat 67, Moscu</td>
+                    <td>912678564</td>
+                    <td>rusia@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Francia</td>
+                    <td>Av eliseos 78, Paris</td>
+                    <td>984756352</td>
+                    <td>francia@gmail.com</td>
+                </tr>
+        
+        
+            </table>
+        </div>
+            </div>
+        </footer> 
+        {% block contenido %}{% endblock %}
+
+        
+   
+
     </body>
 </html>
