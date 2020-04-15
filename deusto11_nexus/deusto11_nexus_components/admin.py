@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Empleado, Tickets, Equipo
+from .models import Employee, Ticket, Machine
 
 # username and pass: nexus_admin
 
-admin.site.register(Empleado)
-admin.site.register(Tickets)
-admin.site.register(Equipo)
+admin.site.register(Employee)
+admin.site.register(Ticket)
+admin.site.register(Machine)
 
 # Register your models here.
