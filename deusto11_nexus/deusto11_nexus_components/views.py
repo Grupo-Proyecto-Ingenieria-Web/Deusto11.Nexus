@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 # import deusto11_nexus_services as nexus_services
-from .models import Articulo
+from .models import Employee, Ticket, Machine
 from .forms import EmpleadoForm,TicketsForm
+
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
 
