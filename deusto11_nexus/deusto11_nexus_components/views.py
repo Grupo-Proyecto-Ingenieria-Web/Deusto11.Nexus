@@ -13,8 +13,6 @@ from django.views.generic import DetailView
 def Index(request):
     return render(request, 'index.html')
   
-class EmpleadoDetailView(DetailView):
-    model=Em
 
 def Tickets(request):
     return render(request, 'tickets.html')
@@ -73,8 +71,6 @@ def post_tickets(request):
 def show_tickets_form(request):
     form=TicketForm()
     return render(request,'tickets_form.html', {'form':form})
-
-=======
 
 def Empleado(request):
     return render(request, 'empleado.html')
