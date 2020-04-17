@@ -1,9 +1,10 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Nexus Aplicacion Web</title>
-        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static "../static/styles.css" %}"/>
+        <title>{% block titulo %}Gestor de Articulos{% endblock %}</title>
 
     </head>
     <body>
@@ -84,53 +85,47 @@
             <p id="contacto">Estos son los datos de contacto en cada pais:</p>
             <br>
             <div class='centraTabla'>
-            <table>
-                <tr>
-                    <th>Pais</th>
-                    <th>Direccion</th>
-                    <th>Telefono</th>
-                    <th>Email</th>
-                </tr>
-                <tr>
-                    <td>España</td>
-                    <td>Gran via n6, Madrid</td>
-                    <td>947583657</td>
-                    <td>españa@gmail.es</td>
-                </tr>
-                <tr>
-                    <td>Alemania</td>
-                    <td>Unter den 24, Berlin</td>
-                    <td>987635748</td>
-                    <td>alemania@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>EEUU</td>
-                    <td>5th Avenue 937, New York</td>
-                    <td>987085647</td>
-                    <td>eeuu@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Rusia</td>
-                    <td>calle Arbat 67, Moscu</td>
-                    <td>912678564</td>
-                    <td>rusia@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Francia</td>
-                    <td>Av eliseos 78, Paris</td>
-                    <td>984756352</td>
-                    <td>francia@gmail.com</td>
-                </tr>
-        
-        
-            </table>
-        </div>
+              <table>
+                  <tr>
+                      <th>Pais</th>
+                      <th>Direccion</th>
+                      <th>Telefono</th>
+                      <th>Email</th>
+                  </tr>
+                  <tr>
+                      <td>España</td>
+                      <td>Gran via n6, Madrid</td>
+                      <td>947583657</td>
+                      <td>españa@gmail.es</td>
+                  </tr>
+                  <tr>
+                      <td>Alemania</td>
+                      <td>Unter den 24, Berlin</td>
+                      <td>987635748</td>
+                      <td>alemania@gmail.com</td>
+                  </tr>
+                  <tr>
+                      <td>EEUU</td>
+                      <td>5th Avenue 937, New York</td>
+                      <td>987085647</td>
+                      <td>eeuu@gmail.com</td>
+                  </tr>
+                  <tr>
+                      <td>Rusia</td>
+                      <td>calle Arbat 67, Moscu</td>
+                      <td>912678564</td>
+                      <td>rusia@gmail.com</td>
+                  </tr>
+                  <tr>
+                      <td>Francia</td>
+                      <td>Av eliseos 78, Paris</td>
+                      <td>984756352</td>
+                      <td>francia@gmail.com</td>
+                  </tr>
+
+
+              </table>
             </div>
-        </footer> 
-        
-
-        
-   
-
+        </footer>
     </body>
 </html>
