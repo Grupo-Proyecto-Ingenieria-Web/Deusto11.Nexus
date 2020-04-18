@@ -70,7 +70,41 @@ class EmployerRegistryView(View):
 
 class TicketRegistryView(View):
 
+     tittle = 'Tickets registry page'
+    
+    def get(self, request, *args, **kwargs):
+        form = EmployerForm()
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return render(request, 'ticketRegistry.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = TicketForm(request.POST)
+        if form.is_valid():
+
+            form.save()
+        return redirect('ticketRegistry')
+
 class MachineRegistryView(View):
+
+     tittle = 'Machine registry page'
+    
+    def get(self, request, *args, **kwargs):
+        form = MachineForm()
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return render(request, 'machineRegistry.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = MachineForm(request.POST)
+        if form.is_valid():
+
+            form.save()
+        return redirect('machineRegistry')
         
 # Todavia no hacer
 # class UpdateEmployerProfileView(View):
