@@ -16,3 +16,7 @@ class MachineForm(forms.ModelForm):
         model = Machine
         fields = "__all__"
 
+class EmployerLoginForm(forms.MedalForm):
+    class Meta:
+        Model = Employee
+        exclude = ['dni', 'name', 'surname', 'email', 'telefone_number', ]

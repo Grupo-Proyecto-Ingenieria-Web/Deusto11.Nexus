@@ -1,128 +1,84 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-# import deusto11_nexus_services as nexus_services
+from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine
-from .forms import EmployerForm, TicketForm, MachineForm
-
-#from django.views.generic.edit import UpdateView, DeleteView
+from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
 from django.views.generic import DetailView
+# import deusto11_nexus_services as nexus_services
+# from django.views.generic.edit import UpdateView, DeleteView
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
 
-# Create your views here.
-def Index(request):
-    return render(request, 'index.html')
-  
+# Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
+class IndexView(View):
 
-def Tickets(request):
-    return render(request, 'tickets.html')
-
-def Vlog(request):
-    return render(request, 'vlog.html')
-
-#class Empleado(UpdateView):
-    #model=#poner el modelo
-    #form_class= #escribimos el formulario empleado
-    #template_name= #ponemos el link ejemplo "myapp/empleado_update.html"
-
-
-def show_form(request):
-    return render(request,'empleado_nexus.html')
-
-def post_form(request):
-    nombre=request.POST["nombre"]
-    apellidos=request.POST["apellidos"]
-    dni=request.POST["dni"]
-    telefono=request.POST["telefono"]
-    email=request.POST["email"]
-    return HttpResponse(f"El usuario es {nombre}, los apellidos {apellidos}, su dni es {dni}  y el email es {email} y su telefono es {telefono}")
-
-def show_empleado_form(request):
-    form=EmployerForm()
-    return render(request,'empleado_form.html', {'form':form})
+    tittle = 'Index nexus'
     
-def post_empleado_form(request):
-    form=EmployerForm(request.POST)
-    if form.is_valid(): 
-        nombre=form.cleaned_data['nombre']
-        apellidos=form.cleaned_data['apellidos']
-        dni=form.cleaned_data['dni']
-        telefono=form.cleaned_data['telefono']
-        email=form.cleaned_data['email']
-        return HttpResponse(f"El empleado es {nombre}, los apellidos {apellidos}, su dni es {dni} , su telefono es {telefono} y el email {email}")
+    def get(self, request, *args, **kwargs):
+        form = EmployerLoginForm()
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return render(request, 'index.html', context)
 
-def show_tickets(request):
-    return render(request,'tickets_nexus.html')
+    def post(self, request, *args, **kwargs):
+        form = EmployerLoginForm(request.POST)
+        if form.is_valid():
 
-def post_tickets(request):
-    referencia=request.POST["referencia"]
-    titulo=request.POST["titulo"]
-    descripcion=request.POST["descripcion"]
-    fechaapertura=request.POST["fechaapertura"]
-    horaapertura=request.POST["horaapertura"]
-    fecharesolucion=request.POST["fecharesolucion"]
-    horaresolucion=request.POST["horaresolucion"]
-    urgencia=request.POST["urgencia"]
-    tipo=request.POST["tipo"]
-    estado=request.POST["estado"]
-    comentario=request.POST["comentario"]
-    return HttpResponse(f"La referencia del ticket es {referencia}, su titulo es {titulo}, su descripcion es {descripcion}, su fecha de apertura es {fechaapertura} y su hora de apertura es {horaapertura}, su fecha de resolucion es {fecharesolucion} y su hora de resolucion es {horaresolucion},su urgencia es {urgencia}, el tipo de ticket es {tipo}, el estado del tickets es {estado} y los comentarios puestps son {comentario} ")
+            # form.save()
+            return redirect('employerPortal')
+        # form = EmployerLoginForm()
+        # context = {
+            # 'tittle': tittle,
+        # 'form': form
+        # }
+        # return render(request, 'index.html', context)
 
-def show_tickets_form(request):
-    form=TicketForm()
-    return render(request,'tickets_form.html', {'form':form})
+class EmployerPortalView(ListView):
 
-def Empleado(request):
-    return render(request, 'empleado.html')
+    model = Ticket
+    template_name = "employerPortal.html"
+    querysetAllArticles = Ticket.objects.order_by("id") 
+    context_object_name = "list_employers_already_exists"  
 
-def Tickets(request):
-    return render(request, 'tickets.html')
+    def get_context_data(self, **kwargs):
+        all_context = super(EmployerPortalView, self).get_context_data(**kwargs) 
+        all_context["tittle"] = "Principle employer portal"
 
-def Vlog(request):
-    return render(request, 'vlog.html')
+        return all_context
+   
+# employerRegistry.html debe tener un <a href="{% url 'employerPortal' %}">Volver a la lista</a> para volver al portal de employee
+class EmployerRegistryView(View):
 
-def show_form(request):
-    return render(request,'empleado_nexus.html')
-
-def post_form(request):
-    nombre=request.POST["nombre"]
-    apellidos=request.POST["apellidos"]
-    dni=request.POST["dni"]
-    telefono=request.POST["telefono"]
-    email=request.POST["email"]
-    return HttpResponse(f"El usuario es {nombre}, los apellidos {apellidos}, su dni es {dni}  y el email es {email} y su telefono es {telefono}")
-
-def show_empleado_form(request):
-    form=EmployerForm()
-    return render(request,'empleado_form.html', {'form':form})
+    tittle = 'Employer registry page'
     
-def post_empleado_form(request):
-    form=EmployerForm(request.POST)
-    if form.is_valid(): 
-        nombre=form.cleaned_data['nombre']
-        apellidos=form.cleaned_data['apellidos']
-        dni=form.cleaned_data['dni']
-        telefono=form.cleaned_data['telefono']
-        email=form.cleaned_data['email']
-        return HttpResponse(f"El empleado es {nombre}, los apellidos {apellidos}, su dni es {dni} , su telefono es {telefono} y el email {email}")
+    def get(self, request, *args, **kwargs):
+        form = EmployerForm()
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return render(request, 'employerRegistry.html', context)
 
-def show_tickets(request):
-    return render(request,'tickets_nexus.html')
+    def post(self, request, *args, **kwargs):
+        form = EmployerForm(request.POST)
+        if form.is_valid():
 
-def post_tickets(request):
-    referencia=request.POST["referencia"]
-    titulo=request.POST["titulo"]
-    descripcion=request.POST["descripcion"]
-    fechaapertura=request.POST["fechaapertura"]
-    horaapertura=request.POST["horaapertura"]
-    fecharesolucion=request.POST["fecharesolucion"]
-    horaresolucion=request.POST["horaresolucion"]
-    urgencia=request.POST["urgencia"]
-    tipo=request.POST["tipo"]
-    estado=request.POST["estado"]
-    comentario=request.POST["comentario"]
-    return HttpResponse(f"La referencia del ticket es {referencia}, su titulo es {titulo}, su descripcion es {descripcion}, su fecha de apertura es {fechaapertura} y su hora de apertura es {horaapertura}, su fecha de resolucion es {fecharesolucion} y su hora de resolucion es {horaresolucion},su urgencia es {urgencia}, el tipo de ticket es {tipo}, el estado del tickets es {estado} y los comentarios puestps son {comentario} ")
+            form.save()
+            return redirect('employerRegistry')
 
-def show_tickets_form(request):
-    form=TicketForm()
-    return render(request,'tickets_form.html', {'form':form})
+
+class TicketRegistryView(View):
+
+class MachineRegistryView(View):
+        
+# Todavia no hacer
+# class UpdateEmployerProfileView(View):
+
+# Todavia no hacer
+# class UpdateMachiView(View):
+
+# Todavia no hacer
+# class UpdateTicketView(View):
+
+# class NexusPortalView(DetailView):
