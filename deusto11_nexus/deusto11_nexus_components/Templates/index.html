@@ -10,13 +10,13 @@
                 <p id="descr">Te ofrecemos el más completo software de gestión empresarial. Nexus asegura el futuro de la organización por su escalabilidad, flexibilidad y adaptación a todos los negocios.</p>
             </div>
             <div>
-                <form>
-                    <h3 id="login">Login</h3>
-                    Email:<br><input type="text"><br><br>
-                    Contraseña:<br><input type="password"><br>
-                    <br><input type="submit" value="Entrar"><br>
-                    <br><input type="submit" value="Registrarse">
+            <!--Change form-->
+               <form action="{% url 'noticia_create' %}" method="post">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+                    <input type="submit" value="Nueva noticia" />
                 </form>
+            <!--Change form-->
             </div>
             <article>
                 <h2 id="caracteristicas">Caracteristicas</h2>    

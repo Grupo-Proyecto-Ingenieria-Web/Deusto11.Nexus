@@ -65,7 +65,7 @@ class EmployerRegistryView(View):
         if form.is_valid():
 
             form.save()
-            return redirect('employerRegistry')
+        return redirect('employerRegistry')
 
 
 class TicketRegistryView(View):

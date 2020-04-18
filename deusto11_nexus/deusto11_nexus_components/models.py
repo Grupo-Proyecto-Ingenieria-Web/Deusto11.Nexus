@@ -1,19 +1,5 @@
 from django.db import models
 
-
-class Employee(models.Model):
-    dni = models.CharField(max_length=9, null=True, blank=True)
-    name = models.CharField(max_length=7)
-    surname = models.CharField(max_length=8)
-    email = models.CharField(max_length=20)
-    telefone_number = models.IntegerField()
-    user_nick = models.CharField(max_length=10, null=True, blank=True)
-    password = models.Charfiled(max_length=20, null=True, blank=True)
-
-    def __str__(self):
-        return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}"
-
-
 class Machine(models.Model):
     set_number = models.IntegerField(null=True, blank=True)
     model = models.CharField(max_length=60)
