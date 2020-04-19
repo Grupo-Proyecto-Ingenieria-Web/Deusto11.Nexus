@@ -2,6 +2,15 @@
 {% block tittle %}Portal principal de empleado{% endblock %}
 {% block content %}
 <h1>Lista de tickets</h1>
+<div>
+    <!--Change form-->
+       <form action="{% url 'employer_update' %}" method="post">
+             {% csrf_token %}
+             {{ form.as_p }}
+            <input type="submit" value="EmployerPortal" />
+        </form>
+    <!--Change form-->
+</div>
 <table>
     
     <tr>

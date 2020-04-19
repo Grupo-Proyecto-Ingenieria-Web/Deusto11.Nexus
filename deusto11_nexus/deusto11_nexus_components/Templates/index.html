@@ -11,10 +11,10 @@
             </div>
             <div>
             <!--Change form-->
-               <form action="{% url 'noticia_create' %}" method="post">
+               <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
                      {{ form.as_p }}
-                    <input type="submit" value="Nueva noticia" />
+                    <input type="submit" value="Página principal" />
                 </form>
             <!--Change form-->
             </div>
