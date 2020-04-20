@@ -70,10 +70,10 @@ class EmployerRegistryView(View):
 
 class TicketRegistryView(View):
 
-     tittle = 'Tickets registry page'
+    tittle = 'Tickets registry page'
     
     def get(self, request, *args, **kwargs):
-        form = EmployerForm()
+        form = TicketForm()
         context = {
             'tittle': tittle,
             'form': form
@@ -89,7 +89,7 @@ class TicketRegistryView(View):
 
 class MachineRegistryView(View):
 
-     tittle = 'Machine registry page'
+    tittle = 'Machine registry page'
     
     def get(self, request, *args, **kwargs):
         form = MachineForm()
