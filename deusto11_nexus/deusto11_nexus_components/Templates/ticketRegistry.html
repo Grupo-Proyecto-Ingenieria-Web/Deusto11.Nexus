@@ -4,4 +4,11 @@
 
 {% block content %}
 <!--    Here is the body code   -->
+<div>
+    <form action="{% url 'ticket_registry' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="TicketRegistry" />
+    </form>
+</div>
 {% endblock %}
