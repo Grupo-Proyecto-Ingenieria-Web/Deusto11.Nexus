@@ -2,10 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView, UpdateView
+from django.views import View
 import logging
-# import deusto11_nexus_services as nexus_services
-# from django.views.generic.edit import UpdateView, DeleteView
+import deusto11_nexus_services as nexus_services
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
 
@@ -28,12 +28,6 @@ class IndexView(View):
         _viewsManagerService.validate_and_save_form(form)
 
         return redirect('employerPortal')
-        # form = EmployerLoginForm()
-        # context = {
-            # 'tittle': tittle,
-        # 'form': form
-        # }
-        # return render(request, 'index.html', context)
 
 class EmployerPortalView(ListView):
 
@@ -96,7 +90,9 @@ class MachineRegistryView(View):
         return redirect('machineRegistry')
         
 # Todavia no hacer
-# class UpdateEmployerProfileView(View):
+class UpdateEmployerProfileView(UpdateView):
+    tittle = 'Machine registry page'
+   
 
 # Todavia no hacer
 # class UpdateMachiView(View):
@@ -116,6 +112,7 @@ class ViewsManagerService():
                 _logger.info("Changes correctly input in database")
             else:
                 _logger.error("Cahanges not saved in database")
+
 
     def build_context_form(self, tittle, form):
         context = {

@@ -39,7 +39,7 @@ class Employee(models.Model):
     email = models.CharField(max_length=20)
     telefone_number = models.IntegerField()
     user_nick = models.CharField(max_length=10, null=True, blank=True)
-    password = models.Charfiled(max_length=20, null=True, blank=True)
+    password = models.CharField(max_length=20, null=True, blank=True)
     ticket = models.ManyToManyField(Ticket)
 
     def __str__(self):
