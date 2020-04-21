@@ -10,23 +10,22 @@ import logging
 # _temaplateViews = nexus_services.TemplatesViews(request)
 
 _logger = logging.getLogger("nexus.componenets.views")
-_viewsMethosManager = ViewsMethodsManager
+_viewsManagerService = ViewsManagerService
 
 # Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
 
     tittle = 'Index nexus'
     
-
     def get(self, request, *args, **kwargs):
         form = EmployerLoginForm()
         _logger.info("Unsing EmployerLoginForm to create form in index")
         
-        return render(request, 'index.html', _viewsMethosManager.build_context(tittle, form))
+        return render(request, 'index.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
-        _viewsMethosManager.validate_and_save_form(form)
+        _viewsManagerService.validate_and_save_form(form)
 
         return redirect('employerPortal')
         # form = EmployerLoginForm()
@@ -40,7 +39,7 @@ class EmployerPortalView(ListView):
 
     model = Ticket
     template_name = "employerPortal.html"
-    querysetAllArticles = Ticket.objects.order_by("id") 
+    queryset_all_articles = Ticket.objects.order_by("id") 
     context_object_name = "list_employers_already_exists"  
 
     def get_context_data(self, **kwargs):
@@ -57,11 +56,11 @@ class EmployerRegistryView(View):
     def get(self, request, *args, **kwargs):
         form = EmployerForm()
         
-        return render(request, 'employerRegistry.html', _viewsMethosManager.build_context(tittle, form))
+        return render(request, 'employerRegistry.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
-        _viewsMethosManager.validate_and_save_form(form)
+        _viewsManagerService.validate_and_save_form(form)
 
         return redirect('employerRegistry')
 
@@ -73,11 +72,11 @@ class TicketRegistryView(View):
     def get(self, request, *args, **kwargs):
         form = TicketForm()
         
-        return render(request, 'ticketRegistry.html', _viewsMethosManager.build_context(tittle, form))
+        return render(request, 'ticketRegistry.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = TicketForm(request.POST)
-        _viewsMethosManager.validate_and_save_form(form)
+        _viewsManagerService.validate_and_save_form(form)
 
         return redirect('ticketRegistry')
 
@@ -88,11 +87,11 @@ class MachineRegistryView(View):
     def get(self, request, *args, **kwargs):
         form = MachineForm()
         
-        return render(request, 'machineRegistry.html', _viewsMethosManager.build_context(tittle, form))
+        return render(request, 'machineRegistry.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = MachineForm(request.POST)
-        _viewsMethosManager.validate_and_save_form(form)
+        _viewsManagerService.validate_and_save_form(form)
 
         return redirect('machineRegistry')
         
@@ -108,7 +107,7 @@ class MachineRegistryView(View):
 # class NexusPortalView(DetailView):
 
 # Esto se pasara a nexus_services en un futuro
-class ViewsMethodsManager():
+class ViewsManagerService():
 
     def validate_and_save_form(self, form):
         if form.is_valid():
@@ -116,9 +115,9 @@ class ViewsMethodsManager():
             if(form.save()):
                 _logger.info("Changes correctly input in database")
             else:
-                _logger.error("Cahanges not saved in db")
+                _logger.error("Cahanges not saved in database")
 
-    def build_context(self, tittle, form):
+    def build_context_form(self, tittle, form):
         context = {
             'tittle': tittle,
             'form': form
