@@ -3,30 +3,32 @@ from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
 from django.views.generic import DetailView
+import logging
 # import deusto11_nexus_services as nexus_services
 # from django.views.generic.edit import UpdateView, DeleteView
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
+
+_logger = logging.getLogger("nexus.componenets.views")
+_viewsMethosManager = ViewsMethodsManager
 
 # Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
 
     tittle = 'Index nexus'
     
+
     def get(self, request, *args, **kwargs):
         form = EmployerLoginForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'index.html', context)
+        _logger.info("Unsing EmployerLoginForm to create form in index")
+        
+        return render(request, 'index.html', _viewsMethosManager.build_context(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
-        if form.is_valid():
+        _viewsMethosManager.validate_and_save_form(form)
 
-            # form.save()
-            return redirect('employerPortal')
+        return redirect('employerPortal')
         # form = EmployerLoginForm()
         # context = {
             # 'tittle': tittle,
@@ -54,17 +56,13 @@ class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         form = EmployerForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'employerRegistry.html', context)
+        
+        return render(request, 'employerRegistry.html', _viewsMethosManager.build_context(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
-        if form.is_valid():
+        _viewsMethosManager.validate_and_save_form(form)
 
-            form.save()
         return redirect('employerRegistry')
 
 
@@ -74,17 +72,13 @@ class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         form = TicketForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'ticketRegistry.html', context)
+        
+        return render(request, 'ticketRegistry.html', _viewsMethosManager.build_context(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = TicketForm(request.POST)
-        if form.is_valid():
+        _viewsMethosManager.validate_and_save_form(form)
 
-            form.save()
         return redirect('ticketRegistry')
 
 class MachineRegistryView(View):
@@ -93,17 +87,13 @@ class MachineRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         form = MachineForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'machineRegistry.html', context)
+        
+        return render(request, 'machineRegistry.html', _viewsMethosManager.build_context(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = MachineForm(request.POST)
-        if form.is_valid():
+        _viewsMethosManager.validate_and_save_form(form)
 
-            form.save()
         return redirect('machineRegistry')
         
 # Todavia no hacer
@@ -116,3 +106,21 @@ class MachineRegistryView(View):
 # class UpdateTicketView(View):
 
 # class NexusPortalView(DetailView):
+
+# Esto se pasara a nexus_services en un futuro
+class ViewsMethodsManager():
+
+    def validate_and_save_form(self, form):
+        if form.is_valid():
+            _logger.info("Correct form structure")
+            if(form.save()):
+                _logger.info("Changes correctly input in database")
+            else:
+                _logger.error("Cahanges not saved in db")
+
+    def build_context(self, tittle, form):
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return context
