@@ -2,11 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
-from django.views.generic import DetailView
-# import deusto11_nexus_services as nexus_services
-# from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic import DetailView, ListView, UpdateView
+from django.views import View
+import logging
+import deusto11_nexus_services as nexus_services
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
+
+_logger = logging.getLogger("nexus.componenets.views")
+_viewsManagerService = ViewsManagerService
 
 # Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
@@ -15,30 +19,21 @@ class IndexView(View):
     
     def get(self, request, *args, **kwargs):
         form = EmployerLoginForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'index.html', context)
+        _logger.info("Unsing EmployerLoginForm to create form in index")
+        
+        return render(request, 'index.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
-        if form.is_valid():
+        _viewsManagerService.validate_and_save_form(form)
 
-            # form.save()
-            return redirect('employerPortal')
-        # form = EmployerLoginForm()
-        # context = {
-            # 'tittle': tittle,
-        # 'form': form
-        # }
-        # return render(request, 'index.html', context)
+        return redirect('employerPortal')
 
 class EmployerPortalView(ListView):
 
     model = Ticket
     template_name = "employerPortal.html"
-    querysetAllArticles = Ticket.objects.order_by("id") 
+    queryset_all_articles = Ticket.objects.order_by("id") 
     context_object_name = "list_employers_already_exists"  
 
     def get_context_data(self, **kwargs):
@@ -54,17 +49,13 @@ class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         form = EmployerForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'employerRegistry.html', context)
+        
+        return render(request, 'employerRegistry.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
-        if form.is_valid():
+        _viewsManagerService.validate_and_save_form(form)
 
-            form.save()
         return redirect('employerRegistry')
 
 
@@ -74,17 +65,13 @@ class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         form = TicketForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'ticketRegistry.html', context)
+        
+        return render(request, 'ticketRegistry.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = TicketForm(request.POST)
-        if form.is_valid():
+        _viewsManagerService.validate_and_save_form(form)
 
-            form.save()
         return redirect('ticketRegistry')
 
 class MachineRegistryView(View):
@@ -93,21 +80,19 @@ class MachineRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         form = MachineForm()
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return render(request, 'machineRegistry.html', context)
+        
+        return render(request, 'machineRegistry.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = MachineForm(request.POST)
-        if form.is_valid():
+        _viewsManagerService.validate_and_save_form(form)
 
-            form.save()
         return redirect('machineRegistry')
         
 # Todavia no hacer
-# class UpdateEmployerProfileView(View):
+class UpdateEmployerProfileView(UpdateView):
+    tittle = 'Machine registry page'
+   
 
 # Todavia no hacer
 # class UpdateMachiView(View):
@@ -116,3 +101,22 @@ class MachineRegistryView(View):
 # class UpdateTicketView(View):
 
 # class NexusPortalView(DetailView):
+
+# Esto se pasara a nexus_services en un futuro
+class ViewsManagerService():
+
+    def validate_and_save_form(self, form):
+        if form.is_valid():
+            _logger.info("Correct form structure")
+            if(form.save()):
+                _logger.info("Changes correctly input in database")
+            else:
+                _logger.error("Cahanges not saved in database")
+
+
+    def build_context_form(self, tittle, form):
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return context

@@ -18,5 +18,5 @@ class MachineForm(forms.ModelForm):
 
 class EmployerLoginForm(forms.MedalForm):
     class Meta:
-        Model = Employee
-        exclude = ['dni', 'name', 'surname', 'email', 'telefone_number', ]
+        model = Employee
+        exclude = ['dni', 'name', 'surname', 'email', 'telefone_number']
