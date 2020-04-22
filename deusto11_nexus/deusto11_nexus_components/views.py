@@ -35,9 +35,10 @@ _viewsManagerService = ViewsManagerService()
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):  
-        tittle = 'Index nexus'
+        tittle = "Index nexus"
         form = EmployerLoginForm()
-        _logger.info("Unsing EmployerLoginForm to create form in index")
+        _logger.info("Using EmployerLoginForm to create form in index")
+        print("Using EmployerLoginForm to create form in index")
 
         return render(request, 'index.html', _viewsManagerService.build_context_form(tittle, form))
 
