@@ -34,14 +34,10 @@ _viewsManagerService = ViewsManagerService()
 # Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
 
-    # viewsManagerService = ViewsManagerService()
-
-    def get(self, request, *args, **kwargs):
-        
+    def get(self, request, *args, **kwargs):  
         tittle = 'Index nexus'
         form = EmployerLoginForm()
         _logger.info("Unsing EmployerLoginForm to create form in index")
-        # viewsManagerService = ViewsManagerService()
 
         return render(request, 'index.html', _viewsManagerService.build_context_form(tittle, form))
 
@@ -66,10 +62,9 @@ class EmployerPortalView(ListView):
    
 # employerRegistry.html debe tener un <a href="{% url 'employerPortal' %}">Volver a la lista</a> para volver al portal de employee
 class EmployerRegistryView(View):
-
-    tittle = 'Employer registry page'
     
     def get(self, request, *args, **kwargs):
+        tittle = 'Employer registry page'
         form = EmployerForm()
         
         return render(request, 'employerRegistry.html', _viewsManagerService.build_context_form(tittle, form))
@@ -82,10 +77,9 @@ class EmployerRegistryView(View):
 
 
 class TicketRegistryView(View):
-
-    tittle = 'Tickets registry page'
     
     def get(self, request, *args, **kwargs):
+        tittle = 'Tickets registry page'
         form = TicketForm()
         
         return render(request, 'ticketRegistry.html', _viewsManagerService.build_context_form(tittle, form))
@@ -97,10 +91,9 @@ class TicketRegistryView(View):
         return redirect('ticketRegistry')
 
 class MachineRegistryView(View):
-
-    tittle = 'Machine registry page'
     
     def get(self, request, *args, **kwargs):
+        tittle = 'Machine registry page'
         form = MachineForm()
         
         return render(request, 'machineRegistry.html', _viewsManagerService.build_context_form(tittle, form))
