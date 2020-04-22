@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView
 from django.views import View
 import logging
@@ -117,18 +117,18 @@ class UpdateEmployerProfileView(UpdateView):
    
 
 # Todavia no hacer
- class UpdateMachiView(UpdateView):
+class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
     template_name="UpdateMachine.html"
     success_url= reverse_lazy('update_machine')
 
 # Todavia no hacer
- class UpdateTicketView(UpdateView):
+class UpdateTicketView(UpdateView):
     model=Ticket
     form_class=TicketForm
     template_name="UpdateTicket.html"
     success_url= reverse_lazy('update_ticket')
 
- class NexusPortalView(DetailView):
+#class NexusPortalView(DetailView):
 
