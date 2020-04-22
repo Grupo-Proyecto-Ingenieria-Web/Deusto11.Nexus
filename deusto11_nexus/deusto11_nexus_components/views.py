@@ -9,15 +9,33 @@ import deusto11_nexus_services as nexus_services
 
 # _temaplateViews = nexus_services.TemplatesViews(request)
 
+# Esto se pasara a nexus_services en un futuro
+class ViewsManagerService():
+
+    def validate_and_save_form(self, form):
+        if form.is_valid():
+            _logger.info("Correct form structure")
+            if(form.save()):
+                _logger.info("Changes correctly input in database")
+            else:
+                _logger.error("Cahanges not saved in database")
+
+
+    def build_context_form(self, tittle, form):
+        context = {
+            'tittle': tittle,
+            'form': form
+        }
+        return context
+
 _logger = logging.getLogger("nexus.componenets.views")
 _viewsManagerService = ViewsManagerService
 
 # Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
-
-    tittle = 'Index nexus'
     
     def get(self, request, *args, **kwargs):
+        tittle = 'Index nexus'
         form = EmployerLoginForm()
         _logger.info("Unsing EmployerLoginForm to create form in index")
         
@@ -102,21 +120,3 @@ class UpdateEmployerProfileView(UpdateView):
 
 # class NexusPortalView(DetailView):
 
-# Esto se pasara a nexus_services en un futuro
-class ViewsManagerService():
-
-    def validate_and_save_form(self, form):
-        if form.is_valid():
-            _logger.info("Correct form structure")
-            if(form.save()):
-                _logger.info("Changes correctly input in database")
-            else:
-                _logger.error("Cahanges not saved in database")
-
-
-    def build_context_form(self, tittle, form):
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return context
