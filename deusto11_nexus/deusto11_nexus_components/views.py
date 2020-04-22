@@ -106,14 +106,26 @@ class MachineRegistryView(View):
         
 # Todavia no hacer
 class UpdateEmployerProfileView(UpdateView):
-    tittle = 'Machine registry page'
+    #tittle = 'Machine registry page'
+    model=Employee
+    #fields=[]
+    form_class=EmployerForm
+    template_name="nexus/UpdateEmployerProfile.html"
    
 
 # Todavia no hacer
-# class UpdateMachiView(View):
+ class UpdateMachiView(UpdateView):
+    model=Machine
+    #fields=[]
+    form_class=MachineForm
+    template_name="nexus/UpdateMachine.html"
 
 # Todavia no hacer
-# class UpdateTicketView(View):
+ class UpdateTicketView(UpdateView):
+    model=Ticket
+    #fields=[]
+    form_class=TicketForm
+    template_name="nexus/UpdateTicket.html"
 
-# class NexusPortalView(DetailView):
+ class NexusPortalView(DetailView):
 
