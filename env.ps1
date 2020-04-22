@@ -43,3 +43,8 @@
 # Duracion.objects.all()
 # Para hacer un select más complejo
 # Duracion.objects.filter(nombre__contains='Duracion corta').count()
+
+# ------------------------------------------------------------------------------------------------------------------
+
+# from deusto11_nexus_components.models import Ticket, Employee, Machine
+# Employee.objects.all()
