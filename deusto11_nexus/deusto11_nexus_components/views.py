@@ -29,16 +29,20 @@ class ViewsManagerService():
         return context
 
 _logger = logging.getLogger("nexus.componenets.views")
-_viewsManagerService = ViewsManagerService
+_viewsManagerService = ViewsManagerService()
 
 # Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
-    
+
+    # viewsManagerService = ViewsManagerService()
+
     def get(self, request, *args, **kwargs):
+        
         tittle = 'Index nexus'
         form = EmployerLoginForm()
         _logger.info("Unsing EmployerLoginForm to create form in index")
-        
+        # viewsManagerService = ViewsManagerService()
+
         return render(request, 'index.html', _viewsManagerService.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
