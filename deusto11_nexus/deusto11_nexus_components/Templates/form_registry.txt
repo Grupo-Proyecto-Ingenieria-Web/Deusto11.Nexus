@@ -1,0 +1,43 @@
+<form>
+    Numero de referencia:<input type="text">
+    <br><br>
+    Nombre completo del empleado:<input type="text">
+    <br><br>
+    Titulo:<input type="text">
+    <br><br>
+    Estado:<select id="estado" name="estado">
+        <option selected>Abierto</option>
+        <option>Cerrado</option>
+    </select>
+    <br><br>
+    Tipo:<select id="tipo" name="tipo">
+        <option>Averia</option>
+        <option selected>Mejora</option>
+        <option>Mantenimiento</option>
+    </select>
+    <br><br>
+    Nivel de urgencia:<select id="urgencia" name="urgencia">
+        <option selected>Urgente</option>
+        <option>Alta</option>
+        <option>Media</option>
+        <option>Baja</option>
+    </select>
+    <br><br>
+    <p>Selecciona la fecha de apertura: </p>
+    <label for="fecha">
+        <input type="date" id="fecha" name="fecha_incidencia" />
+    </label>
+    <p>Selecciona la fecha de resolucion: </p>
+    <label for="fecha">
+        <input type="date" id="fecha" name="fecha_incidencia" />
+    </label>
+    <br><br>
+    <label for="comentario">Comentarios
+        <input type="placeholder" id="comentario" name="comentario" />
+    </label>
+    <br><br>
+    <label for="comentario">Descripcion corta
+        <input type="placeholder" id="comentario" name="comentario" />
+    </label>
+   
+</form>
