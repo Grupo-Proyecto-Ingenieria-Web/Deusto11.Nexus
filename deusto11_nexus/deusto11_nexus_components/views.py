@@ -110,22 +110,24 @@ class UpdateEmployerProfileView(UpdateView):
     #tittle = 'Machine registry page'
     model=Employee
     form_class=EmployerForm
-    template_name="nexus/UpdateEmployerProfile.html"
+    template_name="UpdateEmployerProfile.html"
     success_url= reverse_lazy('employer_update')
+    
+
    
 
 # Todavia no hacer
  class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
-    template_name="nexus/UpdateMachine.html"
+    template_name="UpdateMachine.html"
     success_url= reverse_lazy('update_machine')
 
 # Todavia no hacer
  class UpdateTicketView(UpdateView):
     model=Ticket
     form_class=TicketForm
-    template_name="nexus/UpdateTicket.html"
+    template_name="UpdateTicket.html"
     success_url= reverse_lazy('update_ticket')
 
  class NexusPortalView(DetailView):
