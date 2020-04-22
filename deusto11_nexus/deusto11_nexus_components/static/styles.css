@@ -21,104 +21,14 @@ header{
     color: #055184;
 
 }
-#presentacion{
-    margin-left: 100px;
-}
-#nexus{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 60px;
-    color: white;
-}
-#sistema{
-    width: 400px;
-    color: white;
-    font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-}
-#descr{
-    width: 400px;
-    color: white;
-    font-size: 25px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-#cuerpo{
-    background-color:#1B83CA;
-    padding: 60px;
-    display: flex;
-    align-items: center;
-
-}
-form{
-    margin-left: 250px;
-    background-color:white;
-    padding: 60px;
-    text-align: center;
-    border: 10px solid #094872;
-
-
-}
-#login{
-    font-size: 30px;
-    color:#094872;
-
-
-}
-#caracteristicas{
-    text-align: center;
-    font-size: 50px;
-    color:#094872;
-}
-#imagen{
-    float: right;
-    padding-top: 60px;
-
-}
-#parrafo{
-    float: left;
-    margin-left: 70px;
-    margin-top: 50px;
-    margin-bottom: 80px;
-    width: auto;
-
-
-}
-
-#solucion{
-   text-align: center;
-   font-size: 50px;
-   color:#094872;
-
-
-   }
-#texto{
-    float: left;
-    margin-left: 70px;
-    margin-top: 60px;
-    width: 450px;
-
-
-}
-#imagen2{
-    float: right;
-    padding-top: 90px;
-    padding-right: 60px;
-}
-#precio{
-    text-align: center;
-    margin: 70px;
-    margin-top: 950px;   
-}
 footer{
     text-align: center;
     background-color: #1B83CA;
     padding-bottom: 30px;
     padding-top: 5px;
 }
-#version{
-    font-size: 50px;
-    color:#094872;
-}
+
 div.centraTabla{
     text-align: center;
 
@@ -134,14 +44,4 @@ div.centraTabla{
         font-size: 18px;
         font-family: Arial, Helvetica, sans-serif
     }
-    #parrafo1,#parrafo2{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 20px;
-    }
-    #precio1,#precio2{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 22px;
-        background-color: #20A1F7;
-        margin-left: 100px;
-        margin-right: 100px;
-    }
+   
