@@ -6,45 +6,26 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView
 from django.views import View
 import logging
-import deusto11_nexus_services as nexus_services
-
+import deusto11_nexus_services.logging as nexus_services_logs
+import deusto11_nexus_services.viewsManageService as nexus_services_views_manager
+from .common import statics
 # _temaplateViews = nexus_services.TemplatesViews(request)
 
-# Esto se pasara a nexus_services en un futuro
-class ViewsManagerService():
+_logger = nexus_services_logs.Logging(statics.NEXUS_VIEWS_LOGGING_NAME)
+_views_manager_service = nexus_services_views_manager.ViewsManagerService()
 
-    def validate_and_save_form(self, form):
-        if form.is_valid():
-            _logger.info("Correct form structure")
-            if(form.save()):
-                _logger.info("Changes correctly input in database")
-            else:
-                _logger.error("Cahanges not saved in database")
-
-
-    def build_context_form(self, tittle, form):
-        context = {
-            'tittle': tittle,
-            'form': form
-        }
-        return context
-
-_logger = logging.getLogger("nexus.componenets.views")
-_viewsManagerService = ViewsManagerService()
-
-# Aqui falta logica de codigo para que una vez que haya login se redireccione a EmployerPortalView
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):  
-        tittle = 'Index nexus'
+        tittle = "Index nexus"
         form = EmployerLoginForm()
-        _logger.info("Unsing EmployerLoginForm to create form in index")
+        _logger.info_log("Using EmployerLoginForm to create form in index")
 
-        return render(request, 'index.html', _viewsManagerService.build_context_form(tittle, form))
+        return render(request, 'index.html', _views_manager_service.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
-        _viewsManagerService.validate_and_save_form(form)
+        _views_manager_service.validate_and_save_form(form, _logger)
 
         return redirect('employerPortal')
 
@@ -61,18 +42,17 @@ class EmployerPortalView(ListView):
 
         return all_context
    
-# employerRegistry.html debe tener un <a href="{% url 'employerPortal' %}">Volver a la lista</a> para volver al portal de employee
 class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         tittle = 'Employer registry page'
         form = EmployerForm()
         
-        return render(request, 'employerRegistry.html', _viewsManagerService.build_context_form(tittle, form))
+        return render(request, 'employerRegistry.html', _views_manager_service.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
-        _viewsManagerService.validate_and_save_form(form)
+        _views_manager_service.validate_and_save_form(form, _logger)
 
         return redirect('employerRegistry')
 
@@ -83,11 +63,11 @@ class TicketRegistryView(View):
         tittle = 'Tickets registry page'
         form = TicketForm()
         
-        return render(request, 'ticketRegistry.html', _viewsManagerService.build_context_form(tittle, form))
+        return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = TicketForm(request.POST)
-        _viewsManagerService.validate_and_save_form(form)
+        _views_manager_service.validate_and_save_form(form, _logger)
 
         return redirect('ticketRegistry')
 
@@ -97,11 +77,11 @@ class MachineRegistryView(View):
         tittle = 'Machine registry page'
         form = MachineForm()
         
-        return render(request, 'machineRegistry.html', _viewsManagerService.build_context_form(tittle, form))
+        return render(request, 'machineRegistry.html', _views_manager_service.build_context_form(tittle, form))
 
     def post(self, request, *args, **kwargs):
         form = MachineForm(request.POST)
-        _viewsManagerService.validate_and_save_form(form)
+        _views_manager_service.validate_and_save_form(form, _logger)
 
         return redirect('machineRegistry')
         

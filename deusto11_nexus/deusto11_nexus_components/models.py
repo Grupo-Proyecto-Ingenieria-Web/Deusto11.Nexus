@@ -1,7 +1,7 @@
 from django.db import models
 
 class Machine(models.Model):
-    set_number = models.IntegerField(null=True, blank=True)
+    set_number = models.IntegerField(null=False, blank=False, default=7850)
     model = models.CharField(max_length=60)
     brand = models.CharField(max_length=60)
     machine_type = models.CharField(max_length=100)
@@ -16,7 +16,7 @@ class Machine(models.Model):
         return f"id={self.id}, numero_serie={self.set_number}, modelo={self.model}, marca={self.brand}, tipo_equipo={self.machine_type}, fecha_adquisicion={self.get_date}, fecha_puesta_en_marcha={self.start_up_date}, proveedor_nombre={self.provider_name}, proveedor_telefono={self.provider_telefone}, planta={self.floor_on_premise}"
 
 class Ticket(models.Model):
-    reference_number = models.IntegerField(null=True, blank=True)
+    reference_number = models.IntegerField(null=False, blank=False, default=101)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     starting_date = models.DateField()
@@ -29,17 +29,17 @@ class Ticket(models.Model):
     machine = models.ManyToManyField(Machine) 
 
     def __str__(self):
-        return f"id={self.id}, numero_referencia={self.reference_number}, titulo={self.title}, descripcion={self.description}, fecha_apertura={self.starting_date}, fecha_resolucion={self.resolution_date}, nivel_urgencia={self.urgency_level}, tipo={self.ticket_type}, estado={self.status}, empleado={self.employee}, comentario={self.comment}, machine{self.machine}"
+        return f"id={self.id}, numero_referencia={self.reference_number}, titulo={self.title}, descripcion={self.description}, fecha_apertura={self.starting_date}, fecha_resolucion={self.resolution_date}, nivel_urgencia={self.urgency_level}, tipo={self.ticket_type}, estado={self.status}, comentario={self.comment}, machine{self.machine}"
         
 
 class Employee(models.Model):
-    dni = models.CharField(max_length=9, null=True, blank=True)
+    dni = models.CharField(max_length=9, null=False, blank=False, default="12345678R")
     name = models.CharField(max_length=7)
     surname = models.CharField(max_length=8)
     email = models.CharField(max_length=20)
     telefone_number = models.IntegerField()
-    user_nick = models.CharField(max_length=10, null=True, blank=True)
-    password = models.CharField(max_length=20, null=True, blank=True)
+    user_nick = models.CharField(max_length=10, null=False, blank=False, default="user")
+    password = models.CharField(max_length=20, null=False, blank=False, default="password")
     ticket = models.ManyToManyField(Ticket)
 
     def __str__(self):
