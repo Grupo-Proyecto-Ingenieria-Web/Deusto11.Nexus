@@ -94,8 +94,6 @@ class UpdateEmployerProfileView(UpdateView):
     success_url= reverse_lazy('employer_update')
     
 
-   
-
 # Todavia no hacer
 class UpdateMachiView(UpdateView):
     model=Machine
