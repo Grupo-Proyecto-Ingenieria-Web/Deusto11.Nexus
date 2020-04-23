@@ -3,12 +3,21 @@
 {% block tittle %}Registro para nuevo ticket{% endblock %}
 
 {% block content %}
-<!--    Here is the body code   -->
-<div>
-    <form action="{% url 'ticket_registry' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="TicketRegistry" />
-    </form>
-</div>
+<h1>NUEVO TICKET</h1>
+<P>Rellena el siguiente formulario para añadir un nuevo ticket:</P>
+<fieldset>
+    <legend>Datos del ticket</legend>
+    <br>
+    <div>
+        <form action="{% url 'ticket_registry' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="TicketRegistry" />
+        </form>
+    </div>
+    <div id="enviar">
+    <input type="submit" value="Enviar">
+    </div>
+</fieldset>
+    </div>
 {% endblock %}
