@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
-# from django.urls import reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView
 from django.views import View
 from .common import statics
