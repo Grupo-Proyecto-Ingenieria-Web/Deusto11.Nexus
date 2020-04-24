@@ -10,12 +10,9 @@ class ViewsManagerService():
             else:
                 logger.error_log("Cahanges not saved in database")
 
-
     def build_context_form(self, tittle, form):
         context = {
             'tittle': tittle,
             'form': form
         }
         return context
-
-    
