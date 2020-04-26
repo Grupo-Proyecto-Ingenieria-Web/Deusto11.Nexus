@@ -10,5 +10,4 @@ urlpatterns = [
     path('machine/update/<int:pk>/', views.UpdateMachiView.as_view(), name='update_machine'),
     path('ticket/registry/', views.TicketRegistryView.as_view(), name='ticket_registry'),
     path('ticket/update/<int:pk>/', views.UpdateTicketView.as_view(), name='update_ticket'),
-    
 ]
