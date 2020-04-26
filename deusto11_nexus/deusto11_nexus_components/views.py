@@ -24,8 +24,9 @@ class IndexView(View):
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
-        if(_auth.check_model_employer_authentication(form, _logger)):
-            _views_manager_service.validate_and_save_form(form, _logger)
+        if(_auth.check_model_employer_authentication(form, _logger, _views_manager_service)):
+            if(_views_manager_service.validate_form(form, _logger)):
+                _views_manager_service.save_form(form, _logger)
             return redirect('employerPortal')
         else:
             return redirect('index')
@@ -52,7 +53,8 @@ class EmployerRegistryView(View):
 
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
-        _views_manager_service.validate_and_save_form(form, _logger)
+        if(_views_manager_service.validate_form(form, _logger)):
+            _views_manager_service.save_form(form, _logger)
         return redirect('employerRegistry')
 
 
@@ -65,7 +67,8 @@ class TicketRegistryView(View):
 
     def post(self, request, *args, **kwargs):
         form = TicketForm(request.POST)
-        _views_manager_service.validate_and_save_form(form, _logger)
+        if(_views_manager_service.validate_form(form, _logger)):
+            _views_manager_service.save_form(form, _logger)
         return redirect('ticketRegistry')
 
 class MachineRegistryView(View):
@@ -77,7 +80,8 @@ class MachineRegistryView(View):
 
     def post(self, request, *args, **kwargs):
         form = MachineForm(request.POST)
-        _views_manager_service.validate_and_save_form(form, _logger)
+        if(_views_manager_service.validate_form(form, _logger)):
+            _views_manager_service.save_form(form, _logger)
         return redirect('machineRegistry')
         
 # Todavia no hacer
