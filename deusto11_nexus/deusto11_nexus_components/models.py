@@ -45,3 +45,8 @@ class Employee(models.Model):
     def __str__(self):
         return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, tocket= {self.ticket}"
 
+# Only model, not necessary migrate changes to database
+class EmployerLoginModel(models.Model):
+    user_nick = models.CharField(max_length=10, null=False, blank=False, default="user")
+    password = models.CharField(max_length=20, null=False, blank=False, default="password")
+
