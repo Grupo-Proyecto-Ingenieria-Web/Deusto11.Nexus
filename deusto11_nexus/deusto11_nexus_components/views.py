@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Employee, Ticket, Machine
+from .models import Employee, Ticket, Machine, EmployerLoginModel
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView
@@ -24,10 +24,12 @@ class IndexView(View):
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
-        if(_auth.check_model_employer_authentication(form, _logger, _views_manager_service)):
-            if(_views_manager_service.validate_form(form, _logger)):
-                _views_manager_service.save_form(form, _logger)
-            return redirect('employerPortal')
+        login_model = EmployerLoginModel()
+        login_model.user_nick = request.POST.get("user_nick")
+        login_model.password = request.POST.get("password")
+        if(_views_manager_service.validate_form(form, _logger) and
+         _auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
+            return redirect('employer_create')
         else:
             return redirect('index')
 
@@ -55,7 +57,7 @@ class EmployerRegistryView(View):
         form = EmployerForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('employerRegistry')
+        return redirect('index_default_view')
 
 
 class TicketRegistryView(View):
@@ -69,7 +71,7 @@ class TicketRegistryView(View):
         form = TicketForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('ticketRegistry')
+        return redirect('ticket_registry')
 
 class MachineRegistryView(View):
     
@@ -82,7 +84,7 @@ class MachineRegistryView(View):
         form = MachineForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('machineRegistry')
+        return redirect('machine_registry')
         
 # Todavia no hacer
 class UpdateEmployerProfileView(UpdateView):
