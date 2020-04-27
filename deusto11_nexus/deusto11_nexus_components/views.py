@@ -10,10 +10,12 @@ import deusto11_nexus_services.logging as nexus_services_logs
 import deusto11_nexus_services.viewsManageService as nexus_services_views_manager
 import deusto11_nexus_services.auth as nexus_services_auth
 
+#Con esto hacemos los logins
+
 _logger = nexus_services_logs.Logging(statics.NEXUS_VIEWS_LOGGING_NAME)
 _views_manager_service = nexus_services_views_manager.ViewsManagerService()
 _auth = nexus_services_auth.Authentication()
-
+#Aqui tenemos las views de index
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):  
@@ -33,6 +35,7 @@ class IndexView(View):
         else:
             return redirect('index')
 
+#La view de employer
 class EmployerPortalView(ListView):
 
     model = Ticket
@@ -46,6 +49,7 @@ class EmployerPortalView(ListView):
         return all_context
    
 # Falta comprobar que la nick sea siempre diferente
+#Para registrar un empleado
 class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -59,7 +63,7 @@ class EmployerRegistryView(View):
             _views_manager_service.save_form(form, _logger)
         return redirect('index_default_view')
 
-
+#Para registrar un ticket
 class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -73,6 +77,7 @@ class TicketRegistryView(View):
             _views_manager_service.save_form(form, _logger)
         return redirect('ticket_registry')
 
+#Para registrar una maquina
 class MachineRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -87,6 +92,7 @@ class MachineRegistryView(View):
         return redirect('machine_registry')
         
 # Todavia no hacer
+#Actualizar el empleado
 class UpdateEmployerProfileView(UpdateView):
     #tittle = 'Machine registry page'
     model=Employee
@@ -96,6 +102,7 @@ class UpdateEmployerProfileView(UpdateView):
     
 
 # Todavia no hacer
+#Actualizar la maquina
 class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
@@ -103,6 +110,7 @@ class UpdateMachiView(UpdateView):
     success_url= reverse_lazy('update_machine')
 
 # Todavia no hacer
+#Actualizar el ticket
 class UpdateTicketView(UpdateView):
     model=Ticket
     form_class=TicketForm
