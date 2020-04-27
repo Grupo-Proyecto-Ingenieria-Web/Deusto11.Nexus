@@ -1,4 +1,4 @@
-
+from deusto11_nexus_components.models import Employee
 
 class ViewsManagerService():
 
@@ -14,7 +14,7 @@ class ViewsManagerService():
         if(form.save()):
             logger.info_log("Changes correctly input in database")
         else:
-            logger.error_log("Changes not saved in database")
+            logger.error_log("Changes not saved in database, something maybe already exist")
 
     def build_context_form(self, tittle, form):
         context = {
@@ -28,3 +28,9 @@ class ViewsManagerService():
             'employers': queryset
         }
         return context
+
+    def return_all_employer_context(self, views_manager_service):
+        queryset_all_employers = Employee.objects.order_by("id")
+        return views_manager_service.build_context_queryset_employers(queryset_all_employers)
+
+    
