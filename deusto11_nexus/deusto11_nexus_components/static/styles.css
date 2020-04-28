@@ -1,23 +1,17 @@
-img{
-
-    margin-left: 150px;
-    margin-top: 2px;
-}
-
 header{
     background-color: #ffffff;
     display: flex;
     align-items: center;
     }   
 #titulo{
-    margin-right: 150px;
-    margin-left: 150px; 
+    text-align: center;
+    margin-left: 150px;
     color: #279AE8;
     font-size: 30px;
     font-family: serif;
 }
 #tel{
-    margin-left: 100px;
+    margin-left: 200px;
     color: #055184;
 
 }
@@ -27,6 +21,11 @@ footer{
     background-color: #1B83CA;
     padding-bottom: 30px;
     padding-top: 5px;
+}
+#letras{
+    color: white;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 div.centraTabla{
@@ -38,20 +37,47 @@ div.centraTabla{
     margin: 0 auto;
     text-align: left;
     }
+img{
 
-    #letras{
-        color: white;
-        font-size: 18px;
-        font-family: Arial, Helvetica, sans-serif
+        margin-left: 130px;
+        margin-top: 2px;
     }
-    #presentacion{
-        margin-left: 100px;
-    }
+
+
+
+
+
+
+
     #nexus{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 60px;
         color: white;
     }
+    #presentacion{
+         background-color: #1B83CA;
+         display: flex;
+         align-items: center;
+    
+    }
+    #entrada{
+        margin-left: 150px;
+    }
+    #formulario{
+        margin-left: 300px;
+        padding: 40px;
+        background-color: white;
+        text-align: center;
+        border: 10px solid #094872
+        
+    }
+    #login{
+        text-align: center;
+        font-size: 30px;
+        color:#094872;
+
+    }
+
     #sistema{
         width: 400px;
         color: white;
@@ -65,128 +91,64 @@ div.centraTabla{
         font-size: 25px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
-    #cuerpo{
-        background-color:#1B83CA;
-        padding: 60px;
-        display: flex;
-        align-items: center;
-    
-    }
-    form{
-        margin-left: 250px;
-        background-color:white;
-        padding: 60px;
-        text-align: center;
-        border: 10px solid #094872;
-    
-    
-    }
-    #login{
-        font-size: 30px;
-        color:#094872;
-    
-    
-    }
+
+
+
+
+
+
+
     #caracteristicas{
         text-align: center;
         font-size: 50px;
         color:#094872;
+        padding-top: 70px;
     }
-    #imagen{
-        float: right;
-        padding-top: 60px;
-    
+    #cuerpo, #info{
+        display: flex;
+        align-items: center;
+        padding: 50px;
+
     }
-    #parrafo{
-        float: left;
-        margin-left: 70px;
-        margin-top: 50px;
-        margin-bottom: 80px;
-        width: auto;
-    
-    
+    #parrafo,#parrafo2{
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-left: 50px;
+       
+
     }
-    
-    #solucion{
-       text-align: center;
-       font-size: 50px;
-       color:#094872;
-    
-    
-       }
-    #texto{
-        float: left;
-        margin-left: 70px;
-        margin-top: 60px;
-        width: 450px;
-    
-    
-    }
-    #imagen2{
-        float: right;
-        padding-top: 90px;
-        padding-right: 60px;
-    }
-    #precio{
+
+
+
+    #solucion, #version{
         text-align: center;
-        margin: 70px;
-        margin-top: 950px;   
-    }
-    #version{
         font-size: 50px;
         color:#094872;
+        padding-top: 70px;
     }
-    #parrafo1,#parrafo2{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 20px;
-    }
-    #precio1,#precio2{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 22px;
-        background-color: #20A1F7;
-        margin-left: 100px;
-        margin-right: 100px;
-    }
-    body{
-        background-color: #20A1F7;
-        font-family: arial, "sans serif";
-        margin: 0 auto;
-        padding: 80px;
-        width: 900px;
-    }
-    h1{
-        font-size: 40px;
-        font-family: Georgia, 'Times New Roman';
-        color:white;
-        text-align: center;
-        background-color: #1B83CA;
-    }
-    #cuerpo{
-        background-color:white;
-        color:black;
-        padding:40px;
-        border: 2px solid black;
-        text-align: center;
-    }
-    body{
-        background-color: #20A1F7;
-        font-family: arial, "sans serif";
-        margin: 0 auto;
-        padding: 80px;
-        width: 900px;
-    }
-    h1{
-        font-size: 40px;
-        font-family: Georgia, 'Times New Roman';
-        color:white;
-        text-align: center;
-        background-color: #1B83CA;
-    }
-    #cuerpo{
-        background-color:white;
-        color:black;
-        padding:40px;
-        border: 2px solid black;
-        text-align: center;
-    }
+
+
+#infopre{
+    text-align: center;
+    padding-bottom: 130px;
+}
+#parrafo1,#parrafo2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+#precio1,#precio2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    background-color: #1B83CA;
+ 
+  
+}
+  
+
+
+
+  
+
    
+
+    
