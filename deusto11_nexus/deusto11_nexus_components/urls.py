@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+#Aqui pondremos todas las urls que nos permitiran acceder a las distintas paginas
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index_default_view'),
     path('employerPortal/', views.EmployerPortalView.as_view(), name='employer_default_portal'),
