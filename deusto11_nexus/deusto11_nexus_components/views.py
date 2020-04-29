@@ -50,6 +50,16 @@ class EmployerPortalView(ListView):
         all_context = super(EmployerPortalView, self).get_context_data(**kwargs) 
         all_context["tittle"] = "Principle employer portal"
         return all_context
+
+#El vlog informativo
+class VlogPortalView(View):
+    template_name = "vlogPortal.html"
+
+    def get_context_data(self, **kwargs):
+        all_context = super(VlogPortalView, self).get_context_data(**kwargs) 
+        all_context["tittle"] = "Principle vlog portal"
+        return all_context
+
    
 # Falta comprobar que la nick sea siempre diferente
 #Para registrar un empleado
