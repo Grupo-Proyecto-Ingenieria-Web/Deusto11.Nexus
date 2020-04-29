@@ -43,7 +43,7 @@ class Employee(models.Model):
     ticket = models.ManyToManyField(Ticket)
 
     def __str__(self):
-        return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, tocket= {self.ticket}"
+        return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, tocket= {self.ticket}, contrasena={self.password}"
 
 # Only model, not necessary migrate changes to database
 class EmployerLoginModel(models.Model):

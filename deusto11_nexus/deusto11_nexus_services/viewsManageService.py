@@ -7,7 +7,8 @@ class ViewsManagerService():
             logger.info_log("Correct form structure")
             return True
         else:
-            logger.error_log("Form not valid")
+            logger.error_log("Form not valid, default value or some value already exist in database")
+            logger.warning_log("Here are the unique models fields: set_number, reference_number, dni, user_nick")
             return False
 
     def save_form(self, form, logger):
@@ -29,8 +30,8 @@ class ViewsManagerService():
         }
         return context
 
-    def return_all_employer_context(self, views_manager_service):
-        queryset_all_employers = Employee.objects.order_by("id")
-        return views_manager_service.build_context_queryset_employers(queryset_all_employers)
+    def return_all_employer_context(self):
+        queryset_all_employers = Employee.objects.order_by("id")    
+        return self.build_context_queryset_employers(queryset_all_employers)
 
     

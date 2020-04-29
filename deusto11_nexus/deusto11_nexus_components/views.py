@@ -24,14 +24,17 @@ class IndexView(View):
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
+        login_model = self.__create_model(request)
+        if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
+            return redirect('employer_default_portal')
+        else:
+            return redirect('index_default_view')
+
+    def __create_model(self, request):
         login_model = EmployerLoginModel()
         login_model.user_nick = request.POST.get("user_nick")
         login_model.password = request.POST.get("password")
-        if(_views_manager_service.validate_form(form, _logger) and
-         _auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
-            return redirect('employer_default_portal')
-        else:
-            return redirect('index')
+        return login_model
 
 class EmployerPortalView(ListView):
 
@@ -75,7 +78,9 @@ class TicketRegistryView(View):
         form = TicketForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('employer_default_portal')
+            return redirect('employer_default_portal')
+        else:
+            return redirect("ticket_registry")
 
 class MachineRegistryView(View):
     
@@ -88,7 +93,9 @@ class MachineRegistryView(View):
         form = MachineForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('employer_default_portal')
+            return redirect('employer_default_portal')
+        else:
+            return redirect("machine_registry")
         
 # Todavia no hacer
 class UpdateEmployerProfileView(UpdateView):
