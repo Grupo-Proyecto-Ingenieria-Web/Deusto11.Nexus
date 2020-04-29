@@ -1,7 +1,7 @@
 from django.db import models
 #Aqui ponemos todos los atributos de maquina
 class Machine(models.Model):
-    set_number = models.IntegerField(null=False, blank=False, default=7850)
+    set_number = models.IntegerField(null=False, blank=False, default=7850, unique=True)
     model = models.CharField(max_length=60)
     brand = models.CharField(max_length=60)
     machine_type = models.CharField(max_length=100)
@@ -16,7 +16,7 @@ class Machine(models.Model):
         return f"id={self.id}, numero_serie={self.set_number}, modelo={self.model}, marca={self.brand}, tipo_equipo={self.machine_type}, fecha_adquisicion={self.get_date}, fecha_puesta_en_marcha={self.start_up_date}, proveedor_nombre={self.provider_name}, proveedor_telefono={self.provider_telefone}, planta={self.floor_on_premise}"
 #Aqui ponemos todos los atributos de ticket
 class Ticket(models.Model):
-    reference_number = models.IntegerField(null=False, blank=False, default=101)
+    reference_number = models.IntegerField(null=False, blank=False, default=101, unique=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     starting_date = models.DateField()
@@ -33,17 +33,17 @@ class Ticket(models.Model):
         
 #Aqui ponemos todos los atributos de empleado
 class Employee(models.Model):
-    dni = models.CharField(max_length=9, null=False, blank=False, default="12345678R")
-    name = models.CharField(max_length=7)
+    dni = models.CharField(max_length=9, null=False, blank=False, default="12345678R", unique=True)
+    name = models.CharField(max_length=15)
     surname = models.CharField(max_length=8)
     email = models.CharField(max_length=20)
     telefone_number = models.IntegerField()
-    user_nick = models.CharField(max_length=10, null=False, blank=False, default="user")
+    user_nick = models.CharField(max_length=10, null=False, blank=False, default="user", unique=True)
     password = models.CharField(max_length=20, null=False, blank=False, default="password")
     ticket = models.ManyToManyField(Ticket)
 #Esto es para que se vea
     def __str__(self):
-        return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, tocket= {self.ticket}"
+        return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, tocket= {self.ticket}, contrasena={self.password}"
 
 # Only model, not necessary migrate changes to database
 class EmployerLoginModel(models.Model):
