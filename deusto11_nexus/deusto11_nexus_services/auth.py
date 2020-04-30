@@ -21,7 +21,7 @@ class Authentication():
 
     # Borrar metodo, no recorre el context y ademas ya se encarga el forms de no repetir atributos
     def user_nick_already_exist(self, registry_nick, logger, views_manager_service):
-        context_exployers = views_manager_service.return_all_employer_context(views_manager_service)
+        context_exployers = views_manager_service.return_all_employer_context()
         for employer in context_exployers["employers"]:
             if(employer.user_nick == registry_nick):
                 logger.error_log(f"The user {registry_nick} already exist, try other user")
