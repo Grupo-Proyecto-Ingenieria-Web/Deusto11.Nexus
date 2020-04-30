@@ -33,5 +33,3 @@ class ViewsManagerService():
     def return_all_employer_context(self):
         queryset_all_employers = Employee.objects.order_by("id")    
         return self.build_context_queryset_employers(queryset_all_employers)
-
-    
