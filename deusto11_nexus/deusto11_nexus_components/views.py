@@ -15,6 +15,7 @@ import deusto11_nexus_services.auth as nexus_services_auth
 _logger = nexus_services_logs.Logging(statics.NEXUS_VIEWS_LOGGING_NAME)
 _views_manager_service = nexus_services_views_manager.ViewsManagerService()
 _auth = nexus_services_auth.Authentication()
+
 #Aqui tenemos las views de index
 class IndexView(View):
 
@@ -26,14 +27,17 @@ class IndexView(View):
 
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
+        login_model = self.__create_model(request)
+        if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
+            return redirect('employer_default_portal')
+        else:
+            return redirect('index_default_vierw')
+
+    def __create_model(self, request):
         login_model = EmployerLoginModel()
         login_model.user_nick = request.POST.get("user_nick")
         login_model.password = request.POST.get("password")
-        if(_views_manager_service.validate_form(form, _logger) and
-         _auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
-            return redirect('employer_create')
-        else:
-            return redirect('index')
+        return login_model
 
 #La view de employer
 class EmployerPortalView(ListView):
@@ -41,15 +45,21 @@ class EmployerPortalView(ListView):
     model = Ticket
     template_name = "employerPortal.html"
     queryset_all_articles = Ticket.objects.order_by("id") 
-    context_object_name = "list_employers_already_exists"  
+    context_object_name = "list_tickets_already_exists"  
 
     def get_context_data(self, **kwargs):
         all_context = super(EmployerPortalView, self).get_context_data(**kwargs) 
         all_context["tittle"] = "Principle employer portal"
         return all_context
+
+#El vlog informativo
+class VlogPortalView(View):
+    
+    def get(self, request, *args, **kwargs):
+        tittle = 'Vlog nexus'
+        return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle, ""))
    
 # Falta comprobar que la nick sea siempre diferente
-#Para registrar un empleado
 class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -59,9 +69,13 @@ class EmployerRegistryView(View):
 
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
-        if(_views_manager_service.validate_form(form, _logger)):
+        registry_user = request.POST.get("user_nick")
+        if(_views_manager_service.validate_form(form, _logger) and not 
+        _auth.user_nick_already_exist(registry_user, _logger, _views_manager_service)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('index_default_view')
+            return redirect('employer_default_portal')
+        else:
+            return redirect("employer_create")
 
 #Para registrar un ticket
 class TicketRegistryView(View):
@@ -75,7 +89,9 @@ class TicketRegistryView(View):
         form = TicketForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('ticket_registry')
+            return redirect('employer_default_portal')
+        else:
+            return redirect("ticket_registry")
 
 #Para registrar una maquina
 class MachineRegistryView(View):
@@ -89,7 +105,9 @@ class MachineRegistryView(View):
         form = MachineForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-        return redirect('machine_registry')
+            return redirect('employer_default_portal')
+        else:
+            return redirect("machine_registry")
         
 # Todavia no hacer
 #Actualizar el empleado
@@ -118,4 +136,3 @@ class UpdateTicketView(UpdateView):
     success_url= reverse_lazy('update_ticket')
 
 #class NexusPortalView(DetailView):
-

@@ -1,24 +1,22 @@
 {% extends "base.html" %}
 
-{% block tittle %}Registro para nuevo empleado{% endblock %}
+{% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
 <div id="all">
-<div id="argum">
-<h1 id="title">NUEVO EMPLEADO</h1>
-<P>Rellena el siguiente formulario para añadir un nuevo empleado:</P>
-<div>
-    <!--Change form-->
-       <form action="{% url 'employer_create' %}" method="post">
-             {% csrf_token %}
-             {{ form.as_p }}
-            <input type="submit" value="Registrarse" />
-        </form>
-    <!--Change form-->
+  <div id="argum">
+  <h1 id="title">NUEVO EMPLEADO</h1>
+  <P>Rellena el siguiente formulario para añadir un nuevo empleado:</P>
+    <div>
+        <!--Change form-->
+           <form action="{% url 'employer_create' %}" method="post">
+                 {% csrf_token %}
+                 {{ form.as_p }}
+                <input type="submit" value="Registrarse" />
+            </form>
+        <!--Change form-->
 
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
-
 {% endblock %}

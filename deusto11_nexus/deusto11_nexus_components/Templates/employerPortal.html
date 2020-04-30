@@ -1,233 +1,49 @@
 {% extends "base.html" %}
-{% block tittle %}Portal principal de empleado{% endblock %}
+{% block tittle %}{{ tittle }}{% endblock %}
 {% block content %}
 <h1>Lista de tickets</h1>
 <div>
-    <!--Change form-->
-       <form action="{% url 'employer_update' %}" method="post">
-             {% csrf_token %}
-             {{ form.as_p }}
-            <input type="submit" value="Nuevo Ticket" />
-            <input type="submit" value="Nuevo Equipo" />
-            <input type="submit" value="Actualizar perfil empleado" />
-        </form>
-    <!--Change form-->
+    <table>
+        <tr>
+            <th>Nº Referencia</th>
+            <th>Equipos</th>
+            <th>Titulo</th>
+            <th>Estado</th>
+            <th>Tipo</th>
+            <th>Nivel urgencia</th>
+            <th>Fecha apertura</th>
+            <th>Fecha resolucion</th>
+            <th>Descri
+                pcion</th>
+            <th>Comentarios</th>
+        </tr>
+        {% if list_tickets_already_exists %}  
+            {% for ticket in list_tickets_already_exists %}
+                <tr>
+                    <td>{{ ticket.reference_number }}</td>
+                    <td>{{ ticket.machine }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.ticket_type }}</td>
+                    <td>{{ ticket.urgency_level }}</td>
+                    <td>{{ ticket.starting_date }}</td>
+                    <td>{{ ticket.resolution_date }}</td>
+                    <td>{{ ticket.description }}</td>
+                    <td>{{ ticket.comment }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+            <th>No data</th>
+        </tr>
+        {% endif %}
+     </table>
 </div>
-<table>
-    
-    <tr>
-        <th>Nº Referencia</th>
-        <th>Empleado</th>
-        <th>Titulo</th>
-        <th>Estado</th>
-        <th>Tipo</th>
-        <th>Nivel urgencia</th>
-        <th>Fecha apertura</th>
-        <th>Fecha resolucion</th>
-        <th>Descri
-            pcion</th>
-        <th>Comentarios</th>
-    </tr>
-    
-    <tr>
-        <td>64758</td>
-        <td>Gabriel Sanchez Rodriguez</td>
-        <td>gabriel@gmail.es</td>
-        <td>si</td>
-        <td>2</td>
-        <td>medio</td>
-        <td>15/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>94738</td>
-        <td>Jose Sanchez Rodriguez</td>
-        <td>jose@gmail.es</td>
-        <td>no</td>
-        <td>1</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>85647</td>
-        <td>Aitor Sanchez Rodriguez</td>
-        <td>aitor@gmail.es</td>
-        <td>si</td>
-        <td>3</td>
-        <td>grave</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>09462</td>
-        <td>Jorge Sanchez Rodriguez</td>
-        <td>jorge@gmail.es</td>
-        <td>no</td>
-        <td>3</td>
-        <td>medio</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>85746</td>
-        <td>Maria Sanchez Rodriguez</td>
-        <td>maria@gmail.es</td>
-        <td>no</td>
-        <td>2</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>12765</td>
-        <td>Ana Sanchez Rodriguez</td>
-        <td>ana@gmail.es</td>
-        <td>no</td>
-        <td>1</td>
-        <td>grave</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>09574</td>
-        <td>Angel Sanchez Rodriguez</td>
-        <td>angel@gmail.es</td>
-        <td>si</td>
-        <td>1</td>
-        <td>medio</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>89574</td>
-        <td>Manuel Sanchez Rodriguez</td>
-        <td>manuel@gmail.es</td>
-        <td>si</td>
-        <td>3</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>09564</td>
-        <td>Alba Sanchez Rodriguez</td>
-        <td>alba@gmail.es</td>
-        <td>no</td>
-        <td>2</td>
-        <td>grave</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>16473</td>
-        <td>Sara Sanchez Rodriguez</td>
-        <td>sara@gmail.es</td>
-        <td>si</td>
-        <td>1</td>
-        <td>medio</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>74658</td>
-        <td>Alex Sanchez Rodriguez</td>
-        <td>alex@gmail.es</td>
-        <td>no</td>
-        <td>2</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>02814</td>
-        <td>Sandra Sanchez Rodriguez</td>
-        <td>sandra@gmail.es</td>
-        <td>no</td>
-        <td>2</td>
-        <td>grave</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>84848</td>
-        <td>Lohan Sanchez Rodriguez</td>
-        <td>lohan@gmail.es</td>
-        <td>si</td>
-        <td>1</td>
-        <td>medio</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>02030</td>
-        <td>Gorka Sanchez Rodriguez</td>
-        <td>gorka@gmail.es</td>
-        <td>si</td>
-        <td>3</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>74647</td>
-        <td>Natali Drogul Rodriguez</td>
-        <td>natali@gmail.es</td>
-        <td>no</td>
-        <td>3</td>
-        <td>grave</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>00946</td>
-        <td>Ander Sanchez Rodriguez</td>
-        <td>ander@gmail.es</td>
-        <td>si</td>
-        <td>1</td>
-        <td>medio</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>33476</td>
-        <td>Ibon Sanchez Rodriguez</td>
-        <td>ibon@gmail.es</td>
-        <td>no</td>
-        <td>3</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>04957</td>
-        <td>Adrian Sanchez Rodriguez</td>
-        <td>adrian@gmail.es</td>
-        <td>si</td>
-        <td>1</td>
-        <td>grave</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>88446</td>
-        <td>Alberto Sanchez Rodriguez</td>
-        <td>alberto@gmail.es</td>
-        <td>si</td>
-        <td>2</td>
-        <td>medio</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
-    <tr>
-        <td>33997</td>
-        <td>Julian Sanchez Rodriguez</td>
-        <td>julian@gmail.es</td>
-        <td>si</td>
-        <td>2</td>
-        <td>leve</td>
-        <td>11/06/2020</td>
-        <td>15/06/2020</td>
-    </tr>
- </table>
 {% endblock %}

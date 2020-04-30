@@ -16,4 +16,3 @@ class Logging:
     def error_log(self, log):
         current_date = datetime.today()
         return print(f" \033[1;31;48m [{current_date}] ERROR {self.log_type}: {log}")
-
