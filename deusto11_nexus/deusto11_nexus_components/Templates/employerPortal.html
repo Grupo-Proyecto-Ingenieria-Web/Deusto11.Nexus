@@ -3,6 +3,17 @@
 {% block content %}
 <h1>Lista de tickets</h1>
 <div>
+    <!--Change form-->
+       <form action="{% url 'employer_update' %}" method="post">
+             {% csrf_token %}
+             {{ form.as_p }}
+            <input type="submit" value="Nuevo Ticket" />
+            <input type="submit" value="Nuevo Equipo" />
+            <input type="submit" value="Actualizar perfil empleado" />
+        </form>
+    <!--Change form-->
+</div>
+<div>
     <table>
         <tr>
             <th>Nº Referencia</th>

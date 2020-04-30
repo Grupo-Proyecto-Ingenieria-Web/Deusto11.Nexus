@@ -4,11 +4,13 @@
 
 {% block content %}
 <!--    Here is the body code   -->
+<h1>ACTUALIZAR TICKET</h1>
+<P>Rellena los siguientes datos para actualizar el ticket:</P>
 <div>
     <form action="{% url 'update_ticket' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="TicketRegistry" />
+        <input type="submit" value="Actualizar" />
     </form>
 </div>
 {% endblock %}

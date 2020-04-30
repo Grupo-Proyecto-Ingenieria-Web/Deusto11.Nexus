@@ -12,12 +12,9 @@
         <form action="{% url 'ticket_registry' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="TicketRegistry" />
+            <input type="submit" value="Registrar ticket" />
+            <input type="submit" value="Actualizar maquina">
         </form>
-    </div>
-    <div id="enviar">
-    <input type="submit" value="Enviar">
-    </div>
-</fieldset>
-    </div>
+ </fieldset>
+    
 {% endblock %}

@@ -4,11 +4,15 @@
 
 {% block content %}
 <!--    Here is the body code   -->
+
+<h1>NUEVO EQUIPO</h1>
+<P>Rellena el siguiente formulario para añadir un nuevo equipo:</P>
+
 <div>
     <form action="{% url 'machine_registry' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="MachineRegistry" />
+        <input type="submit" value="Nuevo equipo" />
     </form>
 </div>
 {% endblock %}
