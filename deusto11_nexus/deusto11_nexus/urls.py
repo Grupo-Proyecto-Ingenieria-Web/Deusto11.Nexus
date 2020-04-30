@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('nexus/', include('deusto11_nexus_components.urls'))
+    path('nexus.com/', include('deusto11_nexus_components.urls'))
 ]

@@ -1,25 +1,34 @@
 {% extends "base.html" %}
 
-{% block tittle %}Titulo de articulos{% endblock %}
+{% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
-<div id="cuerpo">
+<div>
             <div id="presentacion">
+                <div id="entrada">
                 <h1 id="nexus">NEXUS</h1>
                 <h2 id="sistema">Sistema de Gestión de Mantenimiento de Equipos</h2>
                 <p id="descr">Te ofrecemos el más completo software de gestión empresarial. Nexus asegura el futuro de la organización por su escalabilidad, flexibilidad y adaptación a todos los negocios.</p>
-            </div>
-            <div>
+                </div>
+            <div id="formulario">
+                <h3 id="login">Login</h3>
+                <br>
             <!--Change form-->
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
                      {{ form.as_p }}
+                     <br>
                     <input type="submit" value="Login" />
+                    <br><br>
+                    <input type="submit" value="Registrarse" />
                 </form>
             <!--Change form-->
             </div>
+            </div>
             <article>
-                <h2 id="caracteristicas">Caracteristicas</h2>    
+                <div>
+                <h2 id="caracteristicas">Caracteristicas</h2> 
+                <div id="cuerpo">
                 <div id="parrafo">
                     <ul>   
                         <li>Cloud, toda la información desde un único punto de acceso web</li><br>
@@ -30,24 +39,31 @@
                         <li>Cumplimiento RGPD</li>
                     </ul>
                 </div>
-                <div id="imagen">
+                
                     <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_platform.png" alt="Nexus" width="650px" height="300px">
+                
+                </div>
                 </div>
             </article>
-            <article id="parte1">
-                    <div id="texto">
-                        <h2 id="solucion">Solucion Modular</h2><br><br>
+            <article>
+                <div>
+                    <h2 id="solucion">Solucion Modular</h2><br><br>
+                    <div id="info">
+                        <div id="parrafo2">
                         <h3>Todo lo que necesitas o únicamente lo que necesitas</h3>
                         <p>Ahora o en un futuro, con Nexus, sí es posible. Dadas las características del software, Cloud Computing Multitenant; podemos ofrecerte una mejora real, constante y sin costes añadidos.</p>
                         <p>Mediante la colaboración y confianza de todos sus clientes, el software evoluciona y se adapta a nuevos sectores, a las exigencias del mercado y a las de sus propios clientes.</p>
-                    </div>
-                    <div id="imagen2">
+                        </div>
+                    
                     <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_solucion_c.png" alt="Nexus" width="600px" height="350px">
-                    </div>
+                    
+                   </div>
+                </div>
                 </article>
-                <article id="precio">
-                <div>
+                <article>
+                <div id="precio">
                     <h2 id="version">100 % cloud, sin versiones</h2>
+                    <div id="infopre">
                     <p id="parrafo1">Pago mensual por uso para la evolucón permanente y sin límites de tu herramienta de gestión empresarial. Total integración de todas las áreas del negocio; máxima automatización y eficiencia.</p>
                     <br>
                     <p id="parrafo2">Multiempresa, multipaís, multimoneda, multidioma.</p>
@@ -57,6 +73,7 @@
                     <div id="precio2">
                         <h3>Gestión centralizada y global del negocio
                         </h3>
+                    </div>
                     </div>
                 </div>
             </article>

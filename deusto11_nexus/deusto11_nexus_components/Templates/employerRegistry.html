@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block tittle %}Registro para nuevo empleado{% endblock %}
+{% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
 <h1>NUEVO EMPLEADO</h1>
@@ -14,25 +14,5 @@
         </form>
     <!--Change form-->
 </div>
-<fieldset>
-    <legend>Datos del empleado</legend>
-    <br>
-    <form>
-        Nombre:<input type="text">
-        <br><br>
-        Apellidos:<input type="text">
-        <br><br>
-        DNI del empleado:<input type="text">
-        <br><br>
-        E-mail:<input type="text">
-        <br><br>
-        Telefono:<input type="text">
-        <br><br>
-    </form>
-    <div id="enviar">
-    <input type="submit" value="Enviar">
-    </div>
-</fieldset>
-    </div>
 
 {% endblock %}
