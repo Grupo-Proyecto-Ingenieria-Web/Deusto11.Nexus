@@ -4,11 +4,13 @@
 
 {% block content %}
 <!--    Here is the body code   -->
+<h1 id="title">ACTUALIZAR PERFIL DEL EMPLEADO</h1>
+<P>Rellena los siguientes datos para actualizar el perfil:</P>
 <div>
     <form action="{% url 'employer_update' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="EmployerUpdate" />
+        <input type="submit" value="Actualizar" />
     </form>
 </div>
 {% endblock %}
