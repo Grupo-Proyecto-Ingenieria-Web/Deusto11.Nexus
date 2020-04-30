@@ -15,6 +15,7 @@ import deusto11_nexus_services.auth as nexus_services_auth
 _logger = nexus_services_logs.Logging(statics.NEXUS_VIEWS_LOGGING_NAME)
 _views_manager_service = nexus_services_views_manager.ViewsManagerService()
 _auth = nexus_services_auth.Authentication()
+
 #Aqui tenemos las views de index
 class IndexView(View):
 
@@ -30,7 +31,7 @@ class IndexView(View):
         if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
             return redirect('employer_default_portal')
         else:
-            return redirect('index_default_view')
+            return redirect('index_default_vierw')
 
     def __create_model(self, request):
         login_model = EmployerLoginModel()
@@ -44,7 +45,7 @@ class EmployerPortalView(ListView):
     model = Ticket
     template_name = "employerPortal.html"
     queryset_all_articles = Ticket.objects.order_by("id") 
-    context_object_name = "list_employers_already_exists"  
+    context_object_name = "list_tickets_already_exists"  
 
     def get_context_data(self, **kwargs):
         all_context = super(EmployerPortalView, self).get_context_data(**kwargs) 
@@ -53,14 +54,12 @@ class EmployerPortalView(ListView):
 
 #El vlog informativo
 class VlogPortalView(View):
-     def get(self, request, *args, **kwargs):  
-        tittle = "Vlog nexus"
-        return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle, form))
-
-
+  
+    def get(self, request, *args, **kwargs):
+        tittle = 'Vlog nexus'
+        return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle, ""))
    
 # Falta comprobar que la nick sea siempre diferente
-#Para registrar un empleado
 class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -137,4 +136,3 @@ class UpdateTicketView(UpdateView):
     success_url= reverse_lazy('update_ticket')
 
 #class NexusPortalView(DetailView):
-

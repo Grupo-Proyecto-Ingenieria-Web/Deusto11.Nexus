@@ -1,4 +1,5 @@
 from django.db import models
+
 #Aqui ponemos todos los atributos de maquina
 class Machine(models.Model):
     set_number = models.IntegerField(null=False, blank=False, default=7850, unique=True)
@@ -11,9 +12,11 @@ class Machine(models.Model):
     provider_telefone = models.IntegerField()
     floor_on_premise = models.IntegerField()
     # ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+
 #Esto es para que se vea
     def __str__(self):
         return f"id={self.id}, numero_serie={self.set_number}, modelo={self.model}, marca={self.brand}, tipo_equipo={self.machine_type}, fecha_adquisicion={self.get_date}, fecha_puesta_en_marcha={self.start_up_date}, proveedor_nombre={self.provider_name}, proveedor_telefono={self.provider_telefone}, planta={self.floor_on_premise}"
+
 #Aqui ponemos todos los atributos de ticket
 class Ticket(models.Model):
     reference_number = models.IntegerField(null=False, blank=False, default=101, unique=True)
@@ -27,6 +30,7 @@ class Ticket(models.Model):
     comment = models.CharField(max_length=1000)
     # employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     machine = models.ManyToManyField(Machine) 
+
 #Esto es para que se vea
     def __str__(self):
         return f"id={self.id}, numero_referencia={self.reference_number}, titulo={self.title}, descripcion={self.description}, fecha_apertura={self.starting_date}, fecha_resolucion={self.resolution_date}, nivel_urgencia={self.urgency_level}, tipo={self.ticket_type}, estado={self.status}, comentario={self.comment}, machine{self.machine}"
@@ -41,6 +45,7 @@ class Employee(models.Model):
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="user", unique=True)
     password = models.CharField(max_length=20, null=False, blank=False, default="password")
     ticket = models.ManyToManyField(Ticket)
+
 #Esto es para que se vea
     def __str__(self):
         return f"id={self.id}, dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, tocket= {self.ticket}, contrasena={self.password}"
@@ -49,4 +54,3 @@ class Employee(models.Model):
 class EmployerLoginModel(models.Model):
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="user")
     password = models.CharField(max_length=20, null=False, blank=False, default="password")
-

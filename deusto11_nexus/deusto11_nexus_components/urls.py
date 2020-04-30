@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
+
 #Aqui pondremos todas las urls que nos permitiran acceder a las distintas paginas
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index_default_view'),
     path('employerPortal/', views.EmployerPortalView.as_view(), name='employer_default_portal'),
+    path('vlogPortal/', views.VlogPortalView.as_view(), name='vlog_default_portal'),
     path('employerPortal/create/', views.EmployerRegistryView.as_view(), name='employer_create'),
     path('employerPortal/update/<int:pk>/', views.UpdateEmployerProfileView.as_view(), name='employer_update'),
     path('machine/registry/', views.MachineRegistryView.as_view(), name='machine_registry'),
