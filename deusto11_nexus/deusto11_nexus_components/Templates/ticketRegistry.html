@@ -3,9 +3,12 @@
 {% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
-<h1>NUEVO TICKET</h1>
+<div id="todo">
+    <div id="argum2">
+    
+<h1 id="title2">NUEVO TICKET</h1>
 <P>Rellena el siguiente formulario para añadir un nuevo ticket:</P>
-<fieldset>
+  
     <legend>Datos del ticket</legend>
     <br>
     <div>
@@ -13,8 +16,10 @@
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Registrar ticket" />
-            <input type="submit" value="Actualizar maquina">
+            <br><br>
+            <input type="submit" value="Actualizar maquina"/>
         </form>
- </fieldset>
-    
+    </div>
+    </div>
+</div>
 {% endblock %}
