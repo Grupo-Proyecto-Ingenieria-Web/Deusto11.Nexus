@@ -6,5 +6,3 @@ from .models import Employee, Ticket, Machine
 admin.site.register(Employee)
 admin.site.register(Ticket)
 admin.site.register(Machine)
-
-# Register your models here.
