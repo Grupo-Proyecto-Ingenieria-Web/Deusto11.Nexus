@@ -7,7 +7,7 @@
 <h1 id="title">ACTUALIZAR PERFIL DEL EMPLEADO</h1>
 <P>Rellena los siguientes datos para actualizar el perfil:</P>
 <div>
-    <form action="{% url 'employer_update' %}" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Actualizar" />
