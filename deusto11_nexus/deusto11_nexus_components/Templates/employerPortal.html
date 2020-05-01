@@ -13,9 +13,10 @@
             <th>Nivel urgencia</th>
             <th>Fecha apertura</th>
             <th>Fecha resolucion</th>
-            <th>Descri
-                pcion</th>
+            <th>Descripcion</th>
             <th>Comentarios</th>
+            <th>Actualizar</th>
+            <th>Delete</th>
         </tr>
         {% if list_tickets_already_exists %}  
             {% for ticket in list_tickets_already_exists %}
@@ -29,6 +30,8 @@
                     <td>{{ ticket.resolution_date }}</td>
                     <td>{{ ticket.description }}</td>
                     <td>{{ ticket.comment }}</td>
+                    <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
+                    <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
                 </tr>
             {% endfor %}
         {% else %}
@@ -42,6 +45,8 @@
             <th>No data</th>
             <th>No data</th>
             <th>No data</th>
+            <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
+            <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
         </tr>
         {% endif %}
      </table>

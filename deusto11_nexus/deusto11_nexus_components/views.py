@@ -112,13 +112,18 @@ class MachineRegistryView(View):
 # Todavia no hacer
 #Actualizar el empleado
 class UpdateEmployerProfileView(UpdateView):
-    #tittle = 'Machine registry page'
-    model=Employee
-    form_class=EmployerForm
-    template_name="UpdateEmployerProfile.html"
-    success_url= reverse_lazy('employer_update')
-    
 
+    tittle = 'Machine registry page'
+    model = Employee
+    form_class = EmployerForm
+    template_name = "UpdateEmployerProfile.html"
+    success_url = reverse_lazy('employer_update')
+    
+    def get_context_data(self, **kwargs):       
+        all_context = super(UpdateEmployerProfileView, self).get_context_data(**kwargs) 
+        all_context["tittle"] = tittle
+        return all_context
+    
 # Todavia no hacer
 #Actualizar la maquina
 class UpdateMachiView(UpdateView):
