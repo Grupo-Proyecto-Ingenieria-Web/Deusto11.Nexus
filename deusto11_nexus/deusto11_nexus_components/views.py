@@ -113,16 +113,12 @@ class MachineRegistryView(View):
 #Actualizar el empleado
 class UpdateEmployerProfileView(UpdateView):
 
-    tittle = 'Machine registry page'
     model = Employee
     form_class = EmployerForm
     template_name = "UpdateEmployerProfile.html"
     success_url = reverse_lazy('employer_update')
     
-    def get_context_data(self, **kwargs):       
-        all_context = super(UpdateEmployerProfileView, self).get_context_data(**kwargs) 
-        all_context["tittle"] = tittle
-        return all_context
+
     
 # Todavia no hacer
 #Actualizar la maquina
@@ -135,9 +131,15 @@ class UpdateMachiView(UpdateView):
 # Todavia no hacer
 #Actualizar el ticket
 class UpdateTicketView(UpdateView):
-    model=Ticket
-    form_class=TicketForm
-    template_name="UpdateTicket.html"
-    success_url= reverse_lazy('update_ticket')
+
+    model = Ticket
+    form_class = TicketForm
+    template_name = "UpdateTicket.html"
+    success_url = reverse_lazy('update_ticket')
+
+    def get_context_data(self, **kwargs):   
+        all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
+        all_context["tittle"] = "Machine registry page"
+        return all_context
 
 #class NexusPortalView(DetailView):
