@@ -7,6 +7,10 @@
 <h1 id="title">ACTUALIZAR TICKET</h1>
 <P>Rellena los siguientes datos para actualizar el ticket:</P>
 <div>
-  
+    <form action="{% url 'update_ticket' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Actualizar ticket" />
+    </form>
 </div>
 {% endblock %}
