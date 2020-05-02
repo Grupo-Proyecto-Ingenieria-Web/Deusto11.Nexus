@@ -5,7 +5,7 @@
 {% block content %}
 <!--    Here is the body code   -->
 <div>
-    <form action="{% url 'update_machine' %}" method="post">
+    <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Actualizar" />

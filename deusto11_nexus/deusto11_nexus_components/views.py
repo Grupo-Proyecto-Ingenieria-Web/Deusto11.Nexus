@@ -115,8 +115,13 @@ class UpdateEmployerProfileView(UpdateView):
 
     model = Employee
     form_class = EmployerForm
-    template_name = "UpdateEmployerProfile.html"
-    success_url = reverse_lazy('employer_update')
+    template_name = "updateEmployerProfile.html"
+    success_url = reverse_lazy('employer_default_portal')
+
+    def get_context_data(self, **kwargs):   
+        all_context = super( UpdateEmployerProfileView, self).get_context_data(**kwargs) 
+        all_context["tittle"] = "Employer registry page"
+        return all_context
     
 
     
@@ -126,7 +131,12 @@ class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
     template_name="UpdateMachine.html"
-    success_url= reverse_lazy('update_machine')
+    success_url= reverse_lazy('employer_default_portal')
+
+    def get_context_data(self, **kwargs):   
+        all_context = super( UpdateMachiView, self).get_context_data(**kwargs) 
+        all_context["tittle"] = "Machine registry page"
+        return all_context
 
 # Todavia no hacer
 #Actualizar el ticket
@@ -135,11 +145,11 @@ class UpdateTicketView(UpdateView):
     model = Ticket
     form_class = TicketForm
     template_name = "UpdateTicket.html"
-    success_url = reverse_lazy('update_ticket')
+    success_url = reverse_lazy('employer_default_portal')
 
     def get_context_data(self, **kwargs):   
         all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
-        all_context["tittle"] = "Machine registry page"
+        all_context["tittle"] = "Ticket registry page"
         return all_context
 
 #class NexusPortalView(DetailView):
