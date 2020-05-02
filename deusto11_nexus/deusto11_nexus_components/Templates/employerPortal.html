@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block tittle %}{{ tittle }}{% endblock %}
 {% block content %}
-<h1>Lista de tickets</h1>
+<h1 id="titletabla">Lista de tickets</h1>
 <div>
-    <table>
+    <a href="http://127.0.0.1:8000/nexus.com/ticket/registry/"><input type="submit" value="Nuevo Ticket"/></a>
+    <a href="http://127.0.0.1:8000/nexus.com/machine/registry/"><input type="submit" value="Nuevo Equipo" /></a>
+    <a href=""><input type="submit" value="Actualizar perfil empleado" /></a>
+</div>
+<div id="tabla">
+    <table id="table2">
         <tr>
             <th>Nº Referencia</th>
             <th>Equipos</th>
