@@ -12,7 +12,7 @@
     <form action="{% url 'machine_registry' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Nuevo equipo"/>
+        <input class="personalizar" type="submit" value="Nuevo equipo"/>
     </form>
 </div>
 </div>

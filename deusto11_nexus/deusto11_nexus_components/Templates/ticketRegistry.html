@@ -15,9 +15,9 @@
         <form action="{% url 'ticket_registry' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Registrar ticket" />
+            <input class="personalizar" type="submit" value="Registrar ticket" />
             <br><br>
-            <input type="submit" value="Actualizar maquina"/>
+            <input class="personalizar" type="submit" value="Actualizar maquina"/>
         </form>
     </div>
     </div>
