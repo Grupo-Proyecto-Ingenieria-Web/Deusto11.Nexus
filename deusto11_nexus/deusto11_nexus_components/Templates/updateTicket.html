@@ -4,13 +4,18 @@
 
 {% block content %}
 <!--    Here is the body code   -->
-<h1 id="title">ACTUALIZAR TICKET</h1>
+<div id="todo6">
+    <div id="argum6">
+<h1 id="title6">ACTUALIZAR TICKET</h1>
 <P>Rellena los siguientes datos para actualizar el ticket:</P>
 <div>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Actualizar ticket" />
+        <input class="personalizar" type="submit" value="Actualizar ticket" />
     </form>
 </div>
+</div>
+</div>
+
 {% endblock %}

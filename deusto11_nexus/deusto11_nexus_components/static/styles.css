@@ -70,13 +70,16 @@ div.centraTabla{
         color: white;
     }
     #presentacion{
-         background-color: #1B83CA;
+        background-image: url(https://s2.thingpic.com/images/bG/ovu1suE3FqfH5KtPugCSdKza.jpeg);
+         /*background-color: #1B83CA;*/
          display: flex;
          align-items: center;
+         
     
     }
     #entrada{
         margin-left: 150px;
+        margin-bottom: 50px;
     }
     #formulario{
         margin-left: 300px;
@@ -166,21 +169,21 @@ div.centraTabla{
 
 
 
-#title, #title2, #titletabla,#title3{
+#title, #title2, #titletabla,#title3,#title4,#title5,#title6{
     font-size: 40px;
     font-family: Georgia, 'Times New Roman';
     color:white;
     text-align: center;
     background-color: #1B83CA;
 }
-#argum,#argum2,#argum3{   
+#argum,#argum2,#argum3, #argum4,#argum5,#argum6{   
     background-color:white;
     color:black;
     padding:40px;
     border: 2px solid black;
     text-align: center;}
 
-#all, #todo, #todo3{
+#all, #todo, #todo3, #todo4,#todo5,#todo6{
     background-color: #1B83CA;
     font-family: arial, "sans serif";
     margin: 0 auto;
@@ -195,25 +198,25 @@ div.centraTabla{
 
 }
 
-
-
-/*
-a:link,a:visited {
+.personalizar{
     text-decoration: none;
-    padding: 8px;
-    font-weight: 300;
-    font-size: 15px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
     color: #ffffff;
-    background-color: #1B83CA;
-    border-radius: 3px;
-    border: 1px solid #094872
-    
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
 }
-a:hover{
-    color:#094872;
+.personalizar:hover{
+    color: #1883ba;
     background-color: #ffffff;
 }
-*/
+#botonVlog{
+    margin: 20px;
+
+    
+}
 
 
 

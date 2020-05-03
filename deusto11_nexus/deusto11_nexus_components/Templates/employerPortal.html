@@ -3,9 +3,9 @@
 {% block content %}
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
-    <a href="{% url 'ticket_registry' %}"><input type="submit" value="Nuevo Ticket"/></a>
-    <a href="{% url 'machine_registry' %}"><input type="submit" value="Nuevo Equipo" /></a>
-    <a href="{% url 'employer_update' %}"><input type="submit" value="Actualizar perfil empleado" /></a>
+    <a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket"/></a>
+    <a href="{% url 'machine_registry' %}"><input class="personalizar" type="submit" value="Nuevo Equipo" /></a>
+    <a href="{% url 'employer_update' %}"><input class="personalizar" type="submit" value="Actualizar perfil empleado" /></a>
 </div>
 <div id="tabla">
     <table id="table2">
@@ -40,11 +40,11 @@
                     <td>{{ ticket.resolution_date }}</td>
                     <td>{{ ticket.description }}</td>
                     <td>{{ ticket.comment }}</td>
-                    <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
+                    <td> <a href="{% url 'update_ticket' ticket.id %}"><input class="personalizar" type="button" value="Actualizar"></a></td>
                     <td>
                         <form action=""  method="post">   
                             {% csrf_token %}
-                            <button type="submit" value={{ ticket.id }} name="Delete">Eliminar</button> 
+                            <button class="personalizar" type="submit" value={{ ticket.id }} name="Delete">Eliminar</button> 
                         </form>
                     </td>
                 </tr>
