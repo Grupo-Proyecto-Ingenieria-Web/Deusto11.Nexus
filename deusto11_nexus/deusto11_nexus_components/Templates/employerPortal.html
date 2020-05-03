@@ -3,9 +3,9 @@
 {% block content %}
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
-    <a href="http://127.0.0.1:8000/nexus.com/ticket/registry/"><input type="submit" value="Nuevo Ticket"/></a>
-    <a href="http://127.0.0.1:8000/nexus.com/machine/registry/"><input type="submit" value="Nuevo Equipo" /></a>
-    <a href=""><input type="submit" value="Actualizar perfil empleado" /></a>
+    <a href="{% url 'ticket_registry' %}"><input type="submit" value="Nuevo Ticket"/></a>
+    <a href="{% url 'machine_registry' %}"><input type="submit" value="Nuevo Equipo" /></a>
+    <a href="{% url 'employer_update' %}"><input type="submit" value="Actualizar perfil empleado" /></a>
 </div>
 <div id="tabla">
     <table id="table2">
@@ -27,7 +27,12 @@
             {% for ticket in list_tickets_already_exists %}
                 <tr>
                     <td>{{ ticket.reference_number }}</td>
-                    <td>{{ ticket.machine }}</td>
+                    <td>
+                    {% for machine_model in ticket.machine.all %}
+                         <p>Marca: {{ machine_model.brand }} /// Modelo: {{ machine_model.model }}</p>
+                    {% endfor %}
+                    </td>
+                    <td>{{ ticket.title }}</td>
                     <td>{{ ticket.status }}</td>
                     <td>{{ ticket.ticket_type }}</td>
                     <td>{{ ticket.urgency_level }}</td>
@@ -36,7 +41,12 @@
                     <td>{{ ticket.description }}</td>
                     <td>{{ ticket.comment }}</td>
                     <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
-                    <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
+                    <td>
+                        <form action=""  method="post">   
+                            {% csrf_token %}
+                            <button type="submit" value={{ ticket.id }} name="Delete">Eliminar</button> 
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         {% else %}
@@ -52,6 +62,14 @@
             <th>No data</th>
             <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
             <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
+            <td>
+                <div>
+                    <form action="{% url 'employer_default_portal' %}" method="delete">   
+                        {% csrf_token %}
+                        <input type="submit" value="Delete" placeholder="Delete"/>
+                    </form>
+                </div>
+            </td>
         </tr>
         {% endif %}
      </table>

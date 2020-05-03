@@ -18,14 +18,3 @@ class Authentication():
         else:
             logger.error_log(f"Nick or password not exist or coincidence with object in db")
             return login
-
-    # Borrar metodo, no recorre el context y ademas ya se encarga el forms de no repetir atributos
-    def user_nick_already_exist(self, registry_nick, logger, views_manager_service):
-        context_exployers = views_manager_service.return_all_employer_context()
-        for employer in context_exployers["employers"]:
-            if(employer.user_nick == registry_nick):
-                logger.error_log(f"The user {registry_nick} already exist, try other user")
-                return True
-            else:
-                logger.info_log(f"Nick {registry_nick} not exist before")
-                return False

@@ -1,4 +1,4 @@
-from deusto11_nexus_components.models import Employee
+from deusto11_nexus_components.models import Employee, Ticket
 
 class ViewsManagerService():
 
@@ -16,6 +16,15 @@ class ViewsManagerService():
             logger.info_log("Changes correctly input in database")
         else:
             logger.error_log("Changes not saved in database, something maybe already exist")
+
+    def build_context_employer_portal(self, tittle):
+        queryset_tickets = Ticket.objects.order_by("id") 
+        context = {
+            'tittle': tittle,
+            'list_tickets_already_exists': queryset_tickets
+        }
+        return context
+
 
     def build_context_form(self, tittle, form):
         context = {

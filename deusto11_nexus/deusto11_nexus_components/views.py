@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine, EmployerLoginModel
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView, UpdateView
+from django.views.generic import DetailView, ListView, UpdateView, DeleteView
 from django.views import View
 from .common import statics
 import deusto11_nexus_services.logging as nexus_services_logs
@@ -29,9 +29,9 @@ class IndexView(View):
         form = EmployerLoginForm(request.POST)
         login_model = self.__create_model(request)
         if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
-            return redirect('employer_default_portal')
+            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL, 2)
         else:
-            return redirect('index_default_vierw')
+            return redirect(statics.INDEX_DEFAULT_VIEW_URL)
 
     def __create_model(self, request):
         login_model = EmployerLoginModel()
@@ -40,17 +40,21 @@ class IndexView(View):
         return login_model
 
 #La view de employer
-class EmployerPortalView(ListView):
+class EmployerPortalView(View):
 
-    model = Ticket
-    template_name = "employerPortal.html"
-    queryset_all_articles = Ticket.objects.order_by("id") 
-    context_object_name = "list_tickets_already_exists"  
+    def get(self, request, *args, **kwargs):
+        tittle = "Principle employer portal"
+        return render(request, 'employerPortal.html', _views_manager_service.build_context_employer_portal(tittle))
 
-    def get_context_data(self, **kwargs):
-        all_context = super(EmployerPortalView, self).get_context_data(**kwargs) 
-        all_context["tittle"] = "Principle employer portal"
-        return all_context
+    # metodo delete basado en post
+    def post(self, request, *args, **kwargs):
+        id_object = request.POST.get('Delete')
+        delete_ticket = Ticket.objects.filter(id = id_object)
+        if(delete_ticket.delete()):
+            _logger.info_log("object delete succesfully")
+        else:
+            _logger.error_log("the object not deleted or error")
+        return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
 
 #El vlog informativo
 class VlogPortalView(View):
@@ -70,12 +74,11 @@ class EmployerRegistryView(View):
     def post(self, request, *args, **kwargs):
         form = EmployerForm(request.POST)
         registry_user = request.POST.get("user_nick")
-        if(_views_manager_service.validate_form(form, _logger) and not 
-        _auth.user_nick_already_exist(registry_user, _logger, _views_manager_service)):
+        if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
             return redirect('employer_default_portal')
         else:
-            return redirect("employer_create")
+            return redirect(statics.EMPLOYER_CREATE_URL)
 
 #Para registrar un ticket
 class TicketRegistryView(View):
@@ -89,9 +92,9 @@ class TicketRegistryView(View):
         form = TicketForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-            return redirect('employer_default_portal')
+            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
         else:
-            return redirect("ticket_registry")
+            return redirect(statics.TICKET_REGISTRY_URL)
 
 #Para registrar una maquina
 class MachineRegistryView(View):
@@ -105,9 +108,9 @@ class MachineRegistryView(View):
         form = MachineForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-            return redirect('employer_default_portal')
+            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
         else:
-            return redirect("machine_registry")
+            return redirect(statics.MACHINE_REGISTRY_URL)
         
 # Todavia no hacer
 #Actualizar el empleado
@@ -116,7 +119,7 @@ class UpdateEmployerProfileView(UpdateView):
     model = Employee
     form_class = EmployerForm
     template_name = "updateEmployerProfile.html"
-    success_url = reverse_lazy('employer_default_portal')
+    success_url = reverse_lazy(statics.EMPLOYER_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         all_context = super( UpdateEmployerProfileView, self).get_context_data(**kwargs) 
@@ -131,7 +134,7 @@ class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
     template_name="UpdateMachine.html"
-    success_url= reverse_lazy('employer_default_portal')
+    success_url= reverse_lazy(statics.EMPLOYER_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         all_context = super( UpdateMachiView, self).get_context_data(**kwargs) 
@@ -145,11 +148,9 @@ class UpdateTicketView(UpdateView):
     model = Ticket
     form_class = TicketForm
     template_name = "UpdateTicket.html"
-    success_url = reverse_lazy('employer_default_portal')
+    success_url = reverse_lazy(statics.EMPLOYER_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
         all_context["tittle"] = "Ticket registry page"
         return all_context
-
-#class NexusPortalView(DetailView):
