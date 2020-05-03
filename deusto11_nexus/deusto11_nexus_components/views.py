@@ -29,7 +29,7 @@ class IndexView(View):
         form = EmployerLoginForm(request.POST)
         login_model = self.__create_model(request)
         if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
-            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL, 2)
+            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
         else:
             return redirect(statics.INDEX_DEFAULT_VIEW_URL)
 
