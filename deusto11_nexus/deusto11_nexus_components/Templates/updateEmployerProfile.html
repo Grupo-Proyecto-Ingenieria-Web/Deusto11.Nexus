@@ -4,13 +4,17 @@
 
 {% block content %}
 <!--    Here is the body code   -->
-<h1 id="title">ACTUALIZAR PERFIL DEL EMPLEADO</h1>
+<div id="todo4">
+    <div id="argum4">
+<h1 id="title4">ACTUALIZAR PERFIL DEL EMPLEADO</h1>
 <P>Rellena los siguientes datos para actualizar el perfil:</P>
 <div>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Actualizar" />
+        <input class="personalizar" type="submit" value="Actualizar" />
     </form>
+</div>
+</div>
 </div>
 {% endblock %}

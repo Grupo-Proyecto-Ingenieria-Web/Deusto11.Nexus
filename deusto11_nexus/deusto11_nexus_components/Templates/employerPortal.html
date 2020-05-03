@@ -3,9 +3,9 @@
 {% block content %}
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
-    <a href="http://127.0.0.1:8000/nexus.com/ticket/registry/"><input type="submit" value="Nuevo Ticket"/></a>
-    <a href="http://127.0.0.1:8000/nexus.com/machine/registry/"><input type="submit" value="Nuevo Equipo" /></a>
-    <a href=""><input type="submit" value="Actualizar perfil empleado" /></a>
+    <a href="http://127.0.0.1:8000/nexus.com/ticket/registry/"><input class="personalizar" type="submit" value="Nuevo Ticket"/></a>
+    <a href="http://127.0.0.1:8000/nexus.com/machine/registry/"><input class="personalizar" type="submit" value="Nuevo Equipo" /></a>
+    <a href=""><input class="personalizar" type="submit" value="Actualizar perfil empleado" /></a>
 </div>
 <div id="tabla">
     <table id="table2">
@@ -35,8 +35,8 @@
                     <td>{{ ticket.resolution_date }}</td>
                     <td>{{ ticket.description }}</td>
                     <td>{{ ticket.comment }}</td>
-                    <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
-                    <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
+                    <td> <a href="{% url 'update_ticket' ticket.id %}"><input class="personalizar" type="button" value="Actualizar"></a></td>
+                    <td> <a href="{% url 'employer_create' %}"><input class="personalizar" type="button" value="Registrar"></a></td>
                 </tr>
             {% endfor %}
         {% else %}
@@ -50,8 +50,8 @@
             <th>No data</th>
             <th>No data</th>
             <th>No data</th>
-            <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
-            <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
+            <td> <a href="{% url 'update_ticket' ticket.id %}"><input class="personalizar" type="button" value="Actualizar"></a></td>
+            <td> <a href="{% url 'employer_create' %}"><input class="personalizar" type="button" value="Registrar"></a></td>
         </tr>
         {% endif %}
      </table>
