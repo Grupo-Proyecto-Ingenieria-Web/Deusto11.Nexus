@@ -54,3 +54,5 @@ class Employee(models.Model):
 class EmployerLoginModel(models.Model):
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="user")
     password = models.CharField(max_length=20, null=False, blank=False, default="password")
+
+
