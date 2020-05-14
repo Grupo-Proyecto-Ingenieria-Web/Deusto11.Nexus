@@ -31,6 +31,7 @@ class IndexView(View):
         if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
             return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
         else:
+            """  Aqui  pon los del script  """
             return redirect(statics.INDEX_DEFAULT_VIEW_URL)
 
     def __create_model(self, request):
@@ -125,8 +126,6 @@ class UpdateEmployerProfileView(UpdateView):
         all_context = super( UpdateEmployerProfileView, self).get_context_data(**kwargs) 
         all_context["tittle"] = "Employer registry page"
         return all_context
-    
-
     
 # Todavia no hacer
 #Actualizar la maquina
