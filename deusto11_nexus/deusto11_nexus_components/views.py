@@ -31,7 +31,7 @@ class IndexView(View):
         form = EmployerLoginForm(request.POST)
         login_model = self.__create_model(request)
         if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
-            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         else:
             return redirect(statics.INDEX_DEFAULT_VIEW_URL)
 
@@ -42,11 +42,11 @@ class IndexView(View):
         return login_model
 
 #La view de employer
-class EmployerPortalView(View):
+class TicketPortalView(View):
 
     def get(self, request, *args, **kwargs):
         tittle = "Principle employer portal"
-        return render(request, 'employerPortal.html', _views_manager_service.build_context_employer_portal(tittle))
+        return render(request, 'ticketPortal.html', _views_manager_service.build_context_ticket_portal(tittle))
 
     # metodo delete basado en post
     def post(self, request, *args, **kwargs):
@@ -56,7 +56,7 @@ class EmployerPortalView(View):
             _logger.info_log("object delete succesfully")
         else:
             _logger.error_log("the object not deleted or error")
-        return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+        return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
 
 #El vlog informativo
 class VlogPortalView(View):
@@ -94,7 +94,7 @@ class TicketRegistryView(View):
         form = TicketForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         else:
             return redirect(statics.TICKET_REGISTRY_URL)
 
@@ -110,7 +110,7 @@ class MachineRegistryView(View):
         form = MachineForm(request.POST)
         if(_views_manager_service.validate_form(form, _logger)):
             _views_manager_service.save_form(form, _logger)
-            return redirect(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         else:
             return redirect(statics.MACHINE_REGISTRY_URL)
         
@@ -121,7 +121,7 @@ class UpdateEmployerProfileView(UpdateView):
     model = Employee
     form_class = EmployerForm
     template_name = "updateEmployerProfile.html"
-    success_url = reverse_lazy(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+    success_url = reverse_lazy(statics.TICKET_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         all_context = super( UpdateEmployerProfileView, self).get_context_data(**kwargs) 
@@ -136,7 +136,7 @@ class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
     template_name="UpdateMachine.html"
-    success_url= reverse_lazy(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+    success_url= reverse_lazy(statics.TICKET_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         all_context = super( UpdateMachiView, self).get_context_data(**kwargs) 
@@ -150,7 +150,7 @@ class UpdateTicketView(UpdateView):
     model = Ticket
     form_class = TicketForm
     template_name = "UpdateTicket.html"
-    success_url = reverse_lazy(statics.EMPLOYER_DEFAULT_PORTAL_URL)
+    success_url = reverse_lazy(statics.TICKET_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
