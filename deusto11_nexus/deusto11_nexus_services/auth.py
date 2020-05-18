@@ -4,6 +4,7 @@ class Authentication():
 
     def __init__(self):
         self.employer_exist = False
+        self.employer
 
     def check_model_employer_authentication(self, model, logger, views_manager_service):
         context_exployers = views_manager_service.return_all_employer_context()
@@ -11,6 +12,7 @@ class Authentication():
         for employer in context_exployers["employers"]:
             if(employer.user_nick == model.user_nick and employer.password == model.password):
                 login = True
+                self.employer = employer
         if(login):
             self.employer_exist = True
             logger.info_log(f"Exist nick {model.user_nick} with similar password {model.password}")

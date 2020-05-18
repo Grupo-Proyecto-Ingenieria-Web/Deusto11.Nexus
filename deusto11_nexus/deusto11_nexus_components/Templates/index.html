@@ -14,7 +14,7 @@
                 <h3 id="login">Login</h3>
                 <br>
             <!--Change form-->
-               <form action="{% url 'index_default_view' %}" method="post">
+               <form action="{% url 'ticket_default_portal' %}" method="post">
                      {% csrf_token %}
                      {{ form.as_p }}
                      <br>

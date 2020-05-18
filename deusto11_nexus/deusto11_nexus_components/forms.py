@@ -1,26 +1,28 @@
 from django import forms
-from .models import Employee, Ticket, Machine
+from .models import Employee, Ticket, Machine, Email
 
-#Para coger de esta clase los atributos de empleado
+""" All forms by ModelForm"""
 class EmployerForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = "__all__"
 
-#Para coger de esta clase los atributos de ticket
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         fields = "__all__"
 
-#Para coger de esta clase los atributos de maquina
 class MachineForm(forms.ModelForm):
     class Meta:
         model = Machine
         fields = "__all__"
         
-#Para coger de esta clase los atributos de logear empleado
 class EmployerLoginForm(forms.ModelForm):
     class Meta:
         model = Employee
         exclude = ['dni', 'name', 'surname', 'email', 'telefone_number', 'ticket']
+
+class EmailForm(forms.ModelForm):
+    class Meta:
+        model = Email
+        fields = "__all__"
