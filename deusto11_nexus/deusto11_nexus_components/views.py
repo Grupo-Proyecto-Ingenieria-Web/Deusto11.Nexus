@@ -13,7 +13,7 @@ import deusto11_nexus_services.auth as nexus_services_auth
 """ Instances  of nexus_components module """
 _logger = nexus_services_logs.Logging(statics.NEXUS_VIEWS_LOGGING_NAME)
 _views_manager_service = nexus_services_views_manager.ViewsManagerService()
-_auth = nexus_services_auth.Authentication()
+_logged_employer = Employee()
 
 """ Index default view class methods, here the user can login or redirect to register page """
 class IndexView(View):
@@ -27,7 +27,9 @@ class IndexView(View):
     def post(self, request, *args, **kwargs):
         form = EmployerLoginForm(request.POST)
         login_model = self.__create_model(request)
-        if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
+        auth = nexus_services_auth.Authentication()
+        if(auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
+            _logged_employer = auth.employer
             return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         else:
             """  Aqui  pon los del script  """
@@ -39,14 +41,13 @@ class IndexView(View):
         login_model.password = request.POST.get("password")
         return login_model
 
-"""  """
+""" Ticket list view methos & delete tickets by post mothod """
 class TicketPortalView(View):
 
     def get(self, request, *args, **kwargs):
         tittle = "Principle employer portal"
         return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
-
-   
+  
     def post(self, request, *args, **kwargs):
         id_object = request.POST.get('Delete')
         delete_ticket = Ticket.objects.filter(id = id_object)
@@ -63,7 +64,7 @@ class VlogPortalView(View):
         tittle = 'Vlog nexus'
         return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle, ""))
    
-""" Instances  """
+""" Default employer registry page view """
 class EmployerRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -80,7 +81,7 @@ class EmployerRegistryView(View):
         else:
             return redirect(statics.EMPLOYER_CREATE_URL)
 
-""" Instances  """
+""" Default employer registry page view  """
 class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):

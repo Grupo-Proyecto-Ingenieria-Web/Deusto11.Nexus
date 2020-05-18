@@ -33,10 +33,11 @@ class Ticket(models.Model):
 class Email(models.Model):
     send_user = models.IntegerField()
     receive_user = models.IntegerField()
-    subjct = models.CharField(max_length=200)
+    subjct = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
 
     def __str__(self):
-        return f" usuario_emisor={self.send_user}, usuario_recibe={self.receive_user}, tipo={self.subjct}"
+        return f" usuario_emisor={self.send_user}, usuario_recibe={self.receive_user}, asunto={self.subjct}, descripcion={self.description}"
 
 class Employee(models.Model):
     dni = models.CharField(max_length=9, null=False, blank=False, default="12345678R", unique=True)
