@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .models import Employee, Ticket, Machine, EmployerLoginModel
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView, DeleteView
 from django.views import View
 from .common import statics
+from django.forms.models import model_to_dict
 import deusto11_nexus_services.logging as nexus_services_logs
 import deusto11_nexus_services.viewsManageService as nexus_services_views_manager
 import deusto11_nexus_services.auth as nexus_services_auth
@@ -32,7 +33,6 @@ class IndexView(View):
             _logged_employer = auth.employer
             return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         else:
-            """  Aqui  pon los del script  """
             return redirect(statics.INDEX_DEFAULT_VIEW_URL)
 
     def __create_model(self, request):
@@ -126,6 +126,7 @@ class UpdateEmployerProfileView(UpdateView):
         all_context["tittle"] = "Employer registry page"
         return all_context
     
+
 """ Instances  """
 class UpdateMachiView(UpdateView):
     model=Machine
@@ -150,3 +151,99 @@ class UpdateTicketView(UpdateView):
         all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
         all_context["tittle"] = "Ticket registry page"
         return all_context
+
+class ApiAllEmployer(View):
+    def get(self,request):
+        #get metod
+        dlist=Employee.objects.all()
+        return JsonResponse(list(dlist.values()),safe=False)
+    
+    #def post(self,request):
+        #post metod
+
+    #def put(self,request):
+        #put metod
+
+    #def delete(self,request):
+        #delete metod
+
+
+class ApiAllMachine(View):
+    def get(self,request):
+        #get metod
+        dlist=Machine.objects.all()
+        return JsonResponse(list(dlist.values()),safe=False)
+    
+    #def post(self,request):
+        #post metod
+
+    #def put(self,request):
+        #put metod
+
+    #def delete(self,request):
+        #delete metod
+
+
+class ApiAllTickets(View):
+    def get(self,request):
+        #get metod
+        dlist=Tickets.objects.all()
+        return JsonResponse(list(dlist.values()),safe=False)
+    
+    #def post(self,request):
+        #post metod
+
+    #def put(self,request):
+        #put metod
+
+    #def delete(self,request):
+        #delete metod
+
+#This is to call only one objects
+
+class ApiEmployer(View):
+    def get(self,request,pk):
+        #get metod
+        dlist=Employee.objects.get(pk=pk)
+        return JsonResponse(model_to_dict(dlist))
+    
+    #def post(self,request):
+        #post metod
+
+    #def put(self,request):
+        #put metod
+
+    #def delete(self,request):
+        #delete metod
+
+
+class ApiMachine(View):
+    def get(self,request):
+        #get metod
+        dlist=Machine.objects.get(pk=pk)
+        return JsonResponse(model_to_dict(dlist))
+    
+    #def post(self,request):
+        #post metod
+
+    #def put(self,request):
+        #put metod
+
+    #def delete(self,request):
+        #delete metod
+
+
+class ApiTickets(View):
+    def get(self,request):
+        #get metod
+        dlist=Ticket.objects.get(pk=pk)
+        return JsonResponse(model_to_dict(dlist))
+    
+    #def post(self,request):
+        #post metod
+
+    #def put(self,request):
+        #put metod
+
+    #def delete(self,request):
+        #delete metod
