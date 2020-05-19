@@ -33,6 +33,7 @@ class IndexView(View):
             _logged_employer = auth.employer
             return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         else:
+            """  Aqui  pon los del script  """
             return redirect(statics.INDEX_DEFAULT_VIEW_URL)
 
     def __create_model(self, request):
@@ -97,7 +98,7 @@ class TicketRegistryView(View):
         else:
             return redirect(statics.TICKET_REGISTRY_URL)
 
-"""   """
+""" Default machine registry page view """
 class MachineRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -113,7 +114,7 @@ class MachineRegistryView(View):
         else:
             return redirect(statics.MACHINE_REGISTRY_URL)
         
-""" Instances  """
+""" Default employer update page view  """
 class UpdateEmployerProfileView(UpdateView):
 
     model = Employee
@@ -126,8 +127,7 @@ class UpdateEmployerProfileView(UpdateView):
         all_context["tittle"] = "Employer registry page"
         return all_context
     
-
-""" Instances  """
+""" Default machine update page view """
 class UpdateMachiView(UpdateView):
     model=Machine
     form_class=MachineForm
@@ -139,7 +139,7 @@ class UpdateMachiView(UpdateView):
         all_context["tittle"] = "Machine registry page"
         return all_context
 
-""" Instances  """
+""" Default ticket update page view """
 class UpdateTicketView(UpdateView):
 
     model = Ticket
