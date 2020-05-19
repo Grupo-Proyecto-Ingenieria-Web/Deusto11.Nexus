@@ -1,82 +1,77 @@
-{% extends "base.html" %}
-
-{% block tittle %}{{ tittle }}{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block tittle %}{{ tittle }}{% endblock %} {% block content %}
 <div>
-            <div id="presentacion">
-                <div id="entrada">
-                <h1 id="nexus">NEXUS</h1>
-                <h2 id="sistema">Sistema de Gestión de Mantenimiento de Equipos</h2>
-                <p id="descr">Te ofrecemos el más completo software de gestión empresarial. Nexus asegura el futuro de la organización por su escalabilidad, flexibilidad y adaptación a todos los negocios.</p>
-            </div>
-            <div id="formulario">
-                <h3 id="login">Login</h3>
-                <br>
+    <div id="presentacion">
+        <div id="entrada">
+            <h1 id="nexus">NEXUS</h1>
+            <h2 id="sistema">Sistema de Gestión de Mantenimiento de Equipos</h2>
+            <p id="descr">Te ofrecemos el más completo software de gestión empresarial. Nexus asegura el futuro de la organización por su escalabilidad, flexibilidad y adaptación a todos los negocios.</p>
+        </div>
+        <div id="formulario">
+            <h3 id="login">Login</h3>
+            <br>
             <!--Change form-->
-               <form action="{% url 'index_default_view' %}" method="post">
-                     {% csrf_token %}
-                     {{ form.as_p }}
-                     <br>
-                    <input type="submit" value="Login" />
-                    <br><br>
-                </form>
-                <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a>
+            <form action="{% url 'index_default_view' %}" method="post">
+                Email:<br><input type="text"><br><br> Contraseña:
+                <br><input type="password"><br>
+                <br><input type="submit" value="Entrar"><br>
+                <br><br>
+            </form>
+            <a href="{% url 'employer_create' %}"><input type="button" value="Registrarse"></a>
             <!--Change form-->
-            </div>
-            </div>
-            <a href="{% url 'vlog_default_portal' %}" > <input id="botonVlog" class="personalizar" type="submit" value="¿Como gestionar una empresa?"/></a>
-            <article>
-                <div>
-                <h2 id="caracteristicas">Caracteristicas</h2> 
-                <div id="cuerpo">
+        </div>
+    </div>
+    <a href="{% url 'vlog_default_portal' %}"> <input id="botonVlog" class="personalizar" type="submit" value="¿Como gestionar una empresa?" /></a>
+    <article>
+        <div>
+            <h2 id="caracteristicas">Caracteristicas</h2>
+            <div id="cuerpo">
                 <div id="parrafo">
-                    <ul>   
+                    <ul>
                         <li>Cloud, toda la información desde un único punto de acceso web</li><br>
-                        <li>Modular, 100% personalizable y adaptable</li><br>   
-                        <li>Plena fiabilidad y máxima funcionalidad</li> <br>  
-                        <li>Total flexibilidad para el crecimiento</li><br>   
+                        <li>Modular, 100% personalizable y adaptable</li><br>
+                        <li>Plena fiabilidad y máxima funcionalidad</li> <br>
+                        <li>Total flexibilidad para el crecimiento</li><br>
                         <li>Control de acceso por perfiles y según necesidades</li><br>
                         <li>Cumplimiento RGPD</li>
                     </ul>
                 </div>
-                
-                    <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_platform.png" alt="Nexus" width="650px" height="300px">
-                
-                </div>
-                </div>
-            </article>
-            <article>
-                <div>
-                    <h2 id="solucion">Solucion Modular</h2><br><br>
-                    <div id="info">
-                        <div id="parrafo2">
-                        <h3>Todo lo que necesitas o únicamente lo que necesitas</h3>
-                        <p>Ahora o en un futuro, con Nexus, sí es posible. Dadas las características del software, Cloud Computing Multitenant; podemos ofrecerte una mejora real, constante y sin costes añadidos.</p>
-                        <p>Mediante la colaboración y confianza de todos sus clientes, el software evoluciona y se adapta a nuevos sectores, a las exigencias del mercado y a las de sus propios clientes.</p>
-                        </div>
-                    
-                    <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_solucion_c.png" alt="Nexus" width="600px" height="350px">
-                    
-                   </div>
-                </div>
-                </article>
-                <article>
-                <div id="precio">
-                    <h2 id="version">100 % cloud, sin versiones</h2>
-                    <div id="infopre">
-                    <p id="parrafo1">Pago mensual por uso para la evolucón permanente y sin límites de tu herramienta de gestión empresarial. Total integración de todas las áreas del negocio; máxima automatización y eficiencia.</p>
-                    <br>
-                    <p id="parrafo2">Multiempresa, multipaís, multimoneda, multidioma.</p>
-                    <div id="precio1">
-                        <h3>Sin costes ocultos ni gastos añadidos</h3>
-                    </div>
-                    <div id="precio2">
-                        <h3>Gestión centralizada y global del negocio
-                        </h3>
-                    </div>
-                    </div>
-                </div>
-            </article>
+
+                <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_platform.png" alt="Nexus" width="650px" height="300px">
+
+            </div>
         </div>
+    </article>
+    <article>
+        <div>
+            <h2 id="solucion">Solucion Modular</h2><br><br>
+            <div id="info">
+                <div id="parrafo2">
+                    <h3>Todo lo que necesitas o únicamente lo que necesitas</h3>
+                    <p>Ahora o en un futuro, con Nexus, sí es posible. Dadas las características del software, Cloud Computing Multitenant; podemos ofrecerte una mejora real, constante y sin costes añadidos.</p>
+                    <p>Mediante la colaboración y confianza de todos sus clientes, el software evoluciona y se adapta a nuevos sectores, a las exigencias del mercado y a las de sus propios clientes.</p>
+                </div>
+
+                <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_solucion_c.png" alt="Nexus" width="600px" height="350px">
+
+            </div>
+        </div>
+    </article>
+    <article>
+        <div id="precio">
+            <h2 id="version">100 % cloud, sin versiones</h2>
+            <div id="infopre">
+                <p id="parrafo1">Pago mensual por uso para la evolucón permanente y sin límites de tu herramienta de gestión empresarial. Total integración de todas las áreas del negocio; máxima automatización y eficiencia.</p>
+                <br>
+                <p id="parrafo2">Multiempresa, multipaís, multimoneda, multidioma.</p>
+                <div id="precio1">
+                    <h3>Sin costes ocultos ni gastos añadidos</h3>
+                </div>
+                <div id="precio2">
+                    <h3>Gestión centralizada y global del negocio
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
 {% endblock %}

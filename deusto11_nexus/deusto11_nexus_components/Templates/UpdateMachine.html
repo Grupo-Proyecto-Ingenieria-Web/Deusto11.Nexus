@@ -1,21 +1,16 @@
-{% extends "base.html" %}
-
-{% block tittle %}{{ tittle }}{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block tittle %}{{ tittle }}{% endblock %} {% block content %}
 <!--    Here is the body code   -->
 <div id="todo5">
     <div id="argum5">
-<h1 id="title5">ACTUALIZAR MACHINE</h1>
-<P>Rellena los siguientes datos para actualizar la machine:</P>
-<div>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="personalizar" type="submit" value="Actualizar" />
-    </form>
-</div>
-</div>
+        <h1 id="title5">ACTUALIZAR MACHINE</h1>
+        <p>Rellena los siguientes datos para actualizar la machine:</p>
+        <div>
+            <form action="" method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="personalizar" type="submit" value="Actualizar" />
+            </form>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

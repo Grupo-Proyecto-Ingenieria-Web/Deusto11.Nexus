@@ -1,20 +1,15 @@
-{% extends "base.html" %}
-
-{% block tittle %}{{ tittle }}{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block tittle %}{{ tittle }}{% endblock %} {% block content %}
 <!--    Here is the body code   -->
 <div id="todo3">
     <div id="argum3">
-<h1 id="title3">NUEVO EQUIPO</h1>
-<P>Rellena el siguiente formulario para añadir un nuevo equipo:</P>
-<div>
-    <form action="{% url 'machine_registry' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="personalizar" type="submit" value="Nuevo equipo"/>
-    </form>
-</div>
-</div>
+        <h1 id="title3">NUEVO EQUIPO</h1>
+        <p>Rellena el siguiente formulario para añadir un nuevo equipo:</p>
+        <div>
+            <form action="{% url 'machine_registry' %}" method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="personalizar" type="submit" value="Nuevo equipo" />
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,14 +1,12 @@
-header{
+/*CSS BASE*/
+
+header {
     background-color: #ffffff;
     display: flex;
     align-items: center;
-    
-    
-   
-    }
+}
 
-
-#titulo{
+#titulo {
     text-align: center;
     margin-left: 150px;
     color: #279AE8;
@@ -16,174 +14,180 @@ header{
     font-family: serif;
     display: block;
 }
-#tel{
-    margin-left:200px;
+
+#tel {
+    margin-left: 200px;
     color: #055184;
     font-size: 25px;
-   margin-right: 30px;
- 
-
+    margin-right: 30px;
 }
-img{
-    
 
+img {
     margin-left: 130px;
     margin-top: 2px;
 }
 
-footer{
+footer {
     text-align: center;
     background-color: #1B83CA;
     padding-bottom: 30px;
     padding-top: 5px;
 }
-#contacto{
+
+#contacto {
     color: white;
     margin: 10px;
 }
-#letras{
+
+#letras {
     color: white;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif
 }
 
-div.centraTabla{
+div.centraTabla {
     text-align: center;
+}
 
-    }
-
-    div.centraTabla table {
+div.centraTabla table {
     margin: 0 auto;
     text-align: left;
-    }
+}
 
 
+/*CSS PARTE 1 INDEX*/
+
+#nexus {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    color: white;
+}
+
+#presentacion {
+    background-image: url(https://s2.thingpic.com/images/bG/ovu1suE3FqfH5KtPugCSdKza.jpeg);
+    display: flex;
+    align-items: center;
+}
+
+#entrada {
+    margin-left: 150px;
+    margin-bottom: 50px;
+}
+
+#formulario {
+    margin-left: 300px;
+    padding: 40px;
+    background-color: white;
+    text-align: center;
+    border: 10px solid #094872
+}
+
+#login {
+    text-align: center;
+    font-size: 30px;
+    color: #094872;
+}
+
+#sistema {
+    width: 400px;
+    color: white;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#descr {
+    width: 400px;
+    color: white;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 
+/*CSS PARTE 2 INDEX*/
 
+#caracteristicas {
+    text-align: center;
+    font-size: 50px;
+    color: #094872;
+    padding-top: 70px;
+}
 
+#cuerpo,
+#info {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
 
+#parrafo,
+#parrafo2 {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 50px;
+}
 
-    #nexus{
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 60px;
-        color: white;
-    }
-    #presentacion{
-        background-image: url(https://s2.thingpic.com/images/bG/ovu1suE3FqfH5KtPugCSdKza.jpeg);
-         /*background-color: #1B83CA;*/
-         display: flex;
-         align-items: center;
-         
-    
-    }
-    #entrada{
-        margin-left: 150px;
-        margin-bottom: 50px;
-    }
-    #formulario{
-        margin-left: 300px;
-        padding: 40px;
-        background-color: white;
-        text-align: center;
-        border: 10px solid #094872
-        
-    }
-    #login{
-        text-align: center;
-        font-size: 30px;
-        color:#094872;
+#solucion,
+#version {
+    text-align: center;
+    font-size: 50px;
+    color: #094872;
+    padding-top: 70px;
+}
 
-    }
-
-    #sistema{
-        width: 400px;
-        color: white;
-        font-size: 30px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-    }
-    #descr{
-        width: 400px;
-        color: white;
-        font-size: 25px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
-
-
-
-
-
-
-    #caracteristicas{
-        text-align: center;
-        font-size: 50px;
-        color:#094872;
-        padding-top: 70px;
-    }
-    #cuerpo, #info{
-        display: flex;
-        align-items: center;
-        padding: 50px;
-
-    }
-    #parrafo,#parrafo2{
-        font-size: 20px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        margin-left: 50px;
-       
-
-    }
-
-
-
-    #solucion, #version{
-        text-align: center;
-        font-size: 50px;
-        color:#094872;
-        padding-top: 70px;
-    }
-
-
-#infopre{
+#infopre {
     text-align: center;
     padding-bottom: 130px;
 }
-#parrafo1,#parrafo2{
+
+#parrafo1,
+#parrafo2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
 }
-#precio1,#precio2{
+
+#precio1,
+#precio2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 22px;
     background-color: #1B83CA;
- 
-  
 }
 
 
+/*CSS FORMULARIOS*/
 
-
-
-
-
-
-#title, #title2, #titletabla,#title3,#title4,#title5,#title6{
+#title,
+#title2,
+#titletabla,
+#title3,
+#title4,
+#title5,
+#title6 {
     font-size: 40px;
     font-family: Georgia, 'Times New Roman';
-    color:white;
+    color: white;
     text-align: center;
     background-color: #1B83CA;
 }
-#argum,#argum2,#argum3, #argum4,#argum5,#argum6{   
-    background-color:white;
-    color:black;
-    padding:40px;
-    border: 2px solid black;
-    text-align: center;}
 
-#all, #todo, #todo3, #todo4,#todo5,#todo6{
+#argum,
+#argum2,
+#argum3,
+#argum4,
+#argum5,
+#argum6 {
+    background-color: white;
+    color: black;
+    padding: 40px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#all,
+#todo,
+#todo3,
+#todo4,
+#todo5,
+#todo6 {
     background-color: #1B83CA;
     font-family: arial, "sans serif";
     margin: 0 auto;
@@ -191,14 +195,12 @@ div.centraTabla{
     margin-bottom: 100px;
 }
 
-
-#formutick{
+#formutick {
     text-align: center;
     margin: 50px;
-
 }
 
-.personalizar{
+.personalizar {
     text-decoration: none;
     padding: 10px;
     font-weight: 600;
@@ -208,97 +210,93 @@ div.centraTabla{
     border-radius: 6px;
     border: 2px solid #0016b0;
 }
-.personalizar:hover{
+
+.personalizar:hover {
     color: #1883ba;
     background-color: #ffffff;
 }
-#botonVlog{
+
+#botonVlog {
     margin: 20px;
-
-    
 }
-
-
 
 #table2 {
     border: 1px solid #094872;
-    padding:20px;
+    padding: 20px;
     width: 100%;
-
     border-collapse: separate;
     border-spacing: 5px;
-    background:  #1B83CA;
+    background: #1B83CA;
     color: #fff;
-    
-    margin-top:50px;
-    margin-bottom: 50px;;
-  }
+    margin-top: 50px;
+    margin-bottom: 50px;
+    ;
+}
 
-#table2 th, #table2 td {
-     text-align: center;
-     border: 1px solid #000;
-     padding: 0.3em;
-     background: #fff;
-     color: #000;
- 
-  
-    
- }
- #table2 th{
-     background-color:#094872;
-     color:white;
- }
+#table2 th,
+#table2 td {
+    text-align: center;
+    border: 1px solid #000;
+    padding: 0.3em;
+    background: #fff;
+    color: #000;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-#img1,#img2,#img3,#img4{
-    display:block;
-    margin:auto;
-    /*margin-top:100px;
-    margin-bottom: 100px;;
-    */
-
+#table2 th {
+    background-color: #094872;
+    color: white;
 }
 
 
+/* CSS BLOG*/
 
+#img1,
+#img2,
+#img3,
+#img4 {
+    display: block;
+    margin: auto;
+}
 
-#guia{
+#guia {
     text-align: center;
     margin-bottom: 80px;
     margin-top: 80px;
     font-size: 40px;
-
 }
-#guia1, #guia2{
+
+#guia1,
+#guia2 {
     text-align: center;
-    
     font-size: 35px;
 }
-#guia3,#guia4,#guia5,#guia6,#guia7,#guia8,#guia9{
-    text-align: center;
-   
-    font-size: 25px;}
 
-#par,#par1,#par2,#par3,#par4,#par5,#par6,#par7,#par8,#par9,#par10,#par11,#par12{
-        margin: 60px;
-        color: black;
-        font-size: 18px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        
+#guia3,
+#guia4,
+#guia5,
+#guia6,
+#guia7,
+#guia8,
+#guia9 {
+    text-align: center;
+    font-size: 25px;
 }
 
-  
-
-   
-
-    
+#par,
+#par1,
+#par2,
+#par3,
+#par4,
+#par5,
+#par6,
+#par7,
+#par8,
+#par9,
+#par10,
+#par11,
+#par12 {
+    margin: 60px;
+    color: black;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

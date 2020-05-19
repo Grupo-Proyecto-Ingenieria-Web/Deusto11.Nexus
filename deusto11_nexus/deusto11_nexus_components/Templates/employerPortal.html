@@ -1,15 +1,12 @@
-{% extends "base.html" %}
-{% load static %}
-{% block tittle %}{{ tittle }}{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block tittle %}{{ tittle }}{% endblock %} {% block content %}
 <div>
     <script>
-        alert( 'Welcome again :)' )
+        alert('Welcome again :)')
     </script>
 </div>
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
-    <a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket"/></a>
+    <a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket" /></a>
     <a href="{% url 'machine_registry' %}"><input class="personalizar" type="submit" value="Nuevo Equipo" /></a>
     <a href="{% url 'employer_update' 3 %}"><input class="personalizar" type="submit" value="Actualizar perfil empleado" /></a>
 </div>
@@ -29,33 +26,33 @@
             <th>Actualizar</th>
             <th>Delete</th>
         </tr>
-        {% if list_tickets_already_exists %}  
-            {% for ticket in list_tickets_already_exists %}
-                <tr>
-                    <td>{{ ticket.reference_number }}</td>
-                    <td>
-                    {% for machine_model in ticket.machine.all %}
-                         <p>Marca: {{ machine_model.brand }} /// Modelo: {{ machine_model.model }}</p>
-                    {% endfor %}
-                    </td>
-                    <td>{{ ticket.title }}</td>
-                    <td>{{ ticket.status }}</td>
-                    <td>{{ ticket.ticket_type }}</td>
-                    <td>{{ ticket.urgency_level }}</td>
-                    <td>{{ ticket.starting_date }}</td>
-                    <td>{{ ticket.resolution_date }}</td>
-                    <td>{{ ticket.description }}</td>
-                    <td>{{ ticket.comment }}</td>
-                    <td> <a href="{% url 'update_ticket' ticket.id %}"><input class="personalizar" type="button" value="Actualizar"></a></td>
-                    <td>
-                        <form action=""  method="post">   
-                            {% csrf_token %}
-                            <button class="personalizar" type="submit" value={{ ticket.id }} name="Delete">Eliminar</button> 
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        {% else %}
+        {% if list_tickets_already_exists %} {% for ticket in list_tickets_already_exists %}
+        <tr>
+            <td>{{ ticket.reference_number }}</td>
+            <td>
+                {% for machine_model in ticket.machine.all %}
+                <p>Marca: {{ machine_model.brand }} /// Modelo: {{ machine_model.model }}</p>
+                {% endfor %}
+            </td>
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.ticket_type }}</td>
+            <td>{{ ticket.urgency_level }}</td>
+            <td>{{ ticket.starting_date }}</td>
+            <td>{{ ticket.resolution_date }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.comment }}</td>
+            <td>
+                <a href="{% url 'update_ticket' ticket.id %}"><input class="personalizar" type="button" value="Actualizar"></a>
+            </td>
+            <td>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <button class="personalizar" type="submit" value={{ ticket.id }} name="Delete">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %} {% else %}
         <tr>
             <th>No data</th>
             <th>No data</th>
@@ -66,18 +63,22 @@
             <th>No data</th>
             <th>No data</th>
             <th>No data</th>
-            <td> <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a></td>
-            <td> <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a></td>
+            <td>
+                <a href="{% url 'update_ticket' ticket.id %}"><input type="button" value="Actualizar"></a>
+            </td>
+            <td>
+                <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a>
+            </td>
             <td>
                 <div>
-                    <form action="{% url 'employer_default_portal' %}" method="delete">   
+                    <form action="{% url 'employer_default_portal' %}" method="delete">
                         {% csrf_token %}
-                        <input type="submit" value="Delete" placeholder="Delete"/>
+                        <input type="submit" value="Delete" placeholder="Delete" />
                     </form>
                 </div>
             </td>
         </tr>
         {% endif %}
-     </table>
+    </table>
 </div>
 {% endblock %}
