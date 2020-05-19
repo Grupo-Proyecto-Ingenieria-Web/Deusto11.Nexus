@@ -11,9 +11,11 @@
             <br>
             <!--Change form-->
             <form action="{% url 'index_default_view' %}" method="post">
-                Email:<br><input type="text"><br><br> Contraseña:
-                <br><input type="password"><br>
-                <br><input type="submit" value="Entrar"><br>
+                Email:<input type="text">
+                <br><br> 
+                Contraseña:<input type="password">
+                <br><br>
+                <input type="submit" value="Entrar">
                 <br><br>
             </form>
             <a href="{% url 'employer_create' %}"><input type="button" value="Registrarse"></a>
