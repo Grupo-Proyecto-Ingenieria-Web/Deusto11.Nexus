@@ -1,10 +1,10 @@
-from deusto11_nexus_components.models import EmployerLoginModel
+from deusto11_nexus_components.models import EmployerLoginModel, Employee
 
 class Authentication():
 
     def __init__(self):
         self.employer_exist = False
-        self.employer
+        self.employer = Employee()
 
     def check_model_employer_authentication(self, model, logger, views_manager_service):
         context_exployers = views_manager_service.return_all_employer_context()

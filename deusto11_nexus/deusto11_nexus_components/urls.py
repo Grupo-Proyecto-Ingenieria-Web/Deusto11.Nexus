@@ -12,6 +12,7 @@ urlpatterns = [
     path('machine/update/<int:pk>/', views.UpdateMachiView.as_view(), name='update_machine'),
     path('ticket/registry/', views.TicketRegistryView.as_view(), name='ticket_registry'),
     path('ticket/update/<int:pk>/', views.UpdateTicketView.as_view(), name='update_ticket'),
+    path('employer/emails/', views.EmailView.as_view(), name='employer_emails'),
     path('apiallemployer/',views.ApiAllEmployer.as_view(),name='api_all_employer'),
     path('apiallmachine/',views.ApiAllMachine.as_view(),name='api_all_machine'),
     path('apialltickets/',views.ApiAllTickets.as_view(),name='api_all_tickets'),

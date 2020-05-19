@@ -187,7 +187,7 @@ class ApiAllMachine(View):
 class ApiAllTickets(View):
     def get(self,request):
         #get metod
-        dlist=Tickets.objects.all()
+        dlist=Ticket.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
     
     #def post(self,request):
