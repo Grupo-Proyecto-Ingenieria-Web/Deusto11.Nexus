@@ -2,11 +2,6 @@
 {% load static %}
 {% block tittle %}{{ tittle }}{% endblock %}
 {% block content %}
-<div>
-    <script>
-        alert( 'Welcome again :)' )
-    </script>
-</div>
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
     <a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket"/></a>
