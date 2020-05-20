@@ -2,28 +2,30 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="{% static "../static/styles.css" %}"/>
-        <title>{% block tittle %}Gestor de Nexus{% endblock %}</title>
-    </head>
-    <body>
-        <header id="header">
-            
-            <img src="https://image.freepik.com/vector-gratis/plantilla-logotipo-letra-n-flecha_23987-64.jpg" alt="Nexus" width="200px" height="200px">
-            <h2 id="titulo">Deustomach Innovation S.L.</h2>
-            <h2 id="tel">+34 785967463</h2>
-        </header>
-        <main>
 
-            {% block content %}{% endblock %}
- 
-        </main>
-        <footer>
-            <div id="letras">
-                <h3>Contacto</h3>
-                <p id="contacto">Estos son los datos de contacto en cada pais:</p>
-                <br>
-                <div class='centraTabla'>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static " ../static/styles.css" %}"/>
+    <title>{% block tittle %}Gestor de Nexus{% endblock %}</title>
+</head>
+
+<body>
+    <header id="header">
+
+        <img src="https://image.freepik.com/vector-gratis/plantilla-logotipo-letra-n-flecha_23987-64.jpg" alt="Nexus" width="200px" height="200px">
+        <h2 id="titulo">Deustomach Innovation S.L.</h2>
+        <h2 id="tel">+34 785967463</h2>
+    </header>
+    <main>
+
+        {% block content %}{% endblock %}
+
+    </main>
+    <footer>
+        <div id="letras">
+            <h3>Contacto</h3>
+            <p id="contacto">Estos son los datos de contacto en cada pais:</p>
+            <br>
+            <div class='centraTabla'>
                 <table>
                     <tr>
                         <th>Pais</th>
@@ -63,6 +65,7 @@
                     </tr>
                 </table>
             </div>
-        </footer>
-    </body>
+    </footer>
+</body>
+
 </html>
