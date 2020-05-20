@@ -1,4 +1,4 @@
-from deusto11_nexus_components.models import Employee, Ticket
+from deusto11_nexus_components.models import Employee, Ticket, Machine
 
 class ViewsManagerService():
 
@@ -22,6 +22,14 @@ class ViewsManagerService():
         context = {
             'tittle': tittle,
             'list_tickets_already_exists': queryset_tickets
+        }
+        return context
+
+    def build_context_machines_portal(self, tittle):
+        queryset_machines = Machine.objects.order_by("id") 
+        context = {
+            'tittle': tittle,
+            'list_machines_already_exists': queryset_machines
         }
         return context
 

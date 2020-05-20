@@ -13,14 +13,33 @@
             <h3 id="login">Login</h3>
             <br>
             <!--Change form-->
-            <form action="{% url 'index_default_view' %}" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <br>
-                <input type="submit" value="Login" />
-                <br><br>
-            </form>
-            <a href="{% url 'employer_create' %}"><input type="button" value="Registrarse"></a>
+               <form action="{% url 'index_default_view' %}" method="post">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+                     <br>
+                    <input type="submit" value="Login" />
+                    <br><br>
+                </form>
+                <!--
+                <div>
+
+                    <script>
+                        let loadData=document.getElementsByTagName("submit");
+                        
+                        function loadData(){
+                            fetch(SERVICE_URL)
+                            .then((Response)=>Response,JSON())
+                            .then((JSON)=>{
+
+
+                            })
+                        }
+                        
+                    </script>
+                    
+                </div>
+                -->
+                <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a>
             <!--Change form-->
         </div>
     </div>
