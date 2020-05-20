@@ -31,9 +31,9 @@ class IndexView(View):
             form = EmployerLoginForm()
             _logger.info_log("Using EmployerLoginForm to create form in index")
             return render(request, 'index.html', _views_manager_service.build_context_form(tittle, form))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
@@ -47,7 +47,7 @@ class IndexView(View):
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 
     def __create_model(self, request):
@@ -63,9 +63,9 @@ class TicketPortalView(View):
         try:
             tittle = "Principle employer portal"
             return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
     
   
     def post(self, request, *args, **kwargs):
@@ -79,7 +79,7 @@ class TicketPortalView(View):
             return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 
 class EmployerPortalView(View):
@@ -111,9 +111,9 @@ class EmailView(View):
         try:
             tittle = "Principle employer portal"
             return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
   
     def post(self, request, *args, **kwargs):
         try:
@@ -126,7 +126,7 @@ class EmailView(View):
             return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 """ Vlog class to get vlog page of the  """
 class VlogPortalView(View):
@@ -135,9 +135,20 @@ class VlogPortalView(View):
         try:
             tittle = 'Vlog nexus'
             return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle, ""))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
+
+""" Error class to get error page if there are some exceptions """
+class ErrorView(View):
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            tittle = 'Error template'
+            return render(request, 'templateError.html', _views_manager_service.build_context_form(tittle, ""))
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+            return redirect(statics.ERROR_URL)
    
 """ Default employer registry page view """
 class EmployerRegistryView(View):
@@ -147,9 +158,9 @@ class EmployerRegistryView(View):
             tittle = 'Employer registry page'
             form = EmployerForm()        
             return render(request, 'employerRegistry.html', _views_manager_service.build_context_form(tittle, form))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
@@ -162,7 +173,7 @@ class EmployerRegistryView(View):
                 return redirect(statics.EMPLOYER_CREATE_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 """ Default employer registry page view  """
 class TicketRegistryView(View):
@@ -172,9 +183,9 @@ class TicketRegistryView(View):
             tittle = 'Tickets registry page'
             form = TicketForm()        
             return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle, form))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
@@ -186,7 +197,7 @@ class TicketRegistryView(View):
                 return redirect(statics.TICKET_REGISTRY_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 """ Default machine registry page view """
 class MachineRegistryView(View):
@@ -196,9 +207,9 @@ class MachineRegistryView(View):
             tittle = 'Machine registry page'
             form = MachineForm()      
             return render(request, 'machineRegistry.html', _views_manager_service.build_context_form(tittle, form))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
@@ -210,7 +221,7 @@ class MachineRegistryView(View):
                 return redirect(statics.MACHINE_REGISTRY_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
         
 """ Default employer update page view  """
 class UpdateEmployerProfileView(UpdateView):
@@ -225,9 +236,9 @@ class UpdateEmployerProfileView(UpdateView):
             all_context = super( UpdateEmployerProfileView, self).get_context_data(**kwargs) 
             all_context["tittle"] = "Employer registry page"
             return all_context
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
     
 """ Default machine update page view """
 class UpdateMachiView(UpdateView):
@@ -241,9 +252,9 @@ class UpdateMachiView(UpdateView):
             all_context = super( UpdateMachiView, self).get_context_data(**kwargs) 
             all_context["tittle"] = "Machine registry page"
             return all_context
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 """ Default ticket update page view """
 class UpdateTicketView(UpdateView):
@@ -258,9 +269,9 @@ class UpdateTicketView(UpdateView):
             all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
             all_context["tittle"] = "Ticket registry page"
             return all_context
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 class ApiAllEmployer(View):
     def get(self,request):
