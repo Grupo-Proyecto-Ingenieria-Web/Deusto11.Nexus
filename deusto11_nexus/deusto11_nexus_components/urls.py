@@ -11,6 +11,7 @@ try:
         path('ticketPortal/', views.TicketPortalView.as_view(), name='ticket_default_portal'),
         path('employerPortal/', views.EmployerPortalView.as_view(), name='employer_default_portal'),
         path('vlogPortal/', views.VlogPortalView.as_view(), name='vlog_default_portal'),
+        path('menuPortal/', views.MenuPortalView.as_view(), name='menu_default_portal'),
         path('employerPortal/create/', views.EmployerRegistryView.as_view(), name='employer_create'),
         path('employerPortal/update/<int:pk>/', views.UpdateEmployerProfileView.as_view(), name='employer_update'),
         path('machine/registry/', views.MachineRegistryView.as_view(), name='machine_registry'),

@@ -128,6 +128,18 @@ class EmailView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
+
+""" Menu class to get vlog page of the  """
+class MenuPortalView(View):
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            tittle = 'Menu  nexus'
+            return render(request, 'menu.html', _views_manager_service.build_context_form(tittle, ""))
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+            return redirect(statics.ERROR_URL)
+
 """ Vlog class to get vlog page of the  """
 class VlogPortalView(View):
     
