@@ -4,6 +4,14 @@
 {% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
+<div id="botones_eleccion">
+    <div id="boton_1">
+        <a href="{% url 'menu_default_portal' %}"><input type="button" value="Acceder a lista de maquinas"></a>
+    </div>
+    <div id="boton_2">
+        <a href="{% url 'menu_default_portal' %}"><input type="button" value="Acceder a lista de tickets"></a>
+    </div>
+</div>
 
 
 {% endblock %}
