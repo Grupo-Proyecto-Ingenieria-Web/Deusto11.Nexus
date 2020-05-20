@@ -23,9 +23,10 @@ try:
         path('apiallemployer/<int:pk>/',views.ApiEmployer.as_view(),name='api_employer'),
         path('apiallmachine/<int:pk>/',views.ApiMachine.as_view(),name='api_machine'),
         path('apialltickets/<int:pk>/',views.ApiTickets.as_view(),name='api_tickets'),
+        path('error/',views.ErrorView.as_view(),name='error_view'),
     ]      
 except AttributeError:
     _logger.error_log("Atribute error exception, some url don't exist or it is not defined")
     urlpatterns = [
         path('', views.IndexView.as_view(), name='index_default_view'),
-    ]
+    ] 

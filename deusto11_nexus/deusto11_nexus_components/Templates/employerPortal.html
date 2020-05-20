@@ -26,7 +26,8 @@
             <th>Actualizar</th>
             <th>Delete</th>
         </tr>
-        {% if list_tickets_already_exists %} {% for ticket in list_tickets_already_exists %}
+        {% if list_tickets_already_exists %} 
+            {% for ticket in list_tickets_already_exists %}
         <tr>
             <td>{{ ticket.reference_number }}</td>
             <td>
@@ -52,7 +53,8 @@
                 </form>
             </td>
         </tr>
-        {% endfor %} {% else %}
+        {% endfor %} 
+        {% else %}
         <tr>
             <th>No data</th>
             <th>No data</th>
