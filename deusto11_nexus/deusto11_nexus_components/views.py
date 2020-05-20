@@ -83,14 +83,14 @@ class TicketPortalView(View):
 
 
 class EmployerPortalView(View):
-
+    
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            return render(request, 'employerPortal.html', _views_manager_service.build_context_machines_portal(tittle))
-        except (TemplateDoesNotExist, TemplateSyntaxError) :
+            return render(request, 'employerPortal.html', _views_manager_service.build_context_machines_portal(tittle, _logged_employer))
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
     
   
     def post(self, request, *args, **kwargs):
@@ -104,7 +104,7 @@ class EmployerPortalView(View):
             return redirect(statics.MACHINE_DEFAULT_PORTAL_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
+            return redirect(statics.ERROR_URL)
 
 class EmailView(View):
     def get(self, request, *args, **kwargs):
@@ -198,6 +198,8 @@ class TicketRegistryView(View):
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
+
+    # def __
 
 """ Default machine registry page view """
 class MachineRegistryView(View):
