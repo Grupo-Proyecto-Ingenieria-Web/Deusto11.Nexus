@@ -8,7 +8,7 @@
 <div>
     <a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket" /></a>
     <a href="{% url 'machine_registry' %}"><input class="personalizar" type="submit" value="Nuevo Equipo" /></a>
-    <a href="{% url 'employer_update' 3 %}"><input class="personalizar" type="submit" value="Actualizar perfil empleado" /></a>
+    <a href="{% url 'employer_update' logged_employer.id %}"><input class="personalizar" type="submit" value="Actualizar perfil empleado" /></a>
 </div>
 <div id="tabla">
     <table id="table2">
@@ -19,10 +19,10 @@
             <th>Fecha apertura</th>
             <th>Nombre del proveedor</th>
             <th>Telefono del proveedor</th>
-            <th>Piso</th>           
+            <th>Planta</th>           
         </tr>
         {% if list_machines_already_exists %}  
-            {% for Machine in list_machines_already_exists %}
+            {% for machine in list_machines_already_exists %}
                 <tr>
                     <td>{{ machine.reference_number }}</td>
                     <td>{{ machine.model }}</td>
