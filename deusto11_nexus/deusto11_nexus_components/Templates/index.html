@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% block tittle %}{{ tittle }}{% endblock %} {% block content %}
+{% extends "base.html" %} 
+{% load static %}
+{% block tittle %}{{ tittle }}{% endblock %}
+{% block content %}
 <div>
     <div id="presentacion">
         <div id="entrada">
@@ -11,9 +14,10 @@
             <br>
             <!--Change form-->
             <form action="{% url 'index_default_view' %}" method="post">
-                Email:<br><input type="text"><br><br> Contraseña:
-                <br><input type="password"><br>
-                <br><input type="submit" value="Entrar"><br>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <input type="submit" value="Login" />
                 <br><br>
             </form>
             <a href="{% url 'employer_create' %}"><input type="button" value="Registrarse"></a>
