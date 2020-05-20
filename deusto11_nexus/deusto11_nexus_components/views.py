@@ -42,7 +42,7 @@ class IndexView(View):
             auth = nexus_services_auth.Authentication()
             if(auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
                 _logged_employer = auth.employer
-                return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+                return redirect(statics.MENU_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
         except (NoReverseMatch):

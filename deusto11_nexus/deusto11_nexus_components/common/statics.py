@@ -1,5 +1,6 @@
 """ urls views statics """
 TICKET_DEFAULT_PORTAL_URL = 'ticket_default_portal'
+MENU_DEFAULT_PORTAL_URL= 'menu_default_portal'
 MACHINE_DEFAULT_PORTAL_URL='employer_default_portal'
 INDEX_DEFAULT_VIEW_URL = 'index_default_view'
 EMPLOYER_CREATE_URL = "employer_create"
