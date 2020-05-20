@@ -25,15 +25,10 @@
             <th>Piso</th>
             
         </tr>
-        {% if list_machine_already_exists %}  
-            {% for ticket in list_machine_already_exists %}
+        {% if list_machines_already_exists %}  
+            {% for Machine in list_machines_already_exists %}
                 <tr>
                     <td>{{ machine.reference_number }}</td>
-                    <td>
-                    {% for machine_model in ticket.machine.all %}
-                         <p>Marca: {{ machine_model.brand }} /// Modelo: {{ machine_model.model }}</p>
-                    {% endfor %}
-                    </td>
                     <td>{{ machine.model }}</td>
                     <td>{{ machine.brand }}</td>
                     <td>{{ machine.machine_type }}</td>

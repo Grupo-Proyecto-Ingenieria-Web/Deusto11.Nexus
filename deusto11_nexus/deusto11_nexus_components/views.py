@@ -87,7 +87,7 @@ class EmployerPortalView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            return render(request, 'employerPortal.html', _views_manager_service.build_context_employer_portal(tittle))
+            return render(request, 'employerPortal.html', _views_manager_service.build_context_machines_portal(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return HttpResponse(statics.TEMPLATE_DOES_NOT_EXIST) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
@@ -96,12 +96,12 @@ class EmployerPortalView(View):
     def post(self, request, *args, **kwargs):
         try:
             id_object = request.POST.get('Delete')
-            delete_employer = Employee.objects.filter(id = id_object)
+            delete_employer = Machine.objects.filter(id = id_object)
             if(delete_employer.delete()):
                 _logger.info_log("object delete succesfully")
             else:
                 _logger.error_log("the object not deleted or error")
-            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+            return redirect(statics.MACHINE_DEFAULT_PORTAL_URL)
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return HttpResponse(statics.NO_REVERSE_MATCH_MESSAGE) and redirect(statics.INDEX_DEFAULT_VIEW_URL)
