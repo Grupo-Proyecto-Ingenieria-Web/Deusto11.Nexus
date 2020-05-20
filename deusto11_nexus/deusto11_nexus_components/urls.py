@@ -9,6 +9,7 @@ try:
     urlpatterns = [
         path('', views.IndexView.as_view(), name='index_default_view'),
         path('ticketPortal/', views.TicketPortalView.as_view(), name='ticket_default_portal'),
+        path('employerPortal/', views.EmployerPortalView.as_view(), name='employer_default_portal'),
         path('vlogPortal/', views.VlogPortalView.as_view(), name='vlog_default_portal'),
         path('employerPortal/create/', views.EmployerRegistryView.as_view(), name='employer_create'),
         path('employerPortal/update/<int:pk>/', views.UpdateEmployerProfileView.as_view(), name='employer_update'),
@@ -23,9 +24,10 @@ try:
         path('apiallemployer/<int:pk>/',views.ApiEmployer.as_view(),name='api_employer'),
         path('apiallmachine/<int:pk>/',views.ApiMachine.as_view(),name='api_machine'),
         path('apialltickets/<int:pk>/',views.ApiTickets.as_view(),name='api_tickets'),
+        path('error/',views.ErrorView.as_view(),name='error_view'),
     ]      
 except AttributeError:
     _logger.error_log("Atribute error exception, some url don't exist or it is not defined")
     urlpatterns = [
         path('', views.IndexView.as_view(), name='index_default_view'),
-    ]
+    ] 
