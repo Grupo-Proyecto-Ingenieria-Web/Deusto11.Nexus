@@ -15,7 +15,8 @@
             <!--Change form-->
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
-                     {{ form.as_p }}
+                     Email:<br><input type="text" name="user_nick"><br><br>
+                     Contraseña:<br><input type="password" name="password"><br>
                      <br>
                     <input type="submit" value="Login" />
                     <br><br>

@@ -271,30 +271,12 @@ div.centraTabla table {
     font-size: 35px;
 }
 
-#guia3,
-#guia4,
-#guia5,
-#guia6,
-#guia7,
-#guia8,
-#guia9 {
+.guia{
     text-align: center;
     font-size: 25px;
 }
 
-#par,
-#par1,
-#par2,
-#par3,
-#par4,
-#par5,
-#par6,
-#par7,
-#par8,
-#par9,
-#par10,
-#par11,
-#par12 {
+.par{
     margin: 60px;
     color: black;
     font-size: 18px;
