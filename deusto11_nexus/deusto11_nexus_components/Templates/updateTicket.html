@@ -6,6 +6,7 @@
         <p>Rellena los siguientes datos para actualizar el ticket:</p>
         <div>
             <form action="" method="post">
+                {% csrf_token %}
                 Numero de referencia:<input type="text">
                 <br><br>
                 Titulo:<input type="text">

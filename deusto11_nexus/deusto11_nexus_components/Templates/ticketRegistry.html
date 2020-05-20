@@ -17,13 +17,10 @@
             //h2.addEventListener('mouseover', saludar);
         </script>
     </div>
-        <h1 id="title2">NUEVO TICKET</h1>
-        <p>Rellena el siguiente formulario para añadir un nuevo ticket:</p>
-
-        <legend>Datos del ticket</legend>
         <br>
         <div>
             <form action="{% url 'ticket_registry' %}" method="post">
+                {% csrf_token %}
                 Numero de referencia:<input type="text">
                 <br><br> Nombre completo del empleado:<input type="text">
                 <br><br> Titulo:
