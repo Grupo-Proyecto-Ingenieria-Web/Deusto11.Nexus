@@ -282,3 +282,15 @@ div.centraTabla table {
     font-size: 18px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+#botones_eleccion{
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+}
+#boton_1{
+   
+    float: right;
+    padding: 100px;
+    margin-left: 200px;
+    
+}
