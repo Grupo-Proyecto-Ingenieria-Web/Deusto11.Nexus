@@ -6,6 +6,7 @@
         <div>
             <!--Change form-->
             <form action="{% url 'employer_create' %}" method="post">
+              {% csrf_token %}
                 Nombre:<input type="text">
                 <br><br> Apellidos:
                 <input type="text">

@@ -6,6 +6,7 @@
         <p>Rellena los siguientes datos para actualizar la machine:</p>
         <div>
             <form action="" method="post">
+                {% csrf_token %}
                 Establecer numero:<input type="text">
                 <br><br>
                 Modelo:<input type="text">

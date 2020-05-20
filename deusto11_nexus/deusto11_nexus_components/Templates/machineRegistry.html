@@ -6,6 +6,7 @@
         <p>Rellena el siguiente formulario para añadir un nuevo equipo:</p>
         <div>
             <form action="{% url 'machine_registry' %}" method="post">
+                {% csrf_token %}
                 Establecer numero:<input type="text">
                 <br><br>
                 Modelo:<input type="text">
