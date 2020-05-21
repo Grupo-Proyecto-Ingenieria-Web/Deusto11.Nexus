@@ -1,4 +1,4 @@
-from deusto11_nexus_components.models import Employee, Ticket, Machine
+from deusto11_nexus_components.models import Employee, Ticket, Machine, Email
 
 class ViewsManagerService():
 
@@ -30,6 +30,15 @@ class ViewsManagerService():
         context = {
             'tittle': tittle,
             'list_machines_already_exists': queryset_machines,
+            'logged_employer': logged_employer
+        }
+        return context
+
+    def build_context_email_portal(self, tittle, logged_employer):
+        queryset_emails = Email.objects.order_by("id")
+        context = {
+            'tittle': tittle,
+            'list_machines_already_exists': queryset_emails,
             'logged_employer': logged_employer
         }
         return context

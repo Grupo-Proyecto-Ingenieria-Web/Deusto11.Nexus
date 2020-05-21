@@ -234,7 +234,11 @@ class TicketRegistryView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
-    # def __
+    def __create_ticket_model(self, request):
+        ticket_model = Ticket()
+        ticket_model.reference_number = request.POST.get["reference_number"]
+        # ticket_model.
+
 
 """ Default machine registry page view """
 class MachineRegistryView(View):
