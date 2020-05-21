@@ -5,23 +5,7 @@
 
 {% block content %}
 <script>
-    var SERVICE_URL="http://127.0.0.1:8000/nexus.com/employer/emails/"
-    var position=0;
-    var old_id=0;
-    function loadDataplus(){
-    SERVICE_URL="http://127.0.0.1:8000/nexus.com/employer/emails/"
-        position=position+1
-        SERVICE_URL=SERVICE_URL+position
-        fetch(SERVICE_URL)
-            .then((response)=> response.json())
-            .then((json)=>{
-                old_id=`"${json.id}"`
-                let element1=document.getElementById("Employeeid");
-                element1.textContent=`"${json.id}"`;
-                let element2=document.getElementById("Employeename");
-                element2.textContent=`-${json.id}-`;
-            });
-    }
+   
 </script>
 
 {% endblock %}
