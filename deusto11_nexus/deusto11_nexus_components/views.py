@@ -293,14 +293,19 @@ class ApiAllEmployer(View):
         dlist=Employee.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
     
-    #def post(self,request):
+    def post(self,request):
         #post metod
+        employe=Employee()
+        employe.dni=request.POST['dni']
+        employe.email=request.POST['email']
+        employe.name=request.POST['name']
+        employe.password=request.POST['password']
+        employe.surname=request.POST['surname']
+        employe.telefone_number.POST['telefone_number']
+        employe.ticket.POST['ticket']
+        employe.user_nick.POST['user_nick']
 
-    #def put(self,request):
-        #put metod
-
-    #def delete(self,request):
-        #delete metod
+    
 
 
 class ApiAllMachine(View):
@@ -309,14 +314,21 @@ class ApiAllMachine(View):
         dlist=Machine.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
     
-    #def post(self,request):
+    def post(self,request):
         #post metod
+        machine=Machine()
+        machine.brand.POST['brand']
+        machine.floor_on_premise.POST['floor_on_premise']
+        machine.get_date.POST['get_date']
+        machine.machine_type.POST['machine_type']
+        machine.model.POST['model']
+        machine.provider_name.POST['provider_name']
+        machine.provider_telefone.POST['provider_telefone']
+        machine.set_number.POST['set_number']
+        machine.start_up_date.POST['start_up_date']
+        
 
-    #def put(self,request):
-        #put metod
-
-    #def delete(self,request):
-        #delete metod
+    
 
 
 class ApiAllTickets(View):
@@ -325,14 +337,21 @@ class ApiAllTickets(View):
         dlist=Ticket.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
     
-    #def post(self,request):
+    def post(self,request):
         #post metod
+        ticket=Ticket()
+        ticket.comment.POST['comment']
+        ticket.description.POST['description']
+        ticket.machine.POST['machine']
+        ticket.reference_number.POST['reference_number']
+        ticket.resolution_date.POST['resolution_date']
+        ticket.starting_date.POST['starting_date']
+        ticket.status.POST['status']
+        ticket.ticket_type.POST['ticket_type']
+        ticket.title.POST['title']
+        ticket.urgency_level.POST['urgency_level']
 
-    #def put(self,request):
-        #put metod
-
-    #def delete(self,request):
-        #delete metod
+    
 
 #This is to call only one objects
 
