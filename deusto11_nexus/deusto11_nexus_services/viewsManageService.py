@@ -29,6 +29,7 @@ class ViewsManagerService():
         queryset_machines = Machine.objects.order_by("id")
         context = {
             'tittle': tittle,
+            'list_machines_already_exists': queryset_machines,
             'logged_employer': logged_employer
         }
         return context
