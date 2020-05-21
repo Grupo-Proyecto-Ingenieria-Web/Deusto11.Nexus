@@ -7,6 +7,15 @@
         <h1 id="title">NUEVO EMPLEADO</h1>
         <P>Rellena el siguiente formulario para añadir un nuevo empleado:</P>
         <div>
+          <script>
+            function Changecolor(){
+              color=red
+              
+
+            }
+            var color=document.getElementsByTagName("input")
+            color.keydown=Changecolor;
+          </script>
             <!--Change form-->
             <form action="{% url 'employer_create' %}" method="post">
               {% csrf_token %}
