@@ -11,7 +11,10 @@
       .then((response) => response.json())
       .then((json) => {
           for (let element of json) {
-          var dates='<td>'+element.reference_number+'</td> <td>'+element.model+'</td> <td>'+element.brand+'</td> <td>'+element.machine_type+'</td> <td>'+element.get_date+'</td> <td>'+element.start_up_date+'</td> <td>'+element.provider_name+'</td> <td>'+element.provider_telefone+'</td> <td>'+element.floor_on_premise+'</td>  '
+            var url="http://127.0.0.1:8000/nexus.com/ticket/update/"
+            url=url+element.id+"/"
+            console.log(element.model);
+          var dates='<td>'+element.reference_number+'</td> <td>'+element.model+'</td> <td>'+element.brand+'</td> <td>'+element.machine_type+'</td> <td>'+element.get_date+'</td> <td>'+element.start_up_date+'</td> <td>'+element.provider_name+'</td> <td>'+element.provider_telefone+'</td> <td>'+element.floor_on_premise+'</td> <td>'+url+'</td>  '
           console.log(dates)
           document.getElementById("table2").insertRow(-1).innerHTML =dates
           
