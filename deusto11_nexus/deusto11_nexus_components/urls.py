@@ -22,9 +22,7 @@ try:
         path('apiallemployer/',views.ApiAllEmployer.as_view(),name='api_all_employer'),
         path('apiallmachine/',views.ApiAllMachine.as_view(),name='api_all_machine'),
         path('apialltickets/',views.ApiAllTickets.as_view(),name='api_all_tickets'),
-        path('apiallemployer/<int:pk>/',views.ApiEmployer.as_view(),name='api_employer'),
-        path('apiallmachine/<int:pk>/',views.ApiMachine.as_view(),name='api_machine'),
-        path('apialltickets/<int:pk>/',views.ApiTickets.as_view(),name='api_tickets'),
+        path('apiallemails/',views.ApiAllEmail.as_view(),name='api_all_email'),       
         path('error/',views.ErrorView.as_view(),name='error_view'),
     ]      
 except AttributeError:

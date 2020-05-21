@@ -362,7 +362,11 @@ class ApiAllEmail(View):
     
     def post(self,request):
         #post metod
-        email=email()
+        email=Email()
+        email.description.POST['description']
+        email.receive_user['receive_user']
+        email.send_user['send_user']
+        email.subjct['subjct']
         
         
 
