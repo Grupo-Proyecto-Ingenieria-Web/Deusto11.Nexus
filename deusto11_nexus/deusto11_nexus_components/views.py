@@ -20,7 +20,7 @@ import deusto11_nexus_services.auth as nexus_services_auth
 """ Instances  of nexus_components module """
 _logger = nexus_services_logs.Logging(statics.NEXUS_VIEWS_LOGGING_NAME)
 _views_manager_service = nexus_services_views_manager.ViewsManagerService()
-_logged_employer = Employee()
+_auth = nexus_services_auth.Authentication()
 
 """ Index default view class methods, here the user can login or redirect to register page """
 class IndexView(View):
@@ -39,9 +39,8 @@ class IndexView(View):
         try:
             form = EmployerLoginForm(request.POST)
             login_model = self.__create_model(request)
-            auth = nexus_services_auth.Authentication()
-            if(auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
-                _logged_employer = auth.employer
+ 
+            if(_auth.check_model_employer_authentication(login_model, _logger, _views_manager_service)):
                 return redirect(statics.MENU_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
@@ -87,7 +86,7 @@ class EmployerPortalView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            return render(request, 'employerPortal.html', _views_manager_service.build_context_machines_portal(tittle, _logged_employer))
+            return render(request, 'employerPortal.html', _views_manager_service.build_context_machines_portal(tittle, _auth.employer))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -105,12 +104,12 @@ class EmployerPortalView(View):
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
-
+    
 class EmailView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
+            return render(request, 'emailPortal.html', _views_manager_service.build_context_employer_portal(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
