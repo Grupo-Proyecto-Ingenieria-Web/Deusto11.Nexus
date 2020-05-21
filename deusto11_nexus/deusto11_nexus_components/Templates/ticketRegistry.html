@@ -11,22 +11,27 @@
     <br>
     <div>
         <script>
-            function Changecolor(){
-              alert("usted esta escribiendo");
-              
+            document.getElementsByName("personalizar")[0].addEventListener("submit", Crearobj)
+                function Crearobj(event) {
+                event.preventDefault()
+                var n_referencia = document.getElementById('n_referencia').value;
+                var titulo = document.getElementById('titulo').val();
+                var estadp = document.getElementById('estado').val();
+                var esto=new FormData(document.getElementById("formu"))
+                fetch("http://127.0.0.1:8000/nexus.com/apialltickets/", {
+                method :'POST',
 
-            }
-            var color=document.getElementsByTagName("input");
-            color.keydown=Changecolor;
-          </script>
-        <script>
-            function saludar() {
-                alert('Ticket registrado!');
-                                }
-            //let elem = document.getElementsByClassName('personalizar');
-            //elem.onclick = saludar;
-            //let h2 = document.getElementsByTagName('input')[0];
-            //h2.addEventListener('mouseover', saludar);
+                body :
+                esto
+                    })
+                .then(response => response.json())
+                .then(json => console.log(json))
+                var p=document.getElementById('exito')
+                var text = document.createTextNode("Se ha creado el cliente correctamente");
+
+            p.appendChild(text);
+    }
+            
         </script>
     </div>
         <br>
@@ -35,8 +40,9 @@
                 {% csrf_token %}
                 Numero de referencia:<input type="text" name="reference_number">
                 <br><br> Nombre completo del empleado:<input type="text" name="">
+
                 <br><br> Titulo:
-                <input type="text">
+                <input id="titulo" type="text">
                 <br><br> Estado:
                 <select id="estado" name="estado">
                     <option selected>Abierto</option>
@@ -57,11 +63,11 @@
                 <br><br>
                 <p>Selecciona la fecha de apertura: </p>
                 <label for="fecha">
-                        <input type="date" id="fecha" name="fecha_apertura" />
+                        <input type="date" id="fechaa" name="fecha_apertura" />
                     </label>
                 <p>Selecciona la fecha de resolucion: </p>
                 <label for="fecha">
-                        <input type="date" id="fecha" name="fecha_resolucion" />
+                        <input type="date" id="fechad" name="fecha_resolucion" />
                     </label>
                 <br><br>
                 <label for="comentario">Comentarios
@@ -74,7 +80,7 @@
                 <br><br>
                 <input class="personalizar" type="submit" value="Registrar ticket" />
                 <br><br>
-                <input class="personalizar" type="submit" value="Actualizar maquina" />
+                <!--<input class="personalizar" type="submit" value="Actualizar maquina" />-->
             </form>
         </div>
     </div>
