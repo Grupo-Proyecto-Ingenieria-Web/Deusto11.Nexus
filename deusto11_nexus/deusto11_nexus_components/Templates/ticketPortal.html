@@ -5,18 +5,28 @@
 <div>
     <script>
         alert( 'Welcome again :)' )
-<<<<<<< HEAD
-/*<<<<<<< HEAD
-=======
 
->>>>>>> ae6092bcc53622e17e68f51428d8e89a8ac25ebd*/
-=======
-<<<<<<< HEAD
-=======
+  </script>
+  <script>
+      const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apialltickets/"
+      function loadData() {
+        fetch(SERVICE_URL)
+        .then((response) => response.json())
+        .then((json) => {
+            for (let element of json) {
+            var dates='<td>'+element.reference_number+'</td> <td>'+element.machine+'</td> <td>'+element.title+'</td> <td>'+element.status+'</td> <td>'+element.ticket_type+'</td> <td>'+element.urgency_level+'</td> <td>'+element.starting_date+'</td> <td>'+element.resolution_date+'</td> <td>'+element.description+'</td> <td>'+element.comment+'</td> '
+            console.log(dates)
+            document.getElementById("table2").insertRow(-1).innerHTML =dates
+            
+            }
+        });
+    }
 
->>>>>>> ae6092bcc53622e17e68f51428d8e89a8ac25ebd
->>>>>>> 5ff77cb79958544a7680a01c2b686782178aad7d
-    </script>
+        loadData();
+       
+
+        
+  </script>
 </div>
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
