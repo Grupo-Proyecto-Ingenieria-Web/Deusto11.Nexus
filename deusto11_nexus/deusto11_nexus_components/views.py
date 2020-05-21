@@ -3,7 +3,7 @@ from django.urls import (get_resolver, get_urlconf, resolve,
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseNotFound
 from django.shortcuts import render, redirect
-from .models import Employee, Ticket, Machine, EmployerLoginModel
+from .models import Employee, Ticket, Machine, EmployerLoginModel,Email
 from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView, DeleteView
@@ -353,53 +353,18 @@ class ApiAllTickets(View):
         ticket.title.POST['title']
         ticket.urgency_level.POST['urgency_level']
 
-    
-
-#This is to call only one objects
-
-class ApiEmployer(View):
-    def get(self,request,pk):
-        #get metod
-        dlist=Employee.objects.get(pk=pk)
-        return JsonResponse(model_to_dict(dlist))
-    
-    #def post(self,request):
-        #post metod
-
-    #def put(self,request):
-        #put metod
-
-    #def delete(self,request):
-        #delete metod
-
-
-class ApiMachine(View):
+@method_decorator(csrf_exempt, name='dispatch')
+class ApiAllEmail(View):
     def get(self,request):
         #get metod
-        dlist=Machine.objects.get(pk=pk)
-        return JsonResponse(model_to_dict(dlist))
+        dlist=Email.objects.all()
+        return JsonResponse(list(dlist.values()),safe=False)
     
-    #def post(self,request):
+    def post(self,request):
         #post metod
+        email=email()
+        
+        
 
-    #def put(self,request):
-        #put metod
-
-    #def delete(self,request):
-        #delete metod
-
-
-class ApiTickets(View):
-    def get(self,request):
-        #get metod
-        dlist=Ticket.objects.get(pk=pk)
-        return JsonResponse(model_to_dict(dlist))
     
-    #def post(self,request):
-        #post metod
 
-    #def put(self,request):
-        #put metod
-
-    #def delete(self,request):
-        #delete metod
