@@ -111,6 +111,7 @@ class EmployerPortalView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
     
+""" email page view"""
 class EmailView(View):
     def get(self, request, *args, **kwargs):
         try:
