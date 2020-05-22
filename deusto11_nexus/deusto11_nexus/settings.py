@@ -123,4 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')] # definir carpeta de estaticos
+EMAIL_HOST='alexjogelo@gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='alexjogelo@gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL=False
 
