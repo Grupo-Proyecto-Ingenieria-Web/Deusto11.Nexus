@@ -4,8 +4,75 @@
 {% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
+<!--Script para el get de emails-->
 <script>
+    const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallemails/"
+    function loadData() {
+      fetch(SERVICE_URL)
+      .then((response) => response.json())
+      .then((json) => {
+          for (let element of json) {
+            console.log(element.model);
+          var dates='<td>'+element.send_user+'</td> <td>'+element.subjct+'</td>   '
+          console.log(dates)
+          document.getElementById("tablaemail1").insertRow(-1).innerHTML =dates
+          
+          }
+      });
+  }
+
+      loadData();
    
 </script>
+<!--Script para el get de emails de contactos-->
+<script>
+    const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallemployer/"
+    function loadData() {
+      fetch(SERVICE_URL)
+      .then((response) => response.json())
+      .then((json) => {
+          for (let element of json) {
+            console.log(element.model);
+          var dates='<td>'+element.name+'</td> <td>'+element.email+'</td>   '
+          console.log(dates)
+          document.getElementById("tablaemail3").insertRow(-1).innerHTML =dates
+          
+          }
+      });
+  }
+
+      loadData();
+
+</script>
+<!--Script post de ajax-->
+<div id="tabla">
+    <div id="tablaemail1">
+        <tr>
+            <th>Person you have sent the email</th>
+            <th>Subject</th>
+        </tr>
+    </div>
+
+    <div id="tablaemail2">
+        <tr>
+            <form action="{% url 'employer_create' %}" method="post">
+                {% csrf_token %}
+                Person you send the email: <input type="text">
+                Your email: <input type="text">
+                <br><br>
+                Subject: <input type="text">
+                <br><br>
+                Text: <br><textarea name="text" rows="20" cols="90"></textarea>
+                
+        </tr>
+    </div>
+
+    <div id="tablaemail3">
+        <th>Name of that contact: </th>
+        <th>Email of that contact: </th>
+
+    </div>
+
+</div>
 
 {% endblock %}

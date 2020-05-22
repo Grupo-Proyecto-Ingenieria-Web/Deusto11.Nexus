@@ -112,7 +112,7 @@ class EmailView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
+            return render(request, 'employerEmail.html', _views_manager_service.build_context_employer_portal(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
