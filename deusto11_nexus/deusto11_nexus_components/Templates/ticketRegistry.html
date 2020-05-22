@@ -37,12 +37,12 @@
     </div>
         <br>
         <div>
-            <form action="{% url 'ticket_registry' %}" method="post">
+            <!-- <form action="{% url 'ticket_registry' %}" method="post">
                 {% csrf_token %}
                 Numero de referencia:<input type="text" name="reference_number">
                 <br><br>
-                <!--Nombre completo del empleado:<input type="text" name="">
-                 <br><br> -->
+                --Nombre completo del empleado:<input type="text" name="">
+                 <br><br> -
                 Titulo:
                 <input id="titulo" type="text" name="title">
                 <br><br> 
@@ -83,7 +83,7 @@
                 <br><br>
                 <input class="personalizar" type="submit" value="Registrar ticket" />
                 <br><br>
-                <!--<input class="personalizar" type="submit" value="Actualizar maquina" />-->
+                !--<input class="personalizar" type="submit" value="Actualizar maquina" />--
                 {% if list_machines_already_exists %}  
                     {% for machine in list_machines_already_exists %}
                     <br><br> Selecciona maquina:
@@ -94,7 +94,7 @@
                     <br><br>
                     <input class="personalizar" type="submit" value="Registrar ticket" />
                 {% endfor %}
-            </form>
+            </form> -->
         </div>
     </div>
 </div>

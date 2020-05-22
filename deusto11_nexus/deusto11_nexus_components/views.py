@@ -223,8 +223,8 @@ class TicketRegistryView(View):
             else:        
                 return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
-            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return redirect(statics.ERROR_URL)
+           _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+           return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:    

@@ -4,9 +4,7 @@
 {% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
-<script>
-    alert("Oh What a pity :(")
-</script>
+
 <h1>Ha ocurrido un error fatal !</h1>
 <p>Click aquí abajo para volver a la pagina por defecto</p>
 <a href="{% url 'index_default_view' %}"><input class=personalizar type="submit" value="Volver" /></a>
