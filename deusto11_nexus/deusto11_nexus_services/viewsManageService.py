@@ -44,10 +44,11 @@ class ViewsManagerService():
         return context
 
 
-    def build_context_form(self, tittle, form):
+    def build_context_form(self, tittle):
+        queryset_machines = Machine.objects.order_by("id")
         context = {
             'tittle': tittle,
-            'form': form
+            'list_machines_already_exists': queryset_machines,
         }
         return context
 

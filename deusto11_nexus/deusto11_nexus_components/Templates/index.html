@@ -9,6 +9,7 @@
             <h1 id="nexus">NEXUS</h1>
             <h2 id="sistema">Sistema de Gestión de Mantenimiento de Equipos</h2>
             <p id="descr">Te ofrecemos el más completo software de gestión empresarial. Nexus asegura el futuro de la organización por su escalabilidad, flexibilidad y adaptación a todos los negocios.</p>
+            <a id ="descr"href="{% static 'img/reglas.pdf' %}" download="reglasdeustonexus.pdf">Descargar las reglas de nuestra empresa</a>
         </div>
         <div id="formulario">
             <h3 id="login">Login</h3>
@@ -21,7 +22,7 @@
             <!--Change form-->
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
-                     Email:<br><input type="text" name="user_nick"><br><br>
+                     Usuario:<br><input type="text" name="user_nick"><br><br>
                      Contraseña:<br><input type="password" name="password"><br>
                      <br>
                     <input type="submit" value="Login" />
