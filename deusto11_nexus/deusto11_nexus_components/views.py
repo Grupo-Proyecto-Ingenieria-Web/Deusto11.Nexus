@@ -30,9 +30,8 @@ class IndexView(View):
     def get(self, request, *args, **kwargs): 
         try: 
             tittle = "Index nexus"
-            form = EmployerLoginForm()
             _logger.info_log("Using EmployerLoginForm to create form in index")
-            return render(request, 'index.html', _views_manager_service.build_context_form(tittle, form))
+            return render(request, 'index.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -138,7 +137,6 @@ class EmailView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
-
 """ Menu class to get vlog page of the  """
 class MenuPortalView(View):
     
@@ -148,7 +146,7 @@ class MenuPortalView(View):
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'menu.html', _views_manager_service.build_context_form(tittle, ""))
+                return render(request, 'menu.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -159,10 +157,7 @@ class VlogPortalView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Vlog nexus'
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
-                return redirect(statics.INDEX_DEFAULT_VIEW_URL)
-            else:
-                return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle, ""))
+            return render(request, 'vlogPortal.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -176,7 +171,7 @@ class ErrorView(View):
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'templateError.html', _views_manager_service.build_context_form(tittle, ""))
+                return render(request, 'templateError.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -187,21 +182,19 @@ class EmployerRegistryView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Employer registry page'
-            form = EmployerForm()
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:        
-                return render(request, 'employerRegistry.html', _views_manager_service.build_context_form(tittle, form))
+                return render(request, 'employerRegistry.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
-            form = EmployerForm(request.POST)
-            registry_user = request.POST.get("user_nick")
-            if(_views_manager_service.validate_form(form, _logger)):
-                _views_manager_service.save_form(form, _logger)
+            employer_model = self.__create_employee_model(self)
+            if(_views_manager_service.validate_form(employer_model, _logger)):
+                _views_manager_service.save_form(employer_model, _logger)
                 return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.EMPLOYER_CREATE_URL)
@@ -218,27 +211,25 @@ class EmployerRegistryView(View):
         employee_model.telefone_number = request.POST.get["telefone_number"]
         return employee_model
 
-
 """ Default employer registry page view  """
 class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Tickets registry page'
-            form = TicketForm()
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:        
-                return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle, form))
+                return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
-        try:
-            form = TicketForm(request.POST)
-            if(_views_manager_service.validate_form(form, _logger)):
-                _views_manager_service.save_form(form, _logger)
+        try:    
+            ticket_model = self.__create_ticket_model(request)
+            if(_views_manager_service.validate_form(ticket_model, _logger)):
+                _views_manager_service.save_form(ticket_model, _logger)
                 return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.TICKET_REGISTRY_URL)
@@ -258,28 +249,25 @@ class TicketRegistryView(View):
         ticket_model.description = request.POST.get["description"]
         return ticket_model
 
-
-
 """ Default machine registry page view """
 class MachineRegistryView(View):
     
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Machine registry page'
-            form = MachineForm()
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:      
-                return render(request, 'machineRegistry.html', _views_manager_service.build_context_form(tittle, form))
-        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+                return render(request, 'machineRegistry.html', _views_manager_service.build_context_form(tittle))
+        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch, NameError) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
-            form = MachineForm(request.POST)
-            if(_views_manager_service.validate_form(form, _logger)):
-                _views_manager_service.save_form(form, _logger)
+            machine_model = self.__create_machine_model(request)       
+            if(_views_manager_service.validate_form(machine_model, _logger)):
+                _views_manager_service.save_form(machine_model, _logger)
                 return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.MACHINE_REGISTRY_URL)
@@ -289,7 +277,7 @@ class MachineRegistryView(View):
 
     def __create_machine_model(self, request):
         machine_model = Machine()
-        machine_model.set_number = request.POST.get["set_number"]
+        machine_model.set_number = request.POST.get("set_number")
         machine_model.model = request.POST.get["model"]
         machine_model.brand = request.POST.get["brand"]
         machine_model.machine_type = request.POST.get["machine_type"]
@@ -299,8 +287,6 @@ class MachineRegistryView(View):
         machine_model.provider_telefone = request.POST.get["provider_telefone"]
         machine_model.floor_on_premise = request.POST.get["floor_on_premise"]
         return machine_model
-
-        
         
 """ Default employer update page view  """
 class UpdateEmployerProfileView(UpdateView):
@@ -332,9 +318,6 @@ class UpdateEmployerProfileView(UpdateView):
         updateEmployee.user_nick = request.POST.get["user_nick"]
         updateEmployee.password = request.POST.get["password"]
         return updateEmployee_model
-    
-            
-
     
 """ Default machine update page view """
 class UpdateMachiView(UpdateView):
@@ -368,8 +351,6 @@ class UpdateMachiView(UpdateView):
         updateMachine_model.floor_on_premise = request.POST.get["floor_on_premise"]
         return updateMachine_model
           
-
-
 """ Default ticket update page view """
 class UpdateTicketView(UpdateView):
 
@@ -390,7 +371,6 @@ class UpdateTicketView(UpdateView):
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
 
-
     def __create_updateTicket_model(self, request):
         updateTicket_model = Ticket()
         updateTicket_model.reference_number = request.POST.get["reference_number"]
@@ -403,12 +383,7 @@ class UpdateTicketView(UpdateView):
         updateTicket_model.status = request.POST.get["status"]
         updateTicket_model.comment = request.POST.get["comment"]
         return updateTicket_model
-            
-
-
-
-
-
+        
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmployer(View):
     def get(self,request):

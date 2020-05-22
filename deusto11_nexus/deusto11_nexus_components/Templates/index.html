@@ -21,7 +21,7 @@
             <!--Change form-->
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
-                     Email:<br><input type="text" name="user_nick"><br><br>
+                     Usuario:<br><input type="text" name="user_nick"><br><br>
                      Contraseña:<br><input type="password" name="password"><br>
                      <br>
                     <input type="submit" value="Login" />

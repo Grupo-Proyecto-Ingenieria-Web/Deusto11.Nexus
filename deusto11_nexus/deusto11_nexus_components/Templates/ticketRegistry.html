@@ -84,14 +84,15 @@
                 <input class="personalizar" type="submit" value="Registrar ticket" />
                 <br><br>
                 <!--<input class="personalizar" type="submit" value="Actualizar maquina" />-->
-            {% if list_machines_already_exists %}  
-                {% for machine in list_machines_already_exists %}
+                {% if list_machines_already_exists %}  
+                    {% for machine in list_machines_already_exists %}
                     <br><br> Selecciona maquina:
-                    <select id="urgencia" name="urgencia">
-                        <option selected>Seleccionar</option>
-                        <option>{{ machine }}</option>
-                    </select>
-                <br><br>
+                        <select id="urgencia" name="urgencia">
+                            <option selected>Seleccionar</option>
+                            <option>{{ machine }}</option>
+                        </select>
+                    <br><br>
+                    <input class="personalizar" type="submit" value="Registrar ticket" />
                 {% endfor %}
             </form>
         </div>
