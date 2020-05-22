@@ -11,7 +11,8 @@
         <div>
             <form action="{% url 'machine_registry' %}" method="post">
                 {% csrf_token %}
-                Establecer numero:<input type="number" name="set_number">
+                {{form.as_p}}
+                <!-- Establecer numero:<input type="number" name="set_number">
                 <br><br>
                 Modelo:<input type="text" name="model">
                 <br><br>
@@ -35,6 +36,7 @@
                 <br><br>
                 Piso en local:<input type="number" name="floor_on_premise">
                 <br><br>
+                <input class="personalizar" type="submit" value="Nuevo equipo" /> -->
                 <input class="personalizar" type="submit" value="Nuevo equipo" />
             </form>
         </div>
