@@ -4,6 +4,7 @@
 {% block content %}
 <div id="all">
     <div id="argum">
+      <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
         <h1 id="title">NUEVO EMPLEADO</h1>
         <P>Rellena el siguiente formulario para añadir un nuevo empleado:</P>
         <div>
@@ -19,15 +20,15 @@
             <!--Change form-->
             <form action="{% url 'employer_create' %}" method="post">
               {% csrf_token %}
-                Nombre:<input type="text">
+                Nombre:<input type="text"  name="name">
                 <br><br> 
-                Apellidos:<input type="text">
+                Apellidos:<input type="text" name="surname">
                 <br><br> 
-                DNI del empleado:<input type="text">
+                DNI del empleado:<input type="text" name="dni">
                 <br><br> 
-                E-mail:<input type="text">
+                E-mail:<input type="text" name="email">
                 <br><br> 
-                Telefono:<input type="text">
+                Telefono:<input type="text" name="telefone_number">
                 <br><br>
                 <input class="personalizar" type="submit" value="Registrarse" />
             </form>

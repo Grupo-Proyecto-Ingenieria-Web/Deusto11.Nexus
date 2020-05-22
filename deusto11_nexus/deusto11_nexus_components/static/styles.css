@@ -286,21 +286,16 @@ div.centraTabla table {
 #botones_eleccion{
     display: flex;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
+    margin-top: 150px;;
+}
+#boton_2,#boton_3{
+   
+ margin-left: 110px;
+  
 }
 #boton_1{
-   
-    float: right;
-    padding: 100px;
-    margin-left: 200px;
-    
-}
-#boton_3{
-   
-    float: right;
-    padding: 100px;
-    margin-left: 400px;
-    
+    margin-left: 180px;
 }
 #tableemail1 {
     border: 1px solid #000;

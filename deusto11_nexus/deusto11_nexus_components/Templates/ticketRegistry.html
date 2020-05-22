@@ -3,7 +3,8 @@
 {% block tittle %}{{ tittle }}{% endblock %}
 {% block content %}
 <div id="todo">
-    <div id="argum2">    
+    <div id="argum2"> 
+        <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>   
 <h1 id="title2">NUEVO TICKET</h1>
 <p>Rellena el siguiente formulario para añadir un nuevo ticket:</p>
   
@@ -39,22 +40,24 @@
             <form action="{% url 'ticket_registry' %}" method="post">
                 {% csrf_token %}
                 Numero de referencia:<input type="text" name="reference_number">
-                <br><br> Nombre completo del empleado:<input type="text" name="">
-
-                <br><br> Titulo:
-                <input id="titulo" type="text">
-                <br><br> Estado:
-                <select id="estado" name="estado">
+                <br><br>
+                <!--Nombre completo del empleado:<input type="text" name="">
+                 <br><br> -->
+                Titulo:
+                <input id="titulo" type="text" name="title">
+                <br><br> 
+                Estado:<select id="estado" name="estado" name="status">
                     <option selected>Abierto</option>
                     <option>Cerrado</option>
                 </select>
-                <br><br> Tipo:
-                <select id="tipo" name="tipo">
+                <br><br> 
+                Tipo:<select id="tipo" name="tipo" name="ticket_type">
                     <option>Averia</option>
                     <option selected>Mejora</option>
                     <option>Mantenimiento</option>
                 </select>
-                <br><br> Nivel de urgencia:<select id="urgencia" name="urgencia">
+                <br><br> 
+                Nivel de urgencia:<select id="urgencia" name="urgency_level">
                         <option selected>Urgente</option>
                         <option>Alta</option>
                         <option>Media</option>
@@ -63,11 +66,11 @@
                 <br><br>
                 <p>Selecciona la fecha de apertura: </p>
                 <label for="fecha">
-                        <input type="date" id="fechaa" name="fecha_apertura" />
+                        <input type="date" id="fechaa" name="starting_date" />
                     </label>
                 <p>Selecciona la fecha de resolucion: </p>
                 <label for="fecha">
-                        <input type="date" id="fechad" name="fecha_resolucion" />
+                        <input type="date" id="fechad" name="resolution_date" />
                     </label>
                 <br><br>
                 <label for="comentario">Comentarios
@@ -75,7 +78,7 @@
                     </label>
                 <br><br>
                 <label for="comentario">Descripcion corta
-                        <input type="placeholder" id="descripcion" name="descripcion" />
+                        <input type="placeholder" id="descripcion" name="description" />
                     </label>
                 <br><br>
                 <input class="personalizar" type="submit" value="Registrar ticket" />
