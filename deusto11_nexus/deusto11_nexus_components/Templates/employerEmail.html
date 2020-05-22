@@ -45,6 +45,28 @@
 
 </script>
 <!--Script post de ajax-->
+<script>
+    document.getElementById("tablaemail2").addEventListener("submit", Crearobj)
+    function Crearobj(event) {
+    event.preventDefault()
+    var personyousend = document.getElementsByTagName('input')[0].value;
+    var ownemail = document.getElementsByTagName('input')[1].value;
+    var subject = document.getElementsByTagName('input')[2].value;
+    var text = document.getElementsByTagName('input')[3].value;
+    var esto=new FormData(document.getElementById("tablaemail2"))
+     fetch("http://127.0.0.1:8000/nexus.com/apiallemails/", {
+     method :'POST',
+
+        body :
+        esto
+            })
+            .then(response => response.json())
+            .then(json => console.log(json))
+            var text = document.createTextNode("Se ha creado el cliente correctamente");
+
+    p.appendChild(text);
+    }
+</script>
 <div id="tabla">
     <div id="tablaemail1">
         <tr>
@@ -63,6 +85,8 @@
                 Subject: <input type="text">
                 <br><br>
                 Text: <br><textarea name="text" rows="20" cols="90"></textarea>
+                <br><br>
+                <input class="personalizar" type="submit" value="Send" />
                 
         </tr>
     </div>
