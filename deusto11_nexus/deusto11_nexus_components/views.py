@@ -14,6 +14,7 @@ from django.template.base import TemplateSyntaxError
 from django.template import TemplateDoesNotExist
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
 
 import deusto11_nexus_services.logging as nexus_services_logs
 import deusto11_nexus_services.viewsManageService as nexus_services_views_manager
@@ -427,6 +428,8 @@ class ApiAllEmployer(View):
         employe.telefone_number.POST['telefone_number']
         employe.ticket.POST['ticket']
         employe.user_nick.POST['user_nick']
+        employe.save()
+        return JsonResponse(model_to_dict(employe))
 
 @method_decorator(csrf_exempt, name='dispatch')
 
@@ -448,7 +451,12 @@ class ApiAllMachine(View):
         machine.provider_telefone.POST['provider_telefone']
         machine.set_number.POST['set_number']
         machine.start_up_date.POST['start_up_date']
-     
+        machine.save()
+        return JsonResponse(model_to_dict(machine))
+        
+
+    
+
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllTickets(View):
     def get(self,request):
@@ -469,6 +477,8 @@ class ApiAllTickets(View):
         ticket.ticket_type.POST['ticket_type']
         ticket.title.POST['title']
         ticket.urgency_level.POST['urgency_level']
+        ticket.save()
+        return JsonResponse(model_to_dict(ticket))
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmail(View):
@@ -476,6 +486,7 @@ class ApiAllEmail(View):
         #get metod
         dlist=Email.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
+
     
     def post(self,request):
         #post metod
@@ -484,6 +495,10 @@ class ApiAllEmail(View):
         email.receive_user['receive_user']
         email.send_user['send_user']
         email.subjct['subjct']
+        email.save()
+        return JsonResponse(model_to_dict(email))
+
+
         
         
 
