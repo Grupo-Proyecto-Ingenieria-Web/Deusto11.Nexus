@@ -216,27 +216,27 @@ class EmployerRegistryView(View):
 class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
-        try:
+        # try:
             tittle = 'Tickets registry page'
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:        
                 return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle))
-        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
-            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return redirect(statics.ERROR_URL)
+        # except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+        #     _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+        #     return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
-        try:    
+        # try:    
             ticket_model = self.__create_ticket_model(request)
             if(_views_manager_service.validate_form(ticket_model, _logger)):
                 _views_manager_service.save_form(ticket_model, _logger)
                 return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.TICKET_REGISTRY_URL)
-        except (NoReverseMatch):
-            _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return redirect(statics.ERROR_URL)
+        # except (NoReverseMatch):
+        #     _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
+        #     return redirect(statics.ERROR_URL)
 
     def __create_ticket_model(self, request):
         ticket_model = Ticket()

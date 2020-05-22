@@ -12,7 +12,7 @@
       .then((response) => response.json())
       .then((json) => {
           for (let element of json) {
-            console.log(element.model);
+            
           var dates='<td>'+element.send_user+'</td> <td>'+element.subjct+'</td>   '
           console.log(dates)
           document.getElementById("tablaemail1").insertRow(-1).innerHTML =dates
@@ -32,7 +32,7 @@
       .then((response) => response.json())
       .then((json) => {
           for (let element of json) {
-            console.log(element.model);
+            
           var dates='<td>'+element.name+'</td> <td>'+element.email+'</td>   '
           console.log(dates)
           document.getElementById("tablaemail3").insertRow(-1).innerHTML =dates
