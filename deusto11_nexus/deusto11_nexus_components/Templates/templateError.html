@@ -4,7 +4,10 @@
 {% block tittle %}{{ tittle }}{% endblock %}
 
 {% block content %}
-<h1>Ha ocirrido un error !</h1>
-<p>Por favor pulsa aquí para volver a la pagina predeterminada</p>
-<a href="{% url 'index_default_view' %}"><input type="submit" value="Volver" /></a>
+<script>
+    alert("Oh What a pity :(")
+</script>
+<h1>An error has been ocurred !</h1>
+<p>Click here to redirect to the principal page OwO</p>
+<a href="{% url 'index_default_view' %}"><input class=personalizar type="submit" value="Volver" /></a>
 {% endblock %}

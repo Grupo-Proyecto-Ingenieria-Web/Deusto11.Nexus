@@ -5,34 +5,35 @@
 <!--    Here is the body code   -->
 <div id="todo3">
     <div id="argum3">
+        <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
         <h1 id="title3">NUEVO EQUIPO</h1>
         <p>Rellena el siguiente formulario para añadir un nuevo equipo:</p>
         <div>
             <form action="{% url 'machine_registry' %}" method="post">
                 {% csrf_token %}
-                Establecer numero:<input type="text">
+                Establecer numero:<input type="text" name="set_number">
                 <br><br>
-                Modelo:<input type="text">
+                Modelo:<input type="text" name="model">
                 <br><br>
-                Marca:<input type="text">
+                Marca:<input type="text" name="brand">
                 <br><br>
-                Tipo de maquina:<input type="text">
+                Tipo de maquina:<input type="text" name="machine_type" >
                 <br><br>
                 <p>Fecha: </p>
                 <label for="fecha_update">
-                    <input type="date" id="fecha" name="fecha_maquina" />
+                    <input type="date" id="fecha" name="get_date" />
                 </label>
                 <br><br>
                 <p>Fecha de puesta en marcha: </p>
                 <label for="fecha_marcha">
-                    <input type="date" id="fecha" name="fecha_maquina_marcha" />
+                    <input type="date" id="fecha" name="start_up_date" />
                 </label>
                 <br><br>
-                Nombre del proveedor:<input type="text">
+                Nombre del proveedor:<input type="text" name="provider_name">
                 <br><br>
-                Telefono proveedor:<input type="text">
+                Telefono proveedor:<input type="text" name="provider_telefone">
                 <br><br>
-                Piso en local:<input type="text">
+                Piso en local:<input type="text" name="floor_on_premise">
                 <br><br>
                 <input class="personalizar" type="submit" value="Nuevo equipo" />
             </form>
