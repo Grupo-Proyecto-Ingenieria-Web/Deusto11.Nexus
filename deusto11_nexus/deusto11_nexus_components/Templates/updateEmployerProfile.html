@@ -5,24 +5,25 @@
 <!--    Here is the body code   -->
 <div id="todo4">
     <div id="argum4">
+        <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
         <h1 id="title4">ACTUALIZAR PERFIL DEL EMPLEADO</h1>
         <p>Rellena los siguientes datos para actualizar el perfil:</p>
         <div>
             <form action="" method="post">
                 {% csrf_token %} 
-                Nombre:<input type="text">
+                Nombre:<input type="text" name="name">
                 <br><br> 
-                Apellidos:<input type="text">
+                Apellidos:<input type="text" name="surname">
                 <br><br> 
-                DNI del empleado:<input type="text">
+                DNI del empleado:<input type="text" name="dni">
                 <br><br> 
-                E-mail:<input type="text">
+                E-mail:<input type="text" name="email">
                 <br><br> 
-                Telefono:<input type="text">
+                Telefono:<input type="text" name="telefone_number">
                 <br><br>
-                Email:<input type="text">
+                User-Nick:<input type="text" name="user_nick">
                 <br><br>
-                Contraseña:<input type="password">
+                Contraseña:<input type="password" name="password">
                 <br><br>
                 <input class="personalizar" type="submit" value="Actualizar" />
             </form>
