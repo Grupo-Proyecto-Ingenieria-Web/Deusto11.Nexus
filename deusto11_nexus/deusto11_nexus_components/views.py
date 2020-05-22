@@ -115,18 +115,18 @@ class EmployerPortalView(View):
 """ email page view"""
 class EmailView(View):
     def get(self, request, *args, **kwargs):
-        try:
+         try:
             tittle = "Principle employer portal"
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'emailPortal.html', _views_manager_service.build_context_employer_portal(tittle))
-        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
-            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return redirect(statics.ERROR_URL)
+                return render(request, 'employerEmail.html', _views_manager_service.build_context_employer_portal(tittle))
+         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+             return redirect(statics.ERROR_URL)
   
     def post(self, request, *args, **kwargs):
-        try:
+         try:
             id_object = request.POST.get('Delete')
             delete_ticket = Ticket.objects.filter(id = id_object)
             if(delete_ticket.delete()):
@@ -134,23 +134,23 @@ class EmailView(View):
             else:
                 _logger.error_log("the object not deleted or error")
             return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
-        except (NoReverseMatch):
-            _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-            return redirect(statics.ERROR_URL)
+         except (NoReverseMatch):
+             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
+             return redirect(statics.ERROR_URL)
 
 """ Menu class to get vlog page of the  """
 class MenuPortalView(View):
     
     def get(self, request, *args, **kwargs):
-        try:
+         try:
             tittle = 'Menu  nexus'
             if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return render(request, 'menu.html', _views_manager_service.build_context_form(tittle))
-        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
-            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return redirect(statics.ERROR_URL)
+         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+             return redirect(statics.ERROR_URL)
 
 """ Vlog class to get vlog page of the """
 class VlogPortalView(View):
@@ -407,7 +407,6 @@ class ApiAllEmployer(View):
         return JsonResponse(model_to_dict(employe))
 
 @method_decorator(csrf_exempt, name='dispatch')
-
 class ApiAllMachine(View):
     def get(self,request):
         #get metod
