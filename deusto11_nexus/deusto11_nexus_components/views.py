@@ -277,7 +277,7 @@ class MachineRegistryView(View):
             return redirect(statics.ERROR_URL)
 
     def __create_machine_model(self, request):
-        machine_model = Machine()
+        machine_model = MachineForm()
         machine_model.set_number = request.POST.get("set_number")
         machine_model.model = request.POST.get("model")
         machine_model.brand = request.POST.get("brand")
