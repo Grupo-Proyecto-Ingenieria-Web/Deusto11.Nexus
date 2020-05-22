@@ -62,7 +62,7 @@ class TicketPortalView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
@@ -90,7 +90,7 @@ class EmployerPortalView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = "Principle employer portal"
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return render(request, 'employerPortal.html', _views_manager_service.build_context_machines_portal(tittle, _auth.employer))
@@ -117,7 +117,7 @@ class EmailView(View):
     def get(self, request, *args, **kwargs):
          try:
             tittle = "Principle employer portal"
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return render(request, 'employerEmail.html', _views_manager_service.build_context_employer_portal(tittle))
@@ -144,7 +144,7 @@ class MenuPortalView(View):
     def get(self, request, *args, **kwargs):
          try:
             tittle = 'Menu  nexus'
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return render(request, 'menu.html', _views_manager_service.build_context_form(tittle))
@@ -169,7 +169,7 @@ class ErrorView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Error template'
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return render(request, 'templateError.html', _views_manager_service.build_context_form(tittle))
@@ -183,7 +183,7 @@ class EmployerRegistryView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Employer registry page'
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:        
                 return render(request, 'employerRegistry.html', _views_manager_service.build_context_form(tittle))
@@ -218,7 +218,7 @@ class TicketRegistryView(View):
     def get(self, request, *args, **kwargs):
          try:
             tittle = 'Tickets registry page'
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:        
                 return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle))
@@ -256,19 +256,26 @@ class MachineRegistryView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Machine registry page'
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            form = MachineForm()
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
-            else:      
-                return render(request, 'machineRegistry.html', _views_manager_service.build_context_form(tittle))
+            else:   
+                context = {
+                    'tittle': tittle,
+                     'form': form
+                }   
+                # return render(request, 'machineRegistry.html', _views_manager_service.build_context_form(tittle))
+                return render(request, 'machineRegistry.html',context)
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch, NameError) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
-            machine_model = self.__create_machine_model(request)       
-            if(_views_manager_service.validate_form(machine_model, _logger)):
-                _views_manager_service.save_form(machine_model, _logger)
+            machine_model = self.__create_machine_model(request) 
+            form = MachineForm(request.POST)
+            if(_views_manager_service.validate_form(form, _logger)):
+                _views_manager_service.save_form(form, _logger)
                 return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.MACHINE_REGISTRY_URL)
@@ -301,7 +308,7 @@ class UpdateEmployerProfileView(UpdateView):
         try:
             all_context = super( UpdateEmployerProfileView, self).get_context_data(**kwargs) 
             all_context["tittle"] = "Employer registry page"
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return all_context
@@ -331,7 +338,7 @@ class UpdateMachiView(UpdateView):
         try:
             all_context = super( UpdateMachiView, self).get_context_data(**kwargs) 
             all_context["tittle"] = "Machine registry page"
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return all_context
@@ -364,7 +371,7 @@ class UpdateTicketView(UpdateView):
         try:
             all_context = super(UpdateTicketView, self).get_context_data(**kwargs) 
             all_context["tittle"] = "Ticket registry page"
-            if (_auth.employer.dni == "12345678R"): # Default user_dni when did a new object
+            if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
                 return all_context
