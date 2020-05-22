@@ -1,4 +1,6 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import RegexValidator
 
 """ All class models by model.Model """
 class Machine(models.Model):
@@ -9,14 +11,14 @@ class Machine(models.Model):
     get_date = models.DateField()
     start_up_date = models.DateField()
     provider_name = models.CharField(max_length=50)
-    provider_telefone = models.IntegerField()
+    provider_telefone = PhoneNumberField(null=False, blank=False, unique=True, default="+00000000000")
     floor_on_premise = models.IntegerField()
  
     def __str__(self):
         return f" modelo={self.model}, marca={self.brand}, tipo equipo={self.machine_type},  planta={self.floor_on_premise}"
 
 class Ticket(models.Model):
-    reference_number = models.IntegerField(null=False, blank=False, default=101, unique=True)
+    reference_number = models.IntegerField(null=False, blank=False, default=0, unique=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     starting_date = models.DateField()
@@ -40,11 +42,11 @@ class Email(models.Model):
         return f" usuario_emisor={self.send_user}, usuario_recibe={self.receive_user}, asunto={self.subjct}, descripcion={self.description}"
 
 class Employee(models.Model):
-    dni = models.CharField(max_length=9, null=False, blank=False, default="12345678R", unique=True)
+    dni = models.CharField(max_length=9, null=False, blank=False, default="XXXXXXXXR", unique=True)
     name = models.CharField(max_length=15)
     surname = models.CharField(max_length=8)
-    email = models.CharField(max_length=20)
-    telefone_number = models.IntegerField()
+    email = models.CharField(max_length=20, default="nombre@dominio.com")
+    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+00000000000")
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="user", unique=True)
     password = models.CharField(max_length=20, null=False, blank=False, default="password")
     ticket = models.ManyToManyField(Ticket)
