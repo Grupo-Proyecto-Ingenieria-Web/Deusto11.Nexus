@@ -38,21 +38,22 @@
         <div>
             <form action="{% url 'ticket_registry' %}" method="post">
                 {% csrf_token %}
-                Numero de referencia:<input id="n_referencia" type="text">
-                <br><br> Nombre completo del empleado:<input id="nombre" type="text">
+                Numero de referencia:<input type="text" name="reference_number">
+                <br><br> Nombre completo del empleado:<input type="text" name="">
+
                 <br><br> Titulo:
                 <input id="titulo" type="text">
                 <br><br> Estado:
                 <select id="estado" name="estado">
-                        <option selected>Abierto</option>
-                        <option>Cerrado</option>
-                    </select>
+                    <option selected>Abierto</option>
+                    <option>Cerrado</option>
+                </select>
                 <br><br> Tipo:
                 <select id="tipo" name="tipo">
-                        <option>Averia</option>
-                        <option selected>Mejora</option>
-                        <option>Mantenimiento</option>
-                    </select>
+                    <option>Averia</option>
+                    <option selected>Mejora</option>
+                    <option>Mantenimiento</option>
+                </select>
                 <br><br> Nivel de urgencia:<select id="urgencia" name="urgencia">
                         <option selected>Urgente</option>
                         <option>Alta</option>
