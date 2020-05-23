@@ -59,6 +59,7 @@
     p.appendChild(aviso);
     }
 </script>
+
 <div id="tabla_email">
     <table id="tablaemail1">
         <tr>
@@ -70,11 +71,22 @@
             <td>Reserva de su viaje</td>
         </tr>
     </table>
-    <div id="tablaemail2">
+    <table id="tablaemail3">
+        <tr>
+            <th>Nombre del contacto:</th>
+            <th>E-mail del contacto:</th>
+        </tr>
+        <tr>
+            <td>Alejandro Mariano</td>
+            <td>Alejandrino@tontonabo.es</td>
+        </tr>
+    </table>
+        <div id="tablaemail2">
         <tr>
             <form action="{% url 'employer_create' %}" method="post">
                 {% csrf_token %}
-                <p id="nuevo_correo">Redactar un nuevo correo:</p>
+                <p id="nuevo_correo">
+                Redactar un nuevo correo:</p>
                 <div id="cabecero">
                 E-mail del destinatario: <input type="text">
                 <br><br>
@@ -82,23 +94,15 @@
                 <br><br>
                 Asunto: <input type="text">
                 <br><br>
-                <input class="personalizar" type="submit" value="Enviar" />
+                
                 </div>
-                Mensaje: <br><br>
-                <textarea name="text" rows="20" cols="90"></textarea>
+                Mensaje: 
                 <br><br>
+                <textarea name="text" rows="20" cols="50"></textarea>
+                <br><br>
+                <input class="personalizar" type="submit" value="Enviar" />
             </form>
         </tr>
     </div>
-    <table id="tablaemail3">
-        <tr>
-            <th>Nombre del contacto</th>
-            <th>E-mail del contacto</th>
-        </tr>
-        <tr>
-            <td>Alejandro Mariano</td>
-            <td>Alejandrino@tontonabo.es</td>
-        </tr>
-    </table>
 </div>
 {% endblock %}
