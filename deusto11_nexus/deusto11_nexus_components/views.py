@@ -214,6 +214,7 @@ class EmployerRegistryView(View):
     #     return employee_model
 
 """ Default employer registry page view  """
+"""
 class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -227,34 +228,22 @@ class TicketRegistryView(View):
                 return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle, form))
         # except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
         #     _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-        #     return redirect(statics.ERROR_URL)
+       #     return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:    
             # ticket_model = self.__create_ticket_model(request)
-            form = TicketForm(request.POST)
-            if(_views_manager_service.validate_form(form, _logger)):
+             form = TicketForm(request.POST)
+             if(_views_manager_service.validate_form(form, _logger)):
                 _views_manager_service.save_form(form, _logger)
-
                 return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
-            else:
+             else:
                 return redirect(statics.TICKET_REGISTRY_URL)
         except (NoReverseMatch):
              _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
              return redirect(statics.ERROR_URL)
 
-    # def __create_ticket_model(self, request):
-    #     ticket_model = Ticket()
-    #     ticket_model.reference_number = request.POST.get("reference_number")
-    #     ticket_model.title = request.POST.get("title")
-    #     ticket_model.status = request.POST.get("status")
-    #     ticket_model.urgency_level = request.POST.get("urgency_level")
-    #     ticket_model.starting_date = request.POST.get("starting_date")
-    #     ticket_model.resolution_date = request.POST.get("resolution_date")
-    #     ticket_model.comment = request.POST.get("comment")
-    #     ticket_model.description = request.POST.get("description")
-    #     return ticket_model
-
+"""
 """ Default machine registry page view """
 class MachineRegistryView(View):
     
