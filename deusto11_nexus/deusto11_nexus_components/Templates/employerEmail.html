@@ -46,40 +46,36 @@
 </script>
 <!--Script post de ajax-->
 <script>
-    document.getElementById("tablaemail2").addEventListener("submit", Crearobj)
+    document.getElementById("formulario").addEventListener("submit", Crearobj)
     function Crearobj(event) {
     event.preventDefault()
-    var personyousend = document.getElementsByTagName('input')[0].value;
-    var ownemail = document.getElementsByTagName('input')[1].value;
-    var subject = document.getElementsByTagName('input')[2].value;
-    var text = document.getElementsByTagName('input')[3].value;
-    var esto=new FormData(document.getElementById("tablaemail2"))
+       var a=new FormData(document.getElementById("formulario"))
      fetch("http://127.0.0.1:8000/nexus.com/apiallemails/", {
      method :'POST',
 
         body :
-        esto
+        a
             })
             .then(response => response.json())
             .then(json => console.log(json))
-            var text = document.createTextNode("Se ha creado el cliente correctamente");
+            var aviso = document.createTextNode("Se ha creado el cliente correctamente");
 
-    p.appendChild(text);
+    p.appendChild(aviso);
     }
 </script>
 <div id="tabla">
-    <div id="tablaemail1">
+    <table id="tablaemail1">
         <tr>
             <th>Person you have sent the email</th>
             <th>Subject</th>
         </tr>
-    </div>
+    </table>
 
     <div id="tablaemail2">
         <tr>
-            <form action="{% url 'employer_create' %}" method="post">
+            <form  id=formulario>
                 {% csrf_token %}
-                Person you send the email: <input type="text">
+                Person you send the email: <input id=correo type="text">
                 Your email: <input type="text">
                 <br><br>
                 Subject: <input type="text">
@@ -91,11 +87,13 @@
         </tr>
     </div>
 
-    <div id="tablaemail3">
-        <th>Name of that contact: </th>
-        <th>Email of that contact: </th>
+    <table id="tablaemail3">ç
+        <tr>
+            <th>Name of that contact: </th>
+            <th>Email of that contact: </th>
+        </tr>
 
-    </div>
+    </table>
 
 </div>
 
