@@ -8,7 +8,7 @@
         <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
         <h1 id="title3">NUEVO EQUIPO</h1>
         <p>Rellena el siguiente formulario para añadir un nuevo equipo:</p>
-        <div>
+        <div >
             <form action="{% url 'machine_registry' %}" method="post">
                 {% csrf_token %}
                 {{form.as_p}}

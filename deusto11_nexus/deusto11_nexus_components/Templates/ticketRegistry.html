@@ -36,14 +36,15 @@
         </script>
     </div>
         <br>
-        <div>
+        <div >
             <form action="{% url 'ticket_registry' %}" method="post">
                 {% csrf_token %}
-                Numero de referencia:<input type="text" name="reference_number">
+                {{ form.as_p }}
+                <!-- Numero de referencia:<input type="text" name="reference_number">
                 <br><br>
-                <!--Nombre completo del empleado:<input type="text" name="">
+                Nombre completo del empleado:<input type="text" name="">
                  <br><br> -->
-                Titulo:
+                <!-- Titulo:
                 <input id="titulo" type="text" name="title">
                 <br><br> 
                 Estado:<select id="estado" name="estado" name="status">
@@ -62,8 +63,8 @@
                         <option>Alta</option>
                         <option>Media</option>
                         <option>Baja</option>
-                    </select>
-                <br><br>
+                    </select> -->
+                <!-- <br><br>
                 <p>Selecciona la fecha de apertura: </p>
                 <label for="fecha">
                         <input type="date" id="fechaa" name="starting_date" />
@@ -82,19 +83,18 @@
                     </label>
                 <br><br>
                 <input class="personalizar" type="submit" value="Registrar ticket" />
-                <br><br>
+                <br><br> -->
                 <!--<input class="personalizar" type="submit" value="Actualizar maquina" />-->
+                <!-- <br><br> Selecciona maquina:
                 {% if list_machines_already_exists %}  
-                    {% for machine in list_machines_already_exists %}
-                    <br><br> Selecciona maquina:
+                {% for machine in list_machines_already_exists %}
                         <select id="urgencia" name="urgencia">
-                            <option selected>Seleccionar</option>
                             <option>{{ machine }}</option>
                         </select>
                     <br><br>
-                    
                     {% endfor %}
-                {%endif%}
+                {%endif%} -->
+                <input class="personalizar" type="submit" value="Registrar ticket" />
             </form>
         </div>
     </div>

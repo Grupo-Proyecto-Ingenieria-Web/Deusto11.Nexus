@@ -4,7 +4,7 @@ from django.core.validators import RegexValidator
 
 """ All class models by model.Model """
 class Machine(models.Model):
-    set_number = models.IntegerField(null=False, blank=False, default=7850, unique=True)
+    set_number = models.IntegerField(null=False, blank=False, default=0, unique=True)
     model = models.CharField(max_length=60)
     brand = models.CharField(max_length=60)
     machine_type = models.CharField(max_length=100)
