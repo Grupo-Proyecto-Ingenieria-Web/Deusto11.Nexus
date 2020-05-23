@@ -10,6 +10,7 @@ header {
     align-items: center;
     height: 100px;
 }
+
 .elementos_alineados{
  display: inline-flex;
 }
@@ -45,35 +46,7 @@ header {
       background-position:20vw;
     }
   }
-/*
 
-.bloque-sub-header-centro {
-    height: 40px;
-    width: 148px;
-    margin: 0;
-    padding: 0;
-    padding-top: 13px;
-    padding-right: 2px;
-    padding-left: 720px;
-}
-
-.bloque-sub-header-derecha {
-    color: white;
-    height: 40px;
-    width: 130px;
-    margin: 0;
-    padding: 0;
-    background-color: #4c4c4c;
-    padding-right: 15px;
-}
-
-.bloque-sub-header-izquierda {
-    color: white;
-    height: 40px;
-    width: 600px;
-    margin: 0;
-    padding: 0;
-}*/
 #iconos,#botones_header,#iconos_index{
     display: inline-flex;
     padding-top: 9px;

@@ -20,11 +20,8 @@
         </div>
         <div id="formulario">
             <h3 id="login">Login</h3>
-            <script>
-                var login=document.getElementById("login")
-                colors=["#252850","black","cyan"];
-                login.style.color=colors[Math.floor(Math.random()*colors.length)];
-            </script>
+            <!--Java script url-->
+            <script src="{% static "../static/js/index.js" %} "></script>
             <br>
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
