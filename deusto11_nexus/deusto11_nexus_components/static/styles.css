@@ -222,7 +222,7 @@ div.centraTabla table {
 }
 /*CSS TABLAS*/
 
-#table2,#tablaemail1,#tablaemail3{
+#table2{
     border: 1px solid #094872;
     padding: 20px;
     width: 100%;
@@ -236,12 +236,7 @@ div.centraTabla table {
 }
 
 #table2 th,
-#table2 td,
-#tablaemail1 th,
-#tablaemail1 td,
-#tablaemail3 th,
-#tablaemail3 td
-{
+#table2 td{
     text-align: center;
     border: 1px solid #000;
     padding: 0.3em;
@@ -249,7 +244,7 @@ div.centraTabla table {
     color: #000;
 }
 
-#table2 th,#tablaemail1 th,#tablaemail3 th {
+#table2 th{
     background-color: #094872;
     color: white;
 }
@@ -308,30 +303,57 @@ div.centraTabla table {
 /*CSS EMAIL*/
 
 #tabla_email{
-   margin-top: 60px;
-   margin-bottom: 150px;
-}
-#tablaemail1{
+    display: inline-flex;
     margin-bottom: 100px;
+    margin-left: 2px;
+    padding-top: 40px;
+    background-image: url(https://s2.thingpic.com/images/bG/ovu1suE3FqfH5KtPugCSdKza.jpeg);
+    padding: 20px;
+    }
+
+#tablaemail2{
+box-sizing: content-box;
+width: 50%;
+border: 2px solid #055184;
+padding: 50px;
+text-align: center;
+padding-bottom: 30px;
+padding-top: 30px;
+background-color: #D3D3D3;
+margin-left: 30px;
 }
-#cabecero{
-    float: left;
-    margin: 60px;
+
+#tablaemail3{
+    margin-left: 30px;
 }
 #nuevo_correo{
-    margin-bottom: 80px;
-}
-#tablaemail2{
-    border: 2px solid #000;
-    margin: 40px;
-    padding-bottom: 60px;
-    padding-top: 30px;
-    background-image: url(https://forcaem.com/wp-content/uploads/2017/10/lineas-azules-azul-l-neas-curvas-transparencia-fondos-de-pantalla-41196.jpg);
     font-size: 20px;
 }
-#nuevo_correo{
-    text-align: center;   
+
+#tablaemail3 , #tablaemail1 
+{  color: #333; 
+    font-family: Helvetica, Arial, sans-serif; 
+    width: 350px; 
+    border-collapse: collapse;
 }
-#tablaemail3{
-    margin-top: 100px;
+
+#tablaemail3 td, 
+#tablaemail3 th, 
+#tablaemail1 td, 
+#tablaemail1 th 
+{ border: 1px solid transparent; 
+    height: 30px; 
 }
+
+#tablaemail3 th,
+#tablaemail1 th{ 
+    background: #D3D3D3; 
+    font-weight: bold; 
+}
+
+#tablaemail3 td,
+#tablaemail1 td { 
+    background: #FAFAFA; 
+    text-align: center; }
+
+
