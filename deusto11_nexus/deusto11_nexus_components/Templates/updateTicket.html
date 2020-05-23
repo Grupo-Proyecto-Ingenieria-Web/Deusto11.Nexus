@@ -11,7 +11,8 @@
         <div>
             <form action="" method="post">
                 {% csrf_token %}
-                Numero de referencia:<input type="text" name="reference_number">
+                {{ form.as_p }}
+                <!-- Numero de referencia:<input type="text" name="reference_number">
                 <br><br>
                 Titulo:<input type="text" name="title">
                 <br><br>
@@ -48,6 +49,7 @@
                     Comentarios:<input type="placeholder" id="comentario" name="comment" />
                 </label>
                 <br><br>
+                <input class="personalizar" type="submit" value="Actualizar ticket" /> -->
                 <input class="personalizar" type="submit" value="Actualizar ticket" />
             </form>
         </div>

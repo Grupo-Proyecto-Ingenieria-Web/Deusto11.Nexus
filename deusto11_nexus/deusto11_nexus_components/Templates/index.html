@@ -3,7 +3,18 @@
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div>
-    
+    <div class="bloque-sub-header">
+        <div class="bloque-sub-header-izquierda">
+        </div>
+        <div class="bloque-sub-header-centro">
+            <p class="texto-sub-header">Conocenos más aquí: </p>
+        </div>
+        <div class="bloque-sub-header-derecha">
+            <a href="https://twitter.com/?lang=es"><img src="{% static  "../static/img/iconoTwitter2.png" %}" alt="" class="icono"/></a>
+            <a href="https://www.facebook.com/"><img src="{% static "../static/img/facebook.png" %}" alt="" class="icono"/></a>
+            <a href="https://es.linkedin.com/"><img src="{% static "../static/img/linkedln.png"  %}" alt="" class="icono"/></a>
+        </div>
+    </div>
     <div id="presentacion">
         <div id="entrada">
             <h1 id="nexus">NEXUS</h1>
@@ -46,7 +57,7 @@
                     
                 </div>
                 -->
-                <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a>
+                <a href="{% url 'employer_create' %}"><input type="submit" value="Registrar"></a>
         </div>
     </div>
     <a href="{% url 'vlog_default_portal' %}"> <input id="botonVlog" class="personalizar" type="submit" value="¿Como gestionar una empresa?" /></a>
