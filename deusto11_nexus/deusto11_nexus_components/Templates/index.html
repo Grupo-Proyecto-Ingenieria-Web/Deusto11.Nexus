@@ -3,13 +3,9 @@
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div>
-    <div class="bloque-sub-header">
-        <div class="bloque-sub-header-izquierda">
-        </div>
-        <div class="bloque-sub-header-centro">
-            <p class="texto-sub-header">Conocenos más aquí: </p>
-        </div>
-        <div class="bloque-sub-header-derecha">
+    <div id="fondo">
+        <div id="iconos_index">
+            <p id="conocenos">Conocenos: </p>
             <a href="https://twitter.com/?lang=es"><img src="{% static  "../static/img/iconoTwitter2.png" %}" alt="" class="icono"/></a>
             <a href="https://www.facebook.com/"><img src="{% static "../static/img/facebook.png" %}" alt="" class="icono"/></a>
             <a href="https://es.linkedin.com/"><img src="{% static "../static/img/linkedln.png"  %}" alt="" class="icono"/></a>
@@ -35,7 +31,7 @@
                      Usuario:<br><input type="text" name="user_nick"><br><br>
                      Contraseña:<br><input type="password" name="password"><br>
                      <br>
-                    <input type="submit" value="Login" />
+                    <input class="personalizar" type="submit" value="Login" />
                     <br><br>
                 </form>
                 <!--
@@ -57,7 +53,7 @@
                     
                 </div>
                 -->
-                <a href="{% url 'employer_create' %}"><input type="submit" value="Registrar"></a>
+                <a href="{% url 'employer_create' %}"><input type="submit" class="personalizar" value="Registrar"></a>
         </div>
     </div>
     <a href="{% url 'vlog_default_portal' %}"> <input id="botonVlog" class="personalizar" type="submit" value="¿Como gestionar una empresa?" /></a>
