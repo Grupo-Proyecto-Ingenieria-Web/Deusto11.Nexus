@@ -17,11 +17,11 @@ class ViewsManagerService():
         else:
             logger.error_log("Changes not saved in database, something maybe already exist")
 
-    def build_context_employer_portal(self, tittle):
+    def build_context_ticket_portal(self, tittle):
         queryset_tickets = Ticket.objects.order_by("id") 
         context = {
             'title': tittle,
-            'list_tickets_already_exists': queryset_tickets
+            'list_tickets_already_exists': queryset_tickets,
         }
         return context
 

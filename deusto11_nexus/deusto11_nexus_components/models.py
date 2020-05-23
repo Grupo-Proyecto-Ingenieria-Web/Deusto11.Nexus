@@ -46,7 +46,7 @@ class Employee(models.Model):
     name = models.CharField(max_length=15)
     surname = models.CharField(max_length=8)
     email = models.CharField(max_length=20, default="nombre@dominio.com")
-    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+41520000000")
+    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+4152XXXXXXX")
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="XXX", unique=True)
     password = models.CharField(max_length=20, null=False, blank=False, default="XXX")
     ticket = models.ManyToManyField(Ticket)

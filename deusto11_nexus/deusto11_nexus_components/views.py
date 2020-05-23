@@ -29,13 +29,13 @@ _auth = nexus_services_auth.Authentication()
 class IndexView(View):
 
     def get(self, request, *args, **kwargs): 
-        try: 
+        # try: 
             tittle = "Index nexus"
             _logger.info_log("Using EmployerLoginForm to create form in index")
             return render(request, 'index.html', _views_manager_service.build_context_form(tittle, ""))
-        except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
-            _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-            return redirect(statics.ERROR_URL)
+        # except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+        #     _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+        #     return redirect(statics.ERROR_URL)
 
     def post(self, request, *args, **kwargs):
         try:
@@ -65,7 +65,7 @@ class TicketPortalView(View):
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'ticketPortal.html', _views_manager_service.build_context_employer_portal(tittle))
+                return render(request, 'ticketPortal.html', _views_manager_service.build_context_ticket_portal(tittle))
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -84,12 +84,12 @@ class TicketPortalView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
-
+"""  To machines"""
 class EmployerPortalView(View):
     
     def get(self, request, *args, **kwargs):
         try:
-            tittle = "Principle employer portal"
+            tittle = "Employer portal cretate page"
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
@@ -183,11 +183,11 @@ class EmployerRegistryView(View):
     def get(self, request, *args, **kwargs):
         try:
             tittle = 'Employer registry page'
-            form = EmployerForm(request.POST)
+            form = EmployerForm()
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
-                return redirect(statics.INDEX_DEFAULT_VIEW_URL)
-            else:        
                 return render(request, 'employerRegistry.html', _views_manager_service.build_context_form(tittle, form))
+            else:        
+                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
@@ -250,7 +250,6 @@ class MachineRegistryView(View):
 
     def post(self, request, *args, **kwargs):
         try:
-            # machine_model = self.__create_machine_model(request) 
             form = MachineForm(request.POST)
             if(_views_manager_service.validate_form(form, _logger)):
                 _views_manager_service.save_form(form, _logger)
@@ -294,10 +293,10 @@ class UpdateEmployerProfileView(UpdateView):
     
 """ Default machine update page view """
 class UpdateMachiView(UpdateView):
-    model=Machine
-    form_class=MachineForm
-    template_name="UpdateMachine.html"
-    success_url= reverse_lazy(statics.TICKET_DEFAULT_PORTAL_URL)
+    model=  Machine
+    form_class = MachineForm
+    template_name = "UpdateMachine.html"
+    success_url = reverse_lazy(statics.TICKET_DEFAULT_PORTAL_URL)
 
     def get_context_data(self, **kwargs):   
         try:
