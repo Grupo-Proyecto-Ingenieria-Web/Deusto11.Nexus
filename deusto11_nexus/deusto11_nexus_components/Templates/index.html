@@ -24,11 +24,9 @@
         </div>
         <div id="formulario">
             <h3 id="login">Login</h3>
-            <script>
-                var login=document.getElementById("login")
-                colors=["#252850","black","cyan"];
-                login.style.color=colors[Math.floor(Math.random()*colors.length)];
-            </script>
+            <!--Java script url-->
+            <script src="/js/index.js"></script>
+
             <br>
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
@@ -38,25 +36,7 @@
                     <input type="submit" value="Login" />
                     <br><br>
                 </form>
-                <!--
-                <div>
-
-                    <script>
-                        let loadData=document.getElementsByTagName("submit");
-                        
-                        function loadData(){
-                            fetch(SERVICE_URL)
-                            .then((Response)=>Response,JSON())
-                            .then((JSON)=>{
-
-
-                            })
-                        }
-                        
-                    </script>
-                    
-                </div>
-                -->
+                
                 <a href="{% url 'employer_create' %}"><input type="submit" value="Registrar"></a>
         </div>
     </div>
