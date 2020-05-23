@@ -237,7 +237,7 @@ class MachineRegistryView(View):
             form = MachineForm(request.POST)
             if(_views_manager_service.validate_form(form, _logger)):
                 _views_manager_service.save_form(form, _logger)
-                return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+                return redirect(statics.MACHINE_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.MACHINE_REGISTRY_URL)
         except (NoReverseMatch):
