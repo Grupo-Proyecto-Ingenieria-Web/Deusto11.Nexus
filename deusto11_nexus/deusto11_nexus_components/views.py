@@ -214,7 +214,6 @@ class EmployerRegistryView(View):
     #     return employee_model
 
 """ Default employer registry page view  """
-"""
 class TicketRegistryView(View):
     
     def get(self, request, *args, **kwargs):
@@ -224,12 +223,12 @@ class TicketRegistryView(View):
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:        
-
                 return render(request, 'ticketRegistry.html', _views_manager_service.build_context_form(tittle, form))
-        # except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
-        #     _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-       #     return redirect(statics.ERROR_URL)
+         except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
+           _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
+           return redirect(statics.ERROR_URL)
 
+    
     def post(self, request, *args, **kwargs):
         try:    
             # ticket_model = self.__create_ticket_model(request)
@@ -243,7 +242,6 @@ class TicketRegistryView(View):
              _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
              return redirect(statics.ERROR_URL)
 
-"""
 """ Default machine registry page view """
 class MachineRegistryView(View):
     
