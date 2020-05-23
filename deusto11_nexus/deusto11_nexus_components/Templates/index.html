@@ -25,8 +25,7 @@
         <div id="formulario">
             <h3 id="login">Login</h3>
             <!--Java script url-->
-            <script src="/js/index.js"></script>
-
+            <script src="{% static "../static/js/index.js" %} "></script>
             <br>
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
@@ -35,8 +34,7 @@
                      <br>
                     <input type="submit" value="Login" />
                     <br><br>
-                </form>
-                
+                </form>         
                 <a href="{% url 'employer_create' %}"><input type="submit" value="Registrar"></a>
         </div>
     </div>
