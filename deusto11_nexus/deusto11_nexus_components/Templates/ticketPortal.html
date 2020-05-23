@@ -2,28 +2,6 @@
 {% load static %} 
 {% block title %}{{ title }}{% endblock %} 
 {% block content %}
-<div>
-  <!-- <script>
-      const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apialltickets/"
-      function loadData() {
-        fetch(SERVICE_URL)
-        .then((response) => response.json())
-        .then((json) => {
-            for (let element of json) {
-            var url="http://127.0.0.1:8000/nexus.com/ticket/update/"
-            console.log(element.model);
-            url=url+element.id+"/"
-            var machine=element.machine;
-            var dates='<td>'+element.reference_number+'</td> <td>'+element.brand+'</td> <td>'+element.title+'</td> <td>'+element.status+'</td> <td>'+element.ticket_type+'</td> <td>'+element.urgency_level+'</td> <td>'+element.starting_date+'</td> <td>'+element.resolution_date+'</td> <td>'+element.description+'</td> <td>'+element.comment+'</td> <td><a href='+url+'><input class="personalizar" type="button" value="Actualizar"></a></td> <td><input type="submit" value="Delete" placeholder="Delete" /></td>'
-            console.log(dates)
-            document.getElementById("table2").insertRow(-1).innerHTML =dates
-            
-            }
-        });
-    }
-        loadData();       
-  </script> -->
-</div>
 <div class="bloque-sub-header">
     <div class="bloque-sub-header-izquierda">
         <a href="{% url 'index_default_view' %}"><input class="boton-sub-header" type="submit" value="Log out" /></a>

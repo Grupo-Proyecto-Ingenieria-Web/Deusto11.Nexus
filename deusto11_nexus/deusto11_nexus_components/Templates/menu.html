@@ -4,11 +4,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div>
-    <script>
-        alert('Welcome again :)')
-    </script>
-</div>
+<script src="{% static "../static/js/menu.js" %} "></script>
 <div id="botones_eleccion">
     <div id="boton_1">
         <a href="{% url 'employer_default_portal' %}"><input class="personalizar" type="button" value="Ir a la lista de maquinas"></a>
