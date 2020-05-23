@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% load static %}
-{% block tittle %}{{ tittle }}{% endblock %}
+{% block title %}{{ tittle }}{% endblock %}
 {% block content %}
 <div>
     
@@ -19,7 +19,6 @@
                 login.style.color=colors[Math.floor(Math.random()*colors.length)];
             </script>
             <br>
-            <!--Change form-->
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
                      Usuario:<br><input type="text" name="user_nick"><br><br>
@@ -48,7 +47,6 @@
                 </div>
                 -->
                 <a href="{% url 'employer_create' %}"><input type="button" value="Registrar"></a>
-            <!--Change form-->
         </div>
     </div>
     <a href="{% url 'vlog_default_portal' %}"> <input id="botonVlog" class="personalizar" type="submit" value="¿Como gestionar una empresa?" /></a>

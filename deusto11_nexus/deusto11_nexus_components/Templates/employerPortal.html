@@ -1,6 +1,8 @@
-{% extends "base.html" %} {% load static %} {% block tittle %}{{ tittle }}{% endblock %} {% block content %}
-
-<script>
+{% extends "base.html" %} 
+{% load static %} 
+{% block title %}{{ tittle }}{% endblock %} 
+{% block content %}
+<!-- <script>
     const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallmachine/"
     function loadData() {
       fetch(SERVICE_URL)
@@ -18,11 +20,8 @@
       });
   }
 
-      loadData();
-     
-
-      
-</script>
+      loadData();   
+</script> -->
 <h1 id="titletabla">Lista de Maquinas</h1>
 <div>
     <!--<a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket" /></a>-->
@@ -33,10 +32,12 @@
 <div id="tabla">
     <table id="table2">
         <tr>
+            <th>Numero de referencia de la maquina</th>
             <th>Modelo</th>
             <th>Marca</th>
-            <th>Datos</th>
+            <th>Tipo de maquina</th>
             <th>Fecha apertura</th>
+            <th>Fecha de puesta en marcha</th>
             <th>Nombre del proveedor</th>
             <th>Telefono del proveedor</th>
             <th>Planta</th>           
@@ -44,7 +45,7 @@
         {% if list_machines_already_exists %}  
             {% for machine in list_machines_already_exists %}
                 <tr>
-                    <td>{{ machine.reference_number }}</td>
+                    <td>{{ machine.set_number }}</td>
                     <td>{{ machine.model }}</td>
                     <td>{{ machine.brand }}</td>
                     <td>{{ machine.machine_type }}</td>

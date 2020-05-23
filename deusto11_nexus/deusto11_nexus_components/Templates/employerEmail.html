@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block tittle %}{{ tittle }}{% endblock %}
+{% block title %}{{ tittle }}{% endblock %}
 
 {% block content %}
 <!--Script para el get de emails-->
@@ -11,18 +11,14 @@
       fetch(SERVICE_URL)
       .then((response) => response.json())
       .then((json) => {
-          for (let element of json) {
-            
+          for (let element of json) {           
           var dates='<td>'+element.send_user+'</td> <td>'+element.subjct+'</td>   '
           console.log(dates)
-          document.getElementById("tablaemail1").insertRow(-1).innerHTML =dates
-          
+          document.getElementById("tablaemail1").insertRow(-1).innerHTML =dates         
           }
       });
   }
-
-      loadData();
-   
+      loadData();  
 </script>
 <!--Script para el get de emails de contactos-->
 <script>
@@ -74,7 +70,6 @@
             <th>Subject</th>
         </tr>
     </div>
-
     <div id="tablaemail2">
         <tr>
             <form action="{% url 'employer_create' %}" method="post">
@@ -86,17 +81,14 @@
                 <br><br>
                 Text: <br><textarea name="text" rows="20" cols="90"></textarea>
                 <br><br>
-                <input class="personalizar" type="submit" value="Send" />
-                
+                <input class="personalizar" type="submit" value="Send" />              
         </tr>
     </div>
-
     <div id="tablaemail3">
         <th>Name of that contact: </th>
         <th>Email of that contact: </th>
 
     </div>
-
 </div>
 
 {% endblock %}

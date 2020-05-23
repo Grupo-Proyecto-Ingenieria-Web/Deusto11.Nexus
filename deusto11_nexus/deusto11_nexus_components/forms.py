@@ -19,7 +19,7 @@ class EmployerForm(forms.ModelForm):
             "name" : "Nombre del empleado",
             "surname" : "Apellido del empleado",
             "email" : "Email del emplado ej",
-            "telefone_number" : "Numero de telefono ej",
+            "telefone_number" : "Numero de telefono (11 numeros, internacional) ej",
             "user_nick" : "Inserta el nick para la autenticación",
             "password" : "Contaseña",
             "ticket" : "Selecciona uno o mas tickets para empezar"
@@ -32,7 +32,8 @@ class TicketForm(forms.ModelForm):
         widgets = {
             'starting_date' : DateInput(),
             'resolution_date' : DateInput(),
-            'comment' : forms.Textarea()
+            'comment' : forms.Textarea(),
+            'description' : forms.Textarea()
         }
         labels = {
             "reference_number" : "Introduce el numero de referencia",
@@ -40,9 +41,9 @@ class TicketForm(forms.ModelForm):
             "description" : "Descripción de la incidencia",
             "starting_date" : "Fecha de inicio",
             "resolution_date" : "Fecha de resolucion",
-            "urgency_level" : "Nivel de urgencia",
+            "urgency_level" : "Nivel de urgencia (1-3)",
             "ticket_type" : "Tipo de incidencia",
-            "status" : "Estado actual de la indicencia",
+            "status" : "Estado actual de la indicencia (Activo - No activo)",
             "comment" : "Comentarios",
             "machine" : "Selecciona una o mas maquians",
         }
@@ -58,14 +59,14 @@ class MachineForm(forms.ModelForm):
             'floor_on_premise' : forms.NumberInput(),
         }
         labels = {
-            "set_number" : "Introduce el numero de referencia",
+            "set_number" : "Numero de serie de de la maquina",
             "model" : "Introduce el modelo",
             "brand" : "Introduce la marca de ese modelo",
             "machine_type" : "Tipo de máquina averiada",
             "get_date" : "Fecha de reconocimiento de máquina",
             "start_up_date" : "Fecha de puesta en marcha",
             "provider_name" : "Nombre del proveedor",
-            "provider_telefone" : "Numero de telefono del proveedor",
+            "provider_telefone" : "Numero de telefono del proveedor (11 numeros, internacional)",
             "floor_on_premise" : "Planta de la fabrica donde se encuentra ",
         }
         
