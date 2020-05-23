@@ -289,6 +289,8 @@ div.centraTabla table {
     font-size: 18px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+/*CSS MENU*/
 #botones_eleccion{
     display: flex;
     align-items: center;
@@ -303,6 +305,7 @@ div.centraTabla table {
 #boton_1{
     margin-left: 180px;
 }
+/*CSS EMAIL*/
 
 #tabla_email{
    margin-top: 60px;
