@@ -3,8 +3,8 @@ from django.urls import (get_resolver, get_urlconf, resolve,
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseNotFound
 from django.shortcuts import render, redirect
-from .models import Employee, Ticket, Machine, EmployerLoginModel,Email
-from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
+from .models import Employee, Ticket, Machine, EmployerLoginModel, Email
+from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm, EmailForm
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView, DeleteView
 from django.views import View
@@ -116,27 +116,28 @@ class EmployerPortalView(View):
 class EmailView(View):
     def get(self, request, *args, **kwargs):
          try:
-            tittle = "Principle employer portal"
+            tittle = "Email portal"
+            form = EmailForm
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'employerEmail.html', _views_manager_service.build_context_form(tittle, ""))
+                return render(request, 'employerEmail.html', _views_manager_service.build_context_form(tittle, form))
          except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
              _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
              return redirect(statics.ERROR_URL)
   
-    def post(self, request, *args, **kwargs):
-         try:
-            id_object = request.POST.get('Delete')
-            delete_ticket = Ticket.objects.filter(id = id_object)
-            if(delete_ticket.delete()):
-                _logger.info_log("object delete succesfully")
-            else:
-                _logger.error_log("the object not deleted or error")
-            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
-         except (NoReverseMatch):
-             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
-             return redirect(statics.ERROR_URL)
+    # def post(self, request, *args, **kwargs):
+    #      try:
+    #         id_object = request.POST.get('Delete')
+    #         delete_ticket = Ticket.objects.filter(id = id_object)
+    #         if(delete_ticket.delete()):
+    #             _logger.info_log("object delete succesfully")
+    #         else:
+    #             _logger.error_log("the object not deleted or error")
+    #         return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+    #      except (NoReverseMatch):
+    #          _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
+    #          return redirect(statics.ERROR_URL)
 
 """ Menu class to get vlog page of the  """
 class MenuPortalView(View):
@@ -381,15 +382,27 @@ class ApiAllEmail(View):
         dlist=Email.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
 
-    
-    def post(self,request):
-        email=Email()
-        email.description.POST['description']
-        email.receive_user['receive_user']
-        email.send_user['send_user']
-        email.subjct['subjct']
+    def post(self, request, *args, **kwargs):
+        # email_model = Email.objects.get(pk = request.POST['id'])
+        # email_model.description = str(request.POST['description'])
+        # email_model.receive_user = str(request.POST['receive_user'])
+        # email_model.send_user = str(request.POST['send_user'])
+        # email_model.subjct = str(request.POST['subjct'])
+
+        # email = Email()
+        email = EmailForm()
+        email.description = request.POST['description']
+        email.receive_user = request.POST['receive_user']
+        email.send_user = request.POST['send_user']
+        email.subjct = request.POST['subjct']
+ 
+        # email.description.POST['description']
+        # email.receive_user.POST['receive_user']
+        # email.send_user.POST['send_user']
+        # email..POST['subjct']
         email.save()
         return JsonResponse(model_to_dict(email))
+        # return JsonResponse(model_to_dict(email_model))
 
 
         

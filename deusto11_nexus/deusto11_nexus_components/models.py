@@ -33,8 +33,8 @@ class Ticket(models.Model):
         return f" {self.title}, urgencia: {self.urgency_level} --> tipo: {self.ticket_type}, estado: {self.status}, con equipos: {' / '.join(machine.model for machine in self.machine.all())}"
 
 class Email(models.Model):
-    send_user = models.IntegerField()
-    receive_user = models.IntegerField()
+    send_user = models.CharField(max_length=12)
+    receive_user = models.CharField(max_length=12)
     subjct = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
 
