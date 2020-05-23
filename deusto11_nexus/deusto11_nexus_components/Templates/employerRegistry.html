@@ -25,44 +25,6 @@
     </div>
     <div class='mt-3' id="answer">
     </div>
-     <script>
-      var SERVICE_URL="http://127.0.0.1:8000/nexus.com/ticket/registry/"
-      var formulario=document.getElementsByTagName("input")
-      var answer=document.getElementById("answer")
-      formulario.addEventListener("submit"),function(e){
-        e.preventDefault();
-        var dates=new FormData(formulario)
-        console.log(dates)
-        console.log(dates.get('reference_number'))
-        console.log(dates.get('title'))
-        console.log(dates.get('description'))
-        console.log(dates.get('starting_date'))
-        console.log(dates.get('resolution_date'))
-        console.log(dates.get('ticket_type'))
-        console.log(dates.get('comment'))
-        console.log(dates.get('machine'))
-        
-        fetch(SERVICE_URL,{
-          method:'POST',
-          body:dates
-        })
-        .then(res=>res.json())
-        .then(dates=>{
-          console.log(dates)
-          if (dates==="error"){
-            respuesta.innerHTML=`
-            <div class="alert alert-primary" role="alert">
-              fill in de gaps
-            </div>`
-          }else{
-            respuesta.innerHTML=`
-            <div class="alert alert-primary" role="alert">
-            ${dates}
-            </div>`
-          }
-        })
-      }
-    </script> 
   </div>
 </div>
 {% endblock %}
