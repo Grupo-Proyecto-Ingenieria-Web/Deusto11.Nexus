@@ -216,6 +216,7 @@ class EmployerRegistryView(View):
 """ Default employer registry page view  """
 class TicketRegistryView(View):
     
+    """
     def get(self, request, *args, **kwargs):
          try:
             tittle = 'Tickets registry page'
