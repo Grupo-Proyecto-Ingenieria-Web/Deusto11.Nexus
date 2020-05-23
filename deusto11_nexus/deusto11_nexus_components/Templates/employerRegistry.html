@@ -7,7 +7,7 @@
       <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
         <h1 id="title">NUEVO EMPLEADO</h1>
         <p>Rellena el siguiente formulario para añadir un nuevo empleado:</p>
-        <div>
+        <div >
           <script>
             function Changecolor(){
               color=red
@@ -20,7 +20,8 @@
             <!--Change form-->
             <form action="{% url 'employer_create' %}" method="post">
               {% csrf_token %}
-                Nombre:<input type="text"  name="name">
+              {{form.as_p}}
+                <!-- Nombre:<input type="text"  name="name">
                 <br><br> 
                 Apellidos:<input type="text" name="surname">
                 <br><br> 
@@ -30,7 +31,7 @@
                 <br><br> 
                 Telefono:<input type="text" name="telefone_number">
                 <br><br>
-                <input class="personalizar" type="submit" value="Registrarse" />
+                <input class="personalizar" type="submit" value="Registrarse" /> -->
             </form>
             <!--Change form-->
         </div>
