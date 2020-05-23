@@ -1,25 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %}{{ title }}{% endblock %}
-
 {% block content %}
-<div>
-    <script>
-        alert('Welcome again :)')
-    </script>
+<div id="body_eleccion">
+<div id="agrupacion" class="wrapper">
+    <a class="button" href="{% url 'employer_default_portal' %}">LISTA DE MAQUINAS</a>
+    <a class="button" href="{% url 'ticket_default_portal' %}">LISTA DE TICKETS</a>
+    <a class="button" href="{% url 'employer_emails' %}">E-MAIL</a>
 </div>
-<div id="botones_eleccion">
-    <div id="boton_1">
-        <a href="{% url 'employer_default_portal' %}"><input class="personalizar" type="button" value="Ir a la lista de maquinas"></a>
-    </div>
-    <div id="boton_2">
-        <a href="{% url 'ticket_default_portal' %}"><input class="personalizar" type="button" value="Ir a la lista de tickets"></a>
-    </div>
-    <div id="boton_3">
-        <a href="{% url 'employer_emails' %}"><input class="personalizar" type="button" value="Checkear tu email"></a>
-    </div>
+<svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />    
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        </filter>
+    </defs>
+</svg>
 </div>
-
-
 {% endblock %}

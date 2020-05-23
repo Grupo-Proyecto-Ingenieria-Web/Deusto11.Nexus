@@ -3,8 +3,8 @@ from django.urls import (get_resolver, get_urlconf, resolve,
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseNotFound
 from django.shortcuts import render, redirect
-from .models import Employee, Ticket, Machine, EmployerLoginModel,Email
-from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm
+from .models import Employee, Ticket, Machine, EmployerLoginModel, Email
+from .forms import EmployerForm, TicketForm, MachineForm, EmployerLoginForm, EmailForm
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, UpdateView, DeleteView
 from django.views import View
@@ -84,7 +84,7 @@ class TicketPortalView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
-"""  To machines"""
+"""  Machine list portal view """
 class EmployerPortalView(View):
     
     def get(self, request, *args, **kwargs):
@@ -116,26 +116,14 @@ class EmployerPortalView(View):
 class EmailView(View):
     def get(self, request, *args, **kwargs):
          try:
-            tittle = "Principle employer portal"
+            tittle = "Email portal"
+            form = EmailForm
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'employerEmail.html', _views_manager_service.build_context_form(tittle, ""))
+                return render(request, 'employerEmail.html', _views_manager_service.build_context_form(tittle, form))
          except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
              _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
-             return redirect(statics.ERROR_URL)
-  
-    def post(self, request, *args, **kwargs):
-         try:
-            id_object = request.POST.get('Delete')
-            delete_ticket = Ticket.objects.filter(id = id_object)
-            if(delete_ticket.delete()):
-                _logger.info_log("object delete succesfully")
-            else:
-                _logger.error_log("the object not deleted or error")
-            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
-         except (NoReverseMatch):
-             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
              return redirect(statics.ERROR_URL)
 
 """ Menu class to get vlog page of the  """
@@ -249,7 +237,7 @@ class MachineRegistryView(View):
             form = MachineForm(request.POST)
             if(_views_manager_service.validate_form(form, _logger)):
                 _views_manager_service.save_form(form, _logger)
-                return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+                return redirect(statics.MACHINE_DEFAULT_PORTAL_URL)
             else:
                 return redirect(statics.MACHINE_REGISTRY_URL)
         except (NoReverseMatch):
@@ -315,81 +303,40 @@ class UpdateTicketView(UpdateView):
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
         
+""" Api class methods """
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmployer(View):
     def get(self,request):
         dlist=Employee.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
-    
-    def post(self,request):
-        employe=Employee()
-        employe.dni=request.POST['dni']
-        employe.email=request.POST['email']
-        employe.name=request.POST['name']
-        employe.password=request.POST['password']
-        employe.surname=request.POST['surname']
-        employe.telefone_number.POST['telefone_number']
-        employe.ticket.POST['ticket']
-        employe.user_nick.POST['user_nick']
-        employe.save()
-        return JsonResponse(model_to_dict(employe))
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllMachine(View):
     def get(self,request):
         dlist=Machine.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
-    
-    def post(self,request):
-        machine=Machine()
-        machine.brand.POST['brand']
-        machine.floor_on_premise.POST['floor_on_premise']
-        machine.get_date.POST['get_date']
-        machine.machine_type.POST['machine_type']
-        machine.model.POST['model']
-        machine.provider_name.POST['provider_name']
-        machine.provider_telefone.POST['provider_telefone']
-        machine.set_number.POST['set_number']
-        machine.start_up_date.POST['start_up_date']
-        machine.save()
-        return JsonResponse(model_to_dict(machine))
         
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllTickets(View):
     def get(self,request):
         dlist=Ticket.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
-    
-    def post(self,request):
-        ticket=Ticket()
-        ticket.comment.POST['comment']
-        ticket.description.POST['description']
-        ticket.machine.POST['machine']
-        ticket.reference_number.POST['reference_number']
-        ticket.resolution_date.POST['resolution_date']
-        ticket.starting_date.POST['starting_date']
-        ticket.status.POST['status']
-        ticket.ticket_type.POST['ticket_type']
-        ticket.title.POST['title']
-        ticket.urgency_level.POST['urgency_level']
-        ticket.save()
-        return JsonResponse(model_to_dict(ticket))
 
+""" Java script class get and post email methods """
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmail(View):
     def get(self,request):
         dlist=Email.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
 
-    
-    def post(self,request):
-        email=Email()
-        email.description.POST['description']
-        email.receive_user['receive_user']
-        email.send_user['send_user']
-        email.subjct['subjct']
-        email.save()
-        return JsonResponse(model_to_dict(email))
+    def post(self, request, *args, **kwargs):
+        email = EmailForm(request.POST)
+        if(_views_manager_service.validate_form(email, _logger)):
+            _views_manager_service.save_form(email, _logger)
+            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+        else:
+            return redirect(statics.MACHINE_REGISTRY_URL)
+
 
 
         

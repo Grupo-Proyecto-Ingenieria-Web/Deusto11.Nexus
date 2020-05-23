@@ -5,34 +5,10 @@
 <div id="todo">
     <div id="argum2"> 
         <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>   
-<h1 id="title2">NUEVO TICKET</h1>
-<p>Rellena el siguiente formulario para añadir un nuevo ticket:</p>
-    <legend>Datos del ticket</legend>
-    <br>
-    <div>
-        <script>
-            document.getElementsByName("personalizar")[0].addEventListener("submit", Crearobj)
-                function Crearobj(event) {
-                event.preventDefault()
-                var n_referencia = document.getElementById('n_referencia').value;
-                var titulo = document.getElementById('titulo').val();
-                var estadp = document.getElementById('estado').val();
-                var esto=new FormData(document.getElementById("formu"))
-                fetch("http://127.0.0.1:8000/nexus.com/apialltickets/", {
-                method :'POST',
-
-                body :
-                esto
-                    })
-                .then(response => response.json())
-                .then(json => console.log(json))
-                var p=document.getElementById('exito')
-                var text = document.createTextNode("Se ha creado el cliente correctamente");
-
-            p.appendChild(text);
-    }        
-        </script>
-    </div>
+        <h1 id="title2">NUEVO TICKET</h1>
+        <p>Rellena el siguiente formulario para añadir un nuevo ticket:</p>
+        <legend>Datos del ticket</legend>
+        <br>
         <br>
         <div >
             <form action="{% url 'ticket_registry' %}" method="post">

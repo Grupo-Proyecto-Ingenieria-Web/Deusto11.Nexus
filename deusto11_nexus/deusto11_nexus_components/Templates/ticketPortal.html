@@ -2,49 +2,30 @@
 {% load static %} 
 {% block title %}{{ title }}{% endblock %} 
 {% block content %}
-<div>
-  <!-- <script>
-      const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apialltickets/"
-      function loadData() {
-        fetch(SERVICE_URL)
-        .then((response) => response.json())
-        .then((json) => {
-            for (let element of json) {
-            var url="http://127.0.0.1:8000/nexus.com/ticket/update/"
-            console.log(element.model);
-            url=url+element.id+"/"
-            var machine=element.machine;
-            var dates='<td>'+element.reference_number+'</td> <td>'+element.brand+'</td> <td>'+element.title+'</td> <td>'+element.status+'</td> <td>'+element.ticket_type+'</td> <td>'+element.urgency_level+'</td> <td>'+element.starting_date+'</td> <td>'+element.resolution_date+'</td> <td>'+element.description+'</td> <td>'+element.comment+'</td> <td><a href='+url+'><input class="personalizar" type="button" value="Actualizar"></a></td> <td><input type="submit" value="Delete" placeholder="Delete" /></td>'
-            console.log(dates)
-            document.getElementById("table2").insertRow(-1).innerHTML =dates
-            
-            }
-        });
-    }
-        loadData();       
-  </script> -->
 </div>
-<div class="bloque-sub-header">
-    <div class="bloque-sub-header-izquierda">
+<div id="fondo"class="elementos_alineados">
+    <div id="botones_header">
         <a href="{% url 'index_default_view' %}"><input class="boton-sub-header" type="submit" value="Log out" /></a>
         <a href="{% url 'employer_update' logged_employer.id %}"><input class="boton-sub-header" type="submit" value="Personalizar cuenta" /></a>
         <a href="{% url 'employer_default_portal' %}"><input class="boton-sub-header" type="submit" value="Lista de maquinas" /></a>
         <a href="{% url 'employer_emails' %}"><input class="boton-sub-header" type="submit" value="Email" /></a>
     </div>
-    <div class="bloque-sub-header-centro">
-        <p class="texto-sub-header">Conocenos más aquí: </p>
-    </div>
-    <div class="bloque-sub-header-derecha">
+    <div id="iconos">
+        <p id="conocenos">Conocenos: </p>
         <a href="https://twitter.com/?lang=es"><img src="{% static  "../static/img/iconoTwitter2.png" %}" alt="" class="icono"/></a>
         <a href="https://www.facebook.com/"><img src="{% static "../static/img/facebook.png" %}" alt="" class="icono"/></a>
         <a href="https://es.linkedin.com/"><img src="{% static "../static/img/linkedln.png"  %}" alt="" class="icono"/></a>
     </div>
 </div>
+<div>
+    <a href="{% url 'api_all_machine' %}"><input class="boton-sub-header" type="submit" value="Maquinas en json" /></a>
+    <a href="{% url 'api_all_tickets' %}"><input class="boton-sub-header" type="submit" value="Tickets en json" /></a>
+    <a href="{% url 'api_all_email' %}"><input class="boton-sub-header" type="submit" value="Emails en json" /></a>
+</div>
 <h1 id="titletabla">Lista de tickets</h1>
 <div>
     <a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket" /></a>
 </div>
-
 <div id="tabla">
     <table id="table2">
         <tr>

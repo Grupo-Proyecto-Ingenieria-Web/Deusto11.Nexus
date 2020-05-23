@@ -4,105 +4,24 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<!--Script para el get de emails-->
-<script>
-    const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallemails/"
-    function loadData() {
-      fetch(SERVICE_URL)
-      .then((response) => response.json())
-      .then((json) => {
-          for (let element of json) {           
-          var dates='<td>'+element.send_user+'</td> <td>'+element.subjct+'</td>   '
-          console.log(dates)
-          document.getElementById("tablaemail1").insertRow(-1).innerHTML =dates         
-          }
-      });
-  }
-      loadData();  
-</script>
 <!--Script para el get de emails de contactos-->
-<script>
-    const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallemployer/"
-    function loadData() {
-      fetch(SERVICE_URL)
-      .then((response) => response.json())
-      .then((json) => {
-          for (let element of json) {
-            
-          var dates='<td>'+element.name+'</td> <td>'+element.email+'</td>   '
-          console.log(dates)
-          document.getElementById("tablaemail3").insertRow(-1).innerHTML =dates
-          
-          }
-      });
-  }
-
-      loadData();
-
-</script>
-<!--Script post de ajax-->
-<script>
-    document.getElementById("formulario").addEventListener("submit", Crearobj)
-    function Crearobj(event) {
-    event.preventDefault()
-       var a=new FormData(document.getElementById("formulario"))
-     fetch("http://127.0.0.1:8000/nexus.com/apiallemails/", {
-     method :'POST',
-
-        body :
-        a
-            })
-            .then(response => response.json())
-            .then(json => console.log(json))
-            var aviso = document.createTextNode("Se ha creado el cliente correctamente");
-
-    p.appendChild(aviso);
-    }
-</script>
-
-<div id="tabla_email">
-    <table id="tablaemail1">
-        <tr>
-            <th>Lista de E-mail enviados:</th>
-            <th>Asunto:</th>
-        </tr>
-        <tr>
-            <td>vanessa.gomez@hotmail.es</td>
-            <td>Reserva de su viaje</td>
-        </tr>
-    </table>
-    <table id="tablaemail3">
-        <tr>
-            <th>Nombre del contacto:</th>
-            <th>E-mail del contacto:</th>
-        </tr>
-        <tr>
-            <td>Alejandro Mariano</td>
-            <td>Alejandrino@tontonabo.es</td>
-        </tr>
-    </table>
-        <div id="tablaemail2">
-        <tr>
-            <form action="{% url 'employer_create' %}" method="post">
-                {% csrf_token %}
-                <p id="nuevo_correo">
-                Redactar un nuevo correo:</p>
-                <div id="cabecero">
-                E-mail del destinatario: <input type="text">
-                <br><br>
-                Tu E-mail: <input type="text">
-                <br><br>
-                Asunto: <input type="text">
-                <br><br>
-                
-                </div>
-                Mensaje: 
-                <br><br>
-                <textarea name="text" rows="20" cols="50"></textarea>
-                <br><br>
-                <input class="personalizar" type="submit" value="Enviar" />
-            </form>
-        </tr>
+<script src="{% static "../static/js/employeremail.js" %} "></script> 
+<div id="principal">
+    <div id="tabla_email">
+        <table id="tablaemail3">
+            <tr>
+                <th>Nombre del contacto:</th>
+                <th>E-mail del contacto:</th>
+            </tr>
+        </table>
+            <div id="tablaemail2">
+            <tr>
+                <form action="{% url 'api_all_email' %}" method="post">
+                    {{form.as_p}}
+                    <input class="personalizar" type="submit" value="Enviar" />
+                </form>
+            </tr>
+        </div>
     </div>
 </div>
 {% endblock %}

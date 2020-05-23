@@ -33,8 +33,8 @@ class Ticket(models.Model):
         return f" {self.title}, urgencia: {self.urgency_level} --> tipo: {self.ticket_type}, estado: {self.status}, con equipos: {' / '.join(machine.model for machine in self.machine.all())}"
 
 class Email(models.Model):
-    send_user = models.IntegerField()
-    receive_user = models.IntegerField()
+    send_user = models.CharField(max_length=12)
+    receive_user = models.CharField(max_length=12)
     subjct = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
 
@@ -50,7 +50,6 @@ class Employee(models.Model):
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="XXX", unique=True)
     password = models.CharField(max_length=20, null=False, blank=False, default="XXX")
     ticket = models.ManyToManyField(Ticket)
-    # image = models.
 
     def __str__(self):
         return f" dni={self.dni}, nombre={self.name}, apellidos={self.surname}, email={self.email}, telefono={self.telefone_number}, nick={self.user_nick}, contrasena={self.password}, tickets = {' / '.join(ticket.title for ticket in self.ticket.all())}"

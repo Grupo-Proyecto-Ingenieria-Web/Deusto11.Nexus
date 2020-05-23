@@ -2,12 +2,10 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <link rel="stylesheet" type="text/css" href="{% static "../static/styles.css" %}"/>
     <title>{% block title %}Gestor de Nexus{% endblock %}</title>
 </head>
-
 <body>
     <header id="header">
         <img src="https://image.freepik.com/vector-gratis/plantilla-logotipo-letra-n-flecha_23987-64.jpg" alt="Nexus" width="100px" height="95px">
@@ -15,9 +13,7 @@
         <h2 id="tel">+34 785967463</h2>
     </header>
     <main>
-
         {% block content %}{% endblock %}
-
     </main>
     <footer>
         <div id="letras">
@@ -66,5 +62,4 @@
             </div>
     </footer>
 </body>
-
 </html>

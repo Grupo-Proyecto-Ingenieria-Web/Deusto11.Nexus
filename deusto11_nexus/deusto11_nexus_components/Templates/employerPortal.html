@@ -2,37 +2,15 @@
 {% load static %} 
 {% block title %}{{ title }}{% endblock %} 
 {% block content %}
-<!-- <script>
-    const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallmachine/"
-    function loadData() {
-      fetch(SERVICE_URL)
-      .then((response) => response.json())
-      .then((json) => {
-          for (let element of json) {
-            var url="http://127.0.0.1:8000/nexus.com/ticket/update/"
-            url=url+element.id+"/"
-            console.log(element.model);
-          var dates='<td>'+element.reference_number+'</td> <td>'+element.model+'</td> <td>'+element.brand+'</td> <td>'+element.machine_type+'</td> <td>'+element.get_date+'</td> <td>'+element.start_up_date+'</td> <td>'+element.provider_name+'</td> <td>'+element.provider_telefone+'</td> <td>'+element.floor_on_premise+'</td> <td>'+url+'</td>  '
-          console.log(dates)
-          document.getElementById("table2").insertRow(-1).innerHTML =dates
-          
-          }
-      });
-  }
-
-      loadData();   
-</script> -->
-<div class="bloque-sub-header">
-    <div class="bloque-sub-header-izquierda">
+<div id="fondo"class="elementos_alineados">
+    <div id="botones_header">
         <a href="{% url 'index_default_view' %}"><input class="boton-sub-header" type="submit" value="Log out" /></a>
         <a href="{% url 'employer_update' logged_employer.id %}"><input class="boton-sub-header" type="submit" value="Personalizar cuenta" /></a>
         <a href="{% url 'ticket_default_portal' %}"><input class="boton-sub-header" type="submit" value="Lista de tickets" /></a>
         <a href="{% url 'employer_emails' %}"><input class="boton-sub-header" type="submit" value="Email" /></a>
-    </div>
-    <div class="bloque-sub-header-centro">
-        <p class="texto-sub-header">Conocenos más aquí: </p>
-    </div>
-    <div class="bloque-sub-header-derecha">
+    </div>        
+     <div id="iconos">
+        <p id="conocenos">Conocenos: </p>
         <a href="https://twitter.com/?lang=es"><img src="{% static  "../static/img/iconoTwitter2.png" %}" alt="" class="icono"/></a>
         <a href="https://www.facebook.com/"><img src="{% static "../static/img/facebook.png" %}" alt="" class="icono"/></a>
         <a href="https://es.linkedin.com/"><img src="{% static "../static/img/linkedln.png"  %}" alt="" class="icono"/></a>
@@ -40,7 +18,6 @@
 </div>
 <h1 id="titletabla">Lista de Maquinas</h1>
 <div>
-    <!--<a href="{% url 'ticket_registry' %}"><input class="personalizar" type="submit" value="Nuevo Ticket" /></a>-->
     <a href="{% url 'machine_registry' %}"><input class="personalizar" type="submit" value="Nuevo Equipo" /></a>
 </div>
 <div id="tabla">

@@ -3,13 +3,9 @@
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <div>
-    <div class="bloque-sub-header">
-        <div class="bloque-sub-header-izquierda">
-        </div>
-        <div class="bloque-sub-header-centro">
-            <p class="texto-sub-header">Conocenos más aquí: </p>
-        </div>
-        <div class="bloque-sub-header-derecha">
+    <div id="fondo">
+        <div id="iconos_index">
+            <p id="conocenos">Conocenos: </p>
             <a href="https://twitter.com/?lang=es"><img src="{% static  "../static/img/iconoTwitter2.png" %}" alt="" class="icono"/></a>
             <a href="https://www.facebook.com/"><img src="{% static "../static/img/facebook.png" %}" alt="" class="icono"/></a>
             <a href="https://es.linkedin.com/"><img src="{% static "../static/img/linkedln.png"  %}" alt="" class="icono"/></a>
@@ -24,40 +20,18 @@
         </div>
         <div id="formulario">
             <h3 id="login">Login</h3>
-            <script>
-                var login=document.getElementById("login")
-                colors=["#252850","black","cyan"];
-                login.style.color=colors[Math.floor(Math.random()*colors.length)];
-            </script>
+            <!--Java script url-->
+            <script src="{% static "../static/js/index.js" %} "></script>
             <br>
                <form action="{% url 'index_default_view' %}" method="post">
                      {% csrf_token %}
                      Usuario:<br><input type="text" name="user_nick"><br><br>
                      Contraseña:<br><input type="password" name="password"><br>
                      <br>
-                    <input type="submit" value="Login" />
+                    <input class="personalizar" type="submit" value="Login" />
                     <br><br>
                 </form>
-                <!--
-                <div>
-
-                    <script>
-                        let loadData=document.getElementsByTagName("submit");
-                        
-                        function loadData(){
-                            fetch(SERVICE_URL)
-                            .then((Response)=>Response,JSON())
-                            .then((JSON)=>{
-
-
-                            })
-                        }
-                        
-                    </script>
-                    
-                </div>
-                -->
-                <a href="{% url 'employer_create' %}"><input type="submit" value="Registrar"></a>
+                <a href="{% url 'employer_create' %}"><input type="submit" class="personalizar" value="Registrar"></a>
         </div>
     </div>
     <a href="{% url 'vlog_default_portal' %}"> <input id="botonVlog" class="personalizar" type="submit" value="¿Como gestionar una empresa?" /></a>
@@ -75,9 +49,7 @@
                         <li>Cumplimiento RGPD</li>
                     </ul>
                 </div>
-
                 <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_platform.png" alt="Nexus" width="650px" height="300px">
-
             </div>
         </div>
     </article>
@@ -90,9 +62,7 @@
                     <p>Ahora o en un futuro, con Nexus, sí es posible. Dadas las características del software, Cloud Computing Multitenant; podemos ofrecerte una mejora real, constante y sin costes añadidos.</p>
                     <p>Mediante la colaboración y confianza de todos sus clientes, el software evoluciona y se adapta a nuevos sectores, a las exigencias del mercado y a las de sus propios clientes.</p>
                 </div>
-
                 <img src="https://www.yunbitsoftware.com/software-erp-cloud/img/img_solucion_c.png" alt="Nexus" width="600px" height="350px">
-
             </div>
         </div>
     </article>

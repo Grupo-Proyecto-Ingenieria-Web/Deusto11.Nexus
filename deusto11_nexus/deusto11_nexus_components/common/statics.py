@@ -7,6 +7,7 @@ EMPLOYER_CREATE_URL = "employer_create"
 TICKET_REGISTRY_URL = "ticket_registry"
 MACHINE_REGISTRY_URL = "machine_registry"
 ERROR_URL = "error_view"
+EMAIL_URL = "employer_emails"
 
 """ logs statics """
 NEXUS_VIEWS_LOGGING_NAME = "nexus_components_views"
