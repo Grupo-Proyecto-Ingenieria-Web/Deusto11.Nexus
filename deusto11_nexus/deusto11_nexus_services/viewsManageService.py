@@ -17,37 +17,38 @@ class ViewsManagerService():
         else:
             logger.error_log("Changes not saved in database, something maybe already exist")
 
-    def build_context_ticket_portal(self, tittle):
+    def build_context_ticket_portal(self, title, logged_employer):
         queryset_tickets = Ticket.objects.order_by("id") 
         context = {
-            'title': tittle,
+            'title': title,
             'list_tickets_already_exists': queryset_tickets,
+            'logged_employer': logged_employer
         }
         return context
 
-    def build_context_machines_portal(self, tittle, logged_employer):
+    def build_context_machines_portal(self, title, logged_employer):
         queryset_machines = Machine.objects.order_by("id")
         context = {
-            'title': tittle,
+            'title': title,
             'list_machines_already_exists': queryset_machines,
             'logged_employer': logged_employer
         }
         return context
 
-    def build_context_email_portal(self, tittle, logged_employer):
+    def build_context_email_portal(self, title, logged_employer):
         queryset_emails = Email.objects.order_by("id")
         context = {
-            'title': tittle,
+            'title': title,
             'list_machines_already_exists': queryset_emails,
             'logged_employer': logged_employer
         }
         return context
 
 
-    def build_context_form(self, tittle, form):
+    def build_context_form(self, title, form):
         queryset_machines = Machine.objects.order_by("id")
         context = {
-            'title': tittle,
+            'title': title,
             'list_machines_already_exists': queryset_machines,
             'form' : form
         }

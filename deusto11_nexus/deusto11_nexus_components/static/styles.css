@@ -1,9 +1,78 @@
 /*CSS BASE*/
 
+* {
+    font-family: Trebuchet MS, Verdana, " sans-serif";
+}
+
 header {
     background-color: #ffffff;
     display: flex;
     align-items: center;
+    height: 100px;
+}
+
+.bloque-sub-header {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 30px;
+    background-color: #4c4c4c;
+    color: white;
+    height: 48px;
+    display: flex;
+}
+
+.bloque-sub-header-centro {
+    height: 40px;
+    width: 148px;
+    margin: 0;
+    padding: 0;
+    padding-top: 13px;
+    padding-right: 2px;
+    padding-left: 720px;
+}
+
+.bloque-sub-header-derecha {
+    color: white;
+    height: 40px;
+    width: 130px;
+    margin: 0;
+    padding: 0;
+    background-color: #4c4c4c;
+    padding-right: 15px;
+}
+
+.bloque-sub-header-izquierda {
+    color: white;
+    height: 40px;
+    width: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+.icono {
+    /* float: right;  */
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.boton-sub-header {
+    width: 130px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.texto-sub-header {
+    /*width: 20px;*/
+    /* text-align: right; */
+    height: 40px;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    background-color: #4c4c4c;
 }
 
 #titulo {

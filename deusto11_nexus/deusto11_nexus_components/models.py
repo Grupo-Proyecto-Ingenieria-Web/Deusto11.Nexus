@@ -15,7 +15,7 @@ class Machine(models.Model):
     floor_on_premise = models.IntegerField()
 
     def __str__(self):
-        return f" {self.brand} --> {self.model} de tipo {self.machine_type} en la planta={self.floor_on_premise}"
+        return f" {self.brand} --> {self.model} de tipo {self.machine_type} en la planta Nª {self.floor_on_premise}"
 
 class Ticket(models.Model):
     reference_number = models.IntegerField(null=False, blank=False, default=0, unique=True)
