@@ -17,6 +17,12 @@
         <a href="https://www.facebook.com/"><img src="{% static "../static/img/facebook.png" %}" alt="" class="icono"/></a>
         <a href="https://es.linkedin.com/"><img src="{% static "../static/img/linkedln.png"  %}" alt="" class="icono"/></a>
     </div>
+   
+</div>
+<div>
+    <a href="{% url 'api_all_machine' %}"><input class="boton-sub-header" type="submit" value="Maquinas en json" /></a>
+    <a href="{% url 'api_all_tickets' %}"><input class="boton-sub-header" type="submit" value="Tickets en json" /></a>
+    <a href="{% url 'api_all_email' %}"><input class="boton-sub-header" type="submit" value="Emails en json" /></a>
 </div>
 <h1 id="titletabla">Lista de tickets</h1>
 <div>

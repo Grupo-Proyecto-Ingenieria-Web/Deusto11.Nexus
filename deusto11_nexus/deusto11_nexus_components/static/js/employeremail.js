@@ -4,12 +4,11 @@ function loadData() {
   fetch(SERVICE_URL)
   .then((response) => response.json())
   .then((json) => {
-      for (let element of json) {
-        var url="http://127.0.0.1:8000/nexus.com/menuPortal/"            
-      var dates='<td>'+element.name+'</td> <td>'+element.email+'</td> <td><a href='+url+'> <input class="personalizar" type="button" value="Volver"></a></td>  '
+      for (let element of json) {          
+      var dates='<td>'+element.name+'</td> <td>'+element.email+'</td>'
       console.log(dates)
-      document.getElementById("tablaemail3").insertRow(-1).innerHTML =dates
-      
+      document.getElementById("tablaemail3").insertRow(-1).innerHTML = dates
+
       }
   });
 }
@@ -32,4 +31,13 @@ p.appendChild(aviso);
 }
 
 
+function createUrl(){
+  var url="http://127.0.0.1:8000/nexus.com/menuPortal/"  
+  var line = '<a href='+url+'> <input class="personalizar" type="button" value="Volver"></a>'
+  console.log(line)
+  document.getElementById("principal").insertRow(-1).innerHTML = line
+}
+
+var a = document.getElementById("principal")
+a.href = "http://127.0.0.1:8000/nexus.com/menuPortal/"
 

@@ -9,6 +9,7 @@ header {
     display: flex;
     align-items: center;
     height: 100px;
+    width: 100%;
 }
 
 .bloque-sub-header {
@@ -378,6 +379,7 @@ div.centraTabla table {
     padding-top: 40px;
     background-image: url(https://s2.thingpic.com/images/bG/ovu1suE3FqfH5KtPugCSdKza.jpeg);
     padding: 20px;
+    width: 100%;
     }
 
 #tablaemail2{

@@ -308,60 +308,18 @@ class ApiAllEmployer(View):
     def get(self,request):
         dlist=Employee.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
-    
-    def post(self,request):
-        employe=Employee()
-        employe.dni=request.POST['dni']
-        employe.email=request.POST['email']
-        employe.name=request.POST['name']
-        employe.password=request.POST['password']
-        employe.surname=request.POST['surname']
-        employe.telefone_number.POST['telefone_number']
-        employe.ticket.POST['ticket']
-        employe.user_nick.POST['user_nick']
-        employe.save()
-        return JsonResponse(model_to_dict(employe))
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllMachine(View):
     def get(self,request):
         dlist=Machine.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
-    
-    def post(self,request):
-        machine=Machine()
-        machine.brand.POST['brand']
-        machine.floor_on_premise.POST['floor_on_premise']
-        machine.get_date.POST['get_date']
-        machine.machine_type.POST['machine_type']
-        machine.model.POST['model']
-        machine.provider_name.POST['provider_name']
-        machine.provider_telefone.POST['provider_telefone']
-        machine.set_number.POST['set_number']
-        machine.start_up_date.POST['start_up_date']
-        machine.save()
-        return JsonResponse(model_to_dict(machine))
         
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllTickets(View):
     def get(self,request):
         dlist=Ticket.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
-    
-    def post(self,request):
-        ticket=Ticket()
-        ticket.comment.POST['comment']
-        ticket.description.POST['description']
-        ticket.machine.POST['machine']
-        ticket.reference_number.POST['reference_number']
-        ticket.resolution_date.POST['resolution_date']
-        ticket.starting_date.POST['starting_date']
-        ticket.status.POST['status']
-        ticket.ticket_type.POST['ticket_type']
-        ticket.title.POST['title']
-        ticket.urgency_level.POST['urgency_level']
-        ticket.save()
-        return JsonResponse(model_to_dict(ticket))
 
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmail(View):
@@ -370,14 +328,12 @@ class ApiAllEmail(View):
         return JsonResponse(list(dlist.values()),safe=False)
 
     def post(self, request, *args, **kwargs):
-        email = EmailForm()
-        email.description = request.POST['description']
-        email.receive_user = request.POST['receive_user']
-        email.send_user = request.POST['send_user']
-        email.subjct = request.POST['subjct']
-        if(email.is_valid()):
-            email.save()
-            return redirect(statics.EMAIL_URL )
+        email = EmailForm(request.POST)
+        if(_views_manager_service.validate_form(email, _logger)):
+            _views_manager_service.save_form(email, _logger)
+            return redirect(statics.TICKET_DEFAULT_PORTAL_URL)
+        else:
+            return redirect(statics.MACHINE_REGISTRY_URL)
 
 
 
