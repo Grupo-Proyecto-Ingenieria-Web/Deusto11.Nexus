@@ -20,7 +20,7 @@ class ViewsManagerService():
     def build_context_employer_portal(self, tittle):
         queryset_tickets = Ticket.objects.order_by("id") 
         context = {
-            'tittle': tittle,
+            'title': tittle,
             'list_tickets_already_exists': queryset_tickets
         }
         return context
@@ -28,7 +28,7 @@ class ViewsManagerService():
     def build_context_machines_portal(self, tittle, logged_employer):
         queryset_machines = Machine.objects.order_by("id")
         context = {
-            'tittle': tittle,
+            'title': tittle,
             'list_machines_already_exists': queryset_machines,
             'logged_employer': logged_employer
         }
@@ -37,7 +37,7 @@ class ViewsManagerService():
     def build_context_email_portal(self, tittle, logged_employer):
         queryset_emails = Email.objects.order_by("id")
         context = {
-            'tittle': tittle,
+            'title': tittle,
             'list_machines_already_exists': queryset_emails,
             'logged_employer': logged_employer
         }
@@ -47,7 +47,7 @@ class ViewsManagerService():
     def build_context_form(self, tittle, form):
         queryset_machines = Machine.objects.order_by("id")
         context = {
-            'tittle': tittle,
+            'title': tittle,
             'list_machines_already_exists': queryset_machines,
             'form' : form
         }
