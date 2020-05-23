@@ -11,51 +11,73 @@ header {
     height: 100px;
 }
 
-.bloque-sub-header {
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    padding-right: 30px;
-    background-color: #4c4c4c;
-    color: white;
-    height: 48px;
-    display: flex;
+.elementos_alineados{
+ display: inline-flex;
 }
 
-.bloque-sub-header-centro {
-    height: 40px;
-    width: 148px;
-    margin: 0;
-    padding: 0;
-    padding-top: 13px;
-    padding-right: 2px;
-    padding-left: 720px;
-}
+.boton-sub-header {
+    width:calc(20vw + 6px);
+    height:calc(8vw + 6px);
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-transform:uppercase;
+    font-size:11px;
+    font-weight:bold;
+    
+  }
+  .boton-sub-header:after {
+    content:attr(value);
+    width:20vw;
+    height:8vw;
+    background-color:#191919;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .boton-sub-header:hover {
+    animation:slidebg 2s linear infinite;
+  }
+  
+  @keyframes slidebg {
+    to {
+      background-position:20vw;
+    }
+  }
 
-.bloque-sub-header-derecha {
-    color: white;
-    height: 40px;
-    width: 130px;
-    margin: 0;
-    padding: 0;
-    background-color: #4c4c4c;
-    padding-right: 15px;
+#iconos,#botones_header,#iconos_index{
+    display: inline-flex;
+    padding-top: 9px;
+    
 }
-
-.bloque-sub-header-izquierda {
-    color: white;
-    height: 40px;
-    width: 600px;
-    margin: 0;
-    padding: 0;
+#botones_header{
+    margin: 6px;
+    margin-left: 30px;
 }
-
+#iconos{
+    margin-left: 500px;
+    margin-right: 80px;
+}
+#fondo{
+    background-color: #333;
+    height: 60px;
+    width: 1330px;
+}
+#iconos_index{
+    margin-left: 1000px;
+}
 .icono {
-    /* float: right;  */
     width: 40px;
     height: 40px;
     margin: 0;
     padding: 0;
+}
+#conocenos{
+    color: #fff;
+    text-align: center;
+    
 }
 
 .boton-sub-header {
@@ -65,9 +87,7 @@ header {
     padding: 0;
 }
 
-.texto-sub-header {
-    /*width: 20px;*/
-    /* text-align: right; */
+/*.texto-sub-header {
     height: 40px;
     width: 200px;
     margin: 0;
@@ -75,9 +95,10 @@ header {
     background-color: #4c4c4c;
 }
 
+*/
 #titulo {
     text-align: center;
-    margin-left: 150px;
+    margin-left: 250px;
     color: #279AE8;
     font-size: 30px;
     font-family: serif;
@@ -98,7 +119,7 @@ img {
 
 footer {
     text-align: center;
-    background-color: #1B83CA;
+    background-color: #202344;
     padding-bottom: 30px;
     padding-top: 5px;
 }
@@ -235,7 +256,7 @@ div.centraTabla table {
     font-family: Georgia, 'Times New Roman';
     color: white;
     text-align: center;
-    background-color: #1B83CA;
+    background-color: #f65316;
 }
 
 #argum,
@@ -257,7 +278,7 @@ div.centraTabla table {
 #todo4,
 #todo5,
 #todo6 {
-    background-color: #1B83CA;
+    background-color: #202344;
     font-family: arial, "sans serif";
     margin: 0 auto;
     padding: 100px;
@@ -276,13 +297,13 @@ div.centraTabla table {
     font-weight: 600;
     font-size: 20px;
     color: #ffffff;
-    background-color: #1883ba;
+    background-color: #094872;
     border-radius: 6px;
-    border: 2px solid #0016b0;
+    border: 2px solid #202344;
 }
 
 .personalizar:hover {
-    color: #1883ba;
+    color: #202344;
     background-color: #ffffff;
 }
 
@@ -293,14 +314,14 @@ div.centraTabla table {
 
 #table2{
     border: 1px solid #094872;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
     border-collapse: separate;
     border-spacing: 5px;
-    background: #1B83CA;
+    background-image: url(https://i.pinimg.com/originals/cf/1c/17/cf1c17e9c0b3ea0248e1898da8489ac1.jpg);
     color: #fff;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     ;
 }
 
@@ -354,41 +375,95 @@ div.centraTabla table {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+
 /*CSS MENU*/
-#botones_eleccion{
-    display: flex;
-    align-items: center;
-    margin-bottom: 200px;
-    margin-top: 150px;;
+
+:root {
+    --bg: #1a1e24;
+    --color: #eee;
+    --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
-#boton_2,#boton_3{
-   
- margin-left: 110px;
-  
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
 }
-#boton_1{
-    margin-left: 180px;
+
+.button {
+    display: inline-block;
+    text-align: center;
+    background: var(--color);
+    color: var(--bg);
+    font-weight: bold;
+    padding: 1.18em 1.32em 1.03em;
+    line-height: 1;
+    border-radius: 1em;
+    position: relative;
+    min-width: 8.23em;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 1.25rem;
+    margin: 10px;
 }
-/*CSS EMAIL*/
+
+.button:before,
+.button:after {
+    width: 4.4em;
+    height: 2.95em;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: var(--color);
+    border-radius: 50%;
+    transition: transform 1s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.button:before {
+    top: -25%;
+    left: 20%;
+}
+
+.button:after {
+    bottom: -25%;
+    right: 20%;
+}
+
+.button:hover:before,
+.button:hover:after {
+    transform: none;
+}
+#body_eleccion{
+
+    background-image: url(https://oedimdecor.com/wp-content/uploads/2019/04/alfombra-pintadas-abstractas-1-1333x1000.jpg);
+    height: 600px;
+    margin-bottom: 60px;
+ 
+}
+#agrupacion{
+text-align: center;
+padding-top: 250px;
+}
 
 #tabla_email{
     display: inline-flex;
     margin-bottom: 100px;
     margin-left: 2px;
     padding-top: 40px;
-    background-image: url(https://s2.thingpic.com/images/bG/ovu1suE3FqfH5KtPugCSdKza.jpeg);
+    background-image: url(https://i.pinimg.com/originals/04/6b/e8/046be8d2e5af0f56e50b3477b322dbeb.jpg);
     padding: 20px;
     }
 
 #tablaemail2{
 box-sizing: content-box;
 width: 50%;
-border: 2px solid #055184;
+border: 4px solid #055184;
 padding: 50px;
 text-align: center;
 padding-bottom: 30px;
 padding-top: 30px;
-background-color: #D3D3D3;
+background-color: #fcd9e8;
 margin-left: 30px;
 }
 
@@ -416,13 +491,14 @@ margin-left: 30px;
 
 #tablaemail3 th,
 #tablaemail1 th{ 
-    background: #D3D3D3; 
+    background: #a02057; 
     font-weight: bold; 
+    color: #fff;
 }
 
 #tablaemail3 td,
 #tablaemail1 td { 
-    background: #FAFAFA; 
+    background: #fcd9e8; 
     text-align: center; }
 
 
