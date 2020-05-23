@@ -11,11 +11,11 @@ class Machine(models.Model):
     get_date = models.DateField()
     start_up_date = models.DateField()
     provider_name = models.CharField(max_length=50)
-    provider_telefone = PhoneNumberField(null=False, blank=False, unique=True, default="+00000000000")
+    provider_telefone = PhoneNumberField(null=False, blank=False, unique=True, default="+41520000000")
     floor_on_premise = models.IntegerField()
- 
+
     def __str__(self):
-        return f" modelo={self.model}, marca={self.brand}, tipo equipo={self.machine_type},  planta={self.floor_on_premise}"
+        return f" {self.brand} --> {self.model} de tipo {self.machine_type} en la planta={self.floor_on_premise}"
 
 class Ticket(models.Model):
     reference_number = models.IntegerField(null=False, blank=False, default=0, unique=True)
@@ -30,7 +30,7 @@ class Ticket(models.Model):
     machine = models.ManyToManyField(Machine) 
 
     def __str__(self):
-        return f" titulo={self.title}, nivel_urgencia={self.urgency_level}, tipo={self.ticket_type}, estado={self.status}, equipos = {' / '.join(machine.model for machine in self.machine.all())}"
+        return f" {self.title}, urgencia: {self.urgency_level} --> tipo: {self.ticket_type}, estado: {self.status}, con equipos: {' / '.join(machine.model for machine in self.machine.all())}"
 
 class Email(models.Model):
     send_user = models.IntegerField()
@@ -46,9 +46,9 @@ class Employee(models.Model):
     name = models.CharField(max_length=15)
     surname = models.CharField(max_length=8)
     email = models.CharField(max_length=20, default="nombre@dominio.com")
-    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+00000000000")
-    user_nick = models.CharField(max_length=10, null=False, blank=False, default="user", unique=True)
-    password = models.CharField(max_length=20, null=False, blank=False, default="password")
+    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+41520000000")
+    user_nick = models.CharField(max_length=10, null=False, blank=False, default="XXX", unique=True)
+    password = models.CharField(max_length=20, null=False, blank=False, default="XXX")
     ticket = models.ManyToManyField(Ticket)
     # image = models.
 

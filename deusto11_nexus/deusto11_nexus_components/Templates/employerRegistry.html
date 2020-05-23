@@ -1,26 +1,25 @@
 {% extends "base.html" %} 
 {% load static %}
-{% block tittle %}{{ tittle }}{% endblock %} 
+{% block title %}{{ title }}{% endblock %} 
 {% block content %}
 <div id="all">
     <div id="argum">
-      <a href="{% url 'menu_default_portal' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
+      <a href="{% url 'index_default_view' %}"><input class="personalizar" type="submit" value="Volver al inicio" /></a>
         <h1 id="title">NUEVO EMPLEADO</h1>
         <p>Rellena el siguiente formulario para añadir un nuevo empleado:</p>
-        <div >
+        <div>
           <script>
             function Changecolor(){
               color=red
-              
-
+      
             }
             var color=document.getElementsByTagName("input")
             color.keydown=Changecolor;
-          </script>
-            <!--Change form-->
+          </script> 
             <form action="{% url 'employer_create' %}" method="post">
               {% csrf_token %}
               {{form.as_p}}
+              <input class="personalizar" type="submit" value="Registrarse" />
                 <!-- Nombre:<input type="text"  name="name">
                 <br><br> 
                 Apellidos:<input type="text" name="surname">
@@ -31,14 +30,13 @@
                 <br><br> 
                 Telefono:<input type="text" name="telefone_number">
                 <br><br>
-                <input class="personalizar" type="submit" value="Registrarse" /> -->
-            </form>
-            <!--Change form-->
+                 -->
+            </form>       
         </div>
     </div>
     <div class='mt-3' id="answer">
     </div>
-    <script>
+     <script>
       var SERVICE_URL="http://127.0.0.1:8000/nexus.com/ticket/registry/"
       var formulario=document.getElementsByTagName("input")
       var answer=document.getElementById("answer")
@@ -75,7 +73,7 @@
           }
         })
       }
-    </script>
+    </script> 
   </div>
 </div>
 {% endblock %}

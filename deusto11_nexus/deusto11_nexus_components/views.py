@@ -203,15 +203,6 @@ class EmployerRegistryView(View):
         except (NoReverseMatch):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
-        
-    # def __create_employee_model(self, request):
-    #     employee_model = Employee()
-    #     employee_model.name = request.POST.get("name")
-    #     employee_model.surname = request.POST.get("surname")
-    #     employee_model.dni = request.POST.get("dni")
-    #     employee_model.email = request.POST.get("email")
-    #     employee_model.telefone_number = request.POST.get("telefone_number")
-    #     return employee_model
 
 """ Default employer registry page view  """
 class TicketRegistryView(View):
@@ -259,7 +250,7 @@ class MachineRegistryView(View):
 
     def post(self, request, *args, **kwargs):
         try:
-            machine_model = self.__create_machine_model(request) 
+            # machine_model = self.__create_machine_model(request) 
             form = MachineForm(request.POST)
             if(_views_manager_service.validate_form(form, _logger)):
                 _views_manager_service.save_form(form, _logger)
@@ -270,19 +261,6 @@ class MachineRegistryView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
-    # def __create_machine_model(self, request):
-    #     machine_model = MachineForm()
-    #     machine_model.set_number = request.POST.get("set_number")
-    #     machine_model.model = request.POST.get("model")
-    #     machine_model.brand = request.POST.get("brand")
-    #     machine_model.machine_type = request.POST.get("machine_type")
-    #     machine_model.get_date = request.POST.get("get_date")
-    #     machine_model.start_up_date = request.POST.get("start_up_date")
-    #     machine_model.provider_name = request.POST.get("provider_name")
-    #     machine_model.provider_telefone = request.POST.get("provider_telefone")
-    #     machine_model.floor_on_premise = request.POST.get("floor_on_premise")
-    #     return machine_model
-        
 """ Default employer update page view  """
 class UpdateEmployerProfileView(UpdateView):
 
