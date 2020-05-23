@@ -120,7 +120,7 @@ class EmailView(View):
             if (_auth.employer.dni == "XXXXXXXXR"): # Default user_dni when did a new object
                 return redirect(statics.INDEX_DEFAULT_VIEW_URL)
             else:
-                return render(request, 'employerEmail.html', _views_manager_service.build_context_employer_portal(tittle))
+                return render(request, 'employerEmail.html', _views_manager_service.build_context_form(tittle, ""))
          except (TemplateDoesNotExist, TemplateSyntaxError, NoReverseMatch) :
              _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
              return redirect(statics.ERROR_URL)
