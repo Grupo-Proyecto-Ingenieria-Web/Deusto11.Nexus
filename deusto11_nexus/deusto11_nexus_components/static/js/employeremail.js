@@ -1,4 +1,4 @@
-//El get 
+// GET
 const SERVICE_URL="http://127.0.0.1:8000/nexus.com/apiallemployer/"
 function loadData() {
   fetch(SERVICE_URL)
@@ -14,7 +14,7 @@ function loadData() {
 }
   loadData();
 
-//El post
+// POST
 document.getElementById("formulario").addEventListener("submit", Crearobj)
 function Crearobj(event) {
 event.preventDefault()
@@ -29,15 +29,4 @@ event.preventDefault()
 
 p.appendChild(aviso);
 }
-
-
-function createUrl(){
-  var url="http://127.0.0.1:8000/nexus.com/menuPortal/"  
-  var line = '<a href='+url+'> <input class="personalizar" type="button" value="Volver"></a>'
-  console.log(line)
-  document.getElementById("principal").insertRow(-1).innerHTML = line
-}
-
-var a = document.getElementById("principal")
-a.href = "http://127.0.0.1:8000/nexus.com/menuPortal/"
 

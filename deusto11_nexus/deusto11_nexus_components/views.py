@@ -84,7 +84,7 @@ class TicketPortalView(View):
             _logger.error_log(statics.NO_REVERSE_MATCH_MESSAGE)
             return redirect(statics.ERROR_URL)
 
-"""  To machines"""
+"""  Machine list portal view """
 class EmployerPortalView(View):
     
     def get(self, request, *args, **kwargs):
@@ -303,6 +303,7 @@ class UpdateTicketView(UpdateView):
             _logger.error_log(statics.TEMPLATE_DOES_NOT_EXIST)
             return redirect(statics.ERROR_URL)
         
+""" Api class methods """
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmployer(View):
     def get(self,request):
@@ -321,6 +322,7 @@ class ApiAllTickets(View):
         dlist=Ticket.objects.all()
         return JsonResponse(list(dlist.values()),safe=False)
 
+""" Java script class get and post email methods """
 @method_decorator(csrf_exempt, name='dispatch')
 class ApiAllEmail(View):
     def get(self,request):

@@ -88,5 +88,4 @@ class EmailForm(forms.ModelForm):
             "description" : "Descripcion",
             "send_user" : "Pon tu email",
             "receive_user" : "Email del destinatario",
-
         }
