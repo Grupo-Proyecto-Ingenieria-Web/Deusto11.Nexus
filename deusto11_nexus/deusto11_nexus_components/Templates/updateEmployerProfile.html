@@ -11,20 +11,7 @@
         <div>
             <form action="" method="post">
                 {% csrf_token %} 
-                Nombre:<input type="text" name="name">
-                <br><br> 
-                Apellidos:<input type="text" name="surname">
-                <br><br> 
-                DNI del empleado:<input type="text" name="dni">
-                <br><br> 
-                E-mail:<input type="text" name="email">
-                <br><br> 
-                Telefono:<input type="text" name="telefone_number">
-                <br><br>
-                User-Nick:<input type="text" name="user_nick">
-                <br><br>
-                Contraseña:<input type="password" name="password">
-                <br><br>
+                {{ form.as_p }}
                 <input class="personalizar" type="submit" value="Actualizar" />
             </form>
         </div>

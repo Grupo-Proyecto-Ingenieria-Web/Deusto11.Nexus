@@ -15,7 +15,7 @@ class Machine(models.Model):
     floor_on_premise = models.IntegerField()
 
     def __str__(self):
-        return f" {self.brand} --> {self.model} de tipo {self.machine_type} en la planta={self.floor_on_premise}"
+        return f" {self.brand} --> {self.model} de tipo {self.machine_type} en la planta Nª {self.floor_on_premise}"
 
 class Ticket(models.Model):
     reference_number = models.IntegerField(null=False, blank=False, default=0, unique=True)
@@ -46,7 +46,7 @@ class Employee(models.Model):
     name = models.CharField(max_length=15)
     surname = models.CharField(max_length=8)
     email = models.CharField(max_length=20, default="nombre@dominio.com")
-    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+41520000000")
+    telefone_number = PhoneNumberField(null=False, blank=False, unique=True, default="+4152XXXXXXX")
     user_nick = models.CharField(max_length=10, null=False, blank=False, default="XXX", unique=True)
     password = models.CharField(max_length=20, null=False, blank=False, default="XXX")
     ticket = models.ManyToManyField(Ticket)

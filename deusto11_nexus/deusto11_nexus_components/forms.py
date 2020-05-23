@@ -15,7 +15,7 @@ class EmployerForm(forms.ModelForm):
             'password' : forms.PasswordInput()
         }
         labels = {
-            "dni" : "DNI",
+            "dni" : "DNI ej:",
             "name" : "Nombre del empleado",
             "surname" : "Apellido del empleado",
             "email" : "Email del emplado ej",
