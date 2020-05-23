@@ -3,7 +3,6 @@
 * {
     font-family: Trebuchet MS, Verdana, " sans-serif";
 }
-
 header {
     background-color: #ffffff;
     display: flex;
@@ -27,8 +26,8 @@ header {
     text-transform:uppercase;
     font-size:11px;
     font-weight:bold;
-    
-  }
+    }
+
   .boton-sub-header:after {
     content:attr(value);
     width:20vw;
@@ -38,6 +37,7 @@ header {
     align-items:center;
     justify-content:center;
   }
+
   .boton-sub-header:hover {
     animation:slidebg 2s linear infinite;
   }
@@ -51,30 +51,35 @@ header {
 #iconos,#botones_header,#iconos_index{
     display: inline-flex;
     padding-top: 9px;
-    
-}
+    }
+
 #botones_header{
     margin: 6px;
     margin-left: 30px;
 }
+
 #iconos{
     margin-left: 500px;
     margin-right: 80px;
 }
+
 #fondo{
     background-color: #333;
     height: 60px;
     width: 1330px;
 }
+
 #iconos_index{
     margin-left: 1000px;
 }
+
 .icono {
     width: 40px;
     height: 40px;
     margin: 0;
     padding: 0;
 }
+
 #conocenos{
     color: #fff;
     text-align: center;
@@ -88,13 +93,11 @@ header {
     padding: 0;
 }
 
-*/
 #titulo {
     text-align: center;
-    margin-left: 250px;
+    margin-left: 200px;
     color: #279AE8;
     font-size: 30px;
-    font-family: serif;
     display: block;
 }
 
@@ -303,6 +306,7 @@ div.centraTabla table {
 #botonVlog {
     margin: 20px;
 }
+
 /*CSS TABLAS*/
 
 #table2{
@@ -427,6 +431,7 @@ div.centraTabla table {
 .button:hover:after {
     transform: none;
 }
+
 #body_eleccion{
 
     background-image: url(https://oedimdecor.com/wp-content/uploads/2019/04/alfombra-pintadas-abstractas-1-1333x1000.jpg);
@@ -434,6 +439,7 @@ div.centraTabla table {
     margin-bottom: 60px;
  
 }
+
 #agrupacion{
 text-align: center;
 padding-top: 250px;
