@@ -12,73 +12,80 @@ header {
     width: 100%;
 }
 
-.elementos_alineados{
- display: inline-flex;
+.elementos_alineados {
+    display: inline-flex;
 }
 
 .boton-sub-header {
-    width:calc(20vw + 6px);
-    height:calc(8vw + 6px);
+    width: calc(20vw + 6px);
+    height: calc(8vw + 6px);
     background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
-    border-radius:5px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-transform:uppercase;
-    font-size:11px;
-    font-weight:bold;
-    
-  }
-  .boton-sub-header:after {
-    content:attr(value);
-    width:20vw;
-    height:8vw;
-    background-color:#191919;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .boton-sub-header:hover {
-    animation:slidebg 2s linear infinite;
-  }
-  
-  @keyframes slidebg {
-    to {
-      background-position:20vw;
-    }
-  }
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+}
 
-#iconos,#botones_header,#iconos_index{
+.boton-sub-header:after {
+    content: attr(value);
+    width: 20vw;
+    height: 8vw;
+    background-color: #191919;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-sub-header:hover {
+    animation: slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
+    to {
+        background-position: 20vw;
+    }
+}
+
+#iconos,
+#botones_header,
+#iconos_index {
     display: inline-flex;
     padding-top: 9px;
-    
 }
-#botones_header{
+
+#botones_header {
     margin: 6px;
     margin-left: 30px;
 }
-#iconos{
+
+#iconos {
     margin-left: 500px;
     margin-right: 80px;
 }
-#fondo{
+
+#fondo {
     background-color: #333;
     height: 60px;
     width: 1330px;
 }
-#iconos_index{
+
+#iconos_index {
     margin-left: 1000px;
 }
+
 .icono {
     width: 40px;
     height: 40px;
     margin: 0;
     padding: 0;
 }
-#conocenos{
+
+#conocenos {
     color: #fff;
     text-align: center;
-    
 }
 
 .boton-sub-header {
@@ -88,13 +95,11 @@ header {
     padding: 0;
 }
 
-*/
 #titulo {
     text-align: center;
-    margin-left: 250px;
+    margin-left: 200px;
     color: #279AE8;
     font-size: 30px;
-    font-family: serif;
     display: block;
 }
 
@@ -283,7 +288,9 @@ div.centraTabla table {
     margin: 50px;
 }
 
+
 /*CSS BOTONES*/
+
 .personalizar {
     text-decoration: none;
     padding: 10px;
@@ -303,9 +310,11 @@ div.centraTabla table {
 #botonVlog {
     margin: 20px;
 }
+
+
 /*CSS TABLAS*/
 
-#table2{
+#table2 {
     border: 1px solid #094872;
     padding: 10px;
     width: 100%;
@@ -319,7 +328,7 @@ div.centraTabla table {
 }
 
 #table2 th,
-#table2 td{
+#table2 td {
     text-align: center;
     border: 1px solid #000;
     padding: 0.3em;
@@ -327,7 +336,7 @@ div.centraTabla table {
     color: #000;
 }
 
-#table2 th{
+#table2 th {
     background-color: #094872;
     color: white;
 }
@@ -356,12 +365,12 @@ div.centraTabla table {
     font-size: 35px;
 }
 
-.guia{
+.guia {
     text-align: center;
     font-size: 25px;
 }
 
-.par{
+.par {
     margin: 60px;
     color: black;
     font-size: 18px;
@@ -427,19 +436,19 @@ div.centraTabla table {
 .button:hover:after {
     transform: none;
 }
-#body_eleccion{
 
+#body_eleccion {
     background-image: url(https://oedimdecor.com/wp-content/uploads/2019/04/alfombra-pintadas-abstractas-1-1333x1000.jpg);
     height: 600px;
     margin-bottom: 60px;
- 
-}
-#agrupacion{
-text-align: center;
-padding-top: 250px;
 }
 
-#tabla_email{
+#agrupacion {
+    text-align: center;
+    padding-top: 250px;
+}
+
+#tabla_email {
     display: inline-flex;
     margin-bottom: 100px;
     margin-left: 2px;
@@ -447,52 +456,53 @@ padding-top: 250px;
     background-image: url(https://i.pinimg.com/originals/04/6b/e8/046be8d2e5af0f56e50b3477b322dbeb.jpg);
     padding: 20px;
     width: 100%;
-    }
-
-#tablaemail2{
-box-sizing: content-box;
-width: 50%;
-border: 4px solid #055184;
-padding: 50px;
-text-align: center;
-padding-bottom: 30px;
-padding-top: 30px;
-background-color: #fcd9e8;
-margin-left: 30px;
 }
 
-#tablaemail3{
+#tablaemail2 {
+    box-sizing: content-box;
+    width: 50%;
+    border: 4px solid #055184;
+    padding: 50px;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    background-color: #fcd9e8;
     margin-left: 30px;
 }
-#nuevo_correo{
+
+#tablaemail3 {
+    margin-left: 30px;
+}
+
+#nuevo_correo {
     font-size: 20px;
 }
 
-#tablaemail3 , #tablaemail1 
-{  color: #333; 
-    font-family: Helvetica, Arial, sans-serif; 
-    width: 350px; 
+#tablaemail3,
+#tablaemail1 {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 350px;
     border-collapse: collapse;
 }
 
-#tablaemail3 td, 
-#tablaemail3 th, 
-#tablaemail1 td, 
-#tablaemail1 th 
-{ border: 1px solid transparent; 
-    height: 30px; 
+#tablaemail3 td,
+#tablaemail3 th,
+#tablaemail1 td,
+#tablaemail1 th {
+    border: 1px solid transparent;
+    height: 30px;
 }
 
 #tablaemail3 th,
-#tablaemail1 th{ 
-    background: #a02057; 
-    font-weight: bold; 
+#tablaemail1 th {
+    background: #a02057;
+    font-weight: bold;
     color: #fff;
 }
 
 #tablaemail3 td,
-#tablaemail1 td { 
-    background: #fcd9e8; 
-    text-align: center; }
-
-
+#tablaemail1 td {
+    background: #fcd9e8;
+    text-align: center;
+}
