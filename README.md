@@ -20,7 +20,5 @@ STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')] # definir carpeta de estati
 ### Deusto11_nexus_components
 Es la aplicación que provee las vistas y la lógica de negocio que interactúa con la base de datos de django. También se definen los modelos con los que django de forma interna utiliza para crear las tablas y los formularios a la hora de obtener datos.
 
-¿Cómo funciona la aplicación?
-
 ### Deusto11_nexus_services
 Es el paquete que provee de los métodos como logs, autenticación y métodos construcción de contextos.
