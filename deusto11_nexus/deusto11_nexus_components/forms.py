@@ -12,7 +12,8 @@ class EmployerForm(forms.ModelForm):
             'description' : forms.Textarea(),
             'resolution_date' : DateInput(),
             'comment' : forms.Textarea(),
-            'password' : forms.PasswordInput()
+            'password' : forms.PasswordInput(),
+            'ticket' : forms.Select()
         }
         labels = {
             "dni" : "DNI ej:",
@@ -33,7 +34,8 @@ class TicketForm(forms.ModelForm):
             'starting_date' : DateInput(),
             'resolution_date' : DateInput(),
             'comment' : forms.Textarea(),
-            'description' : forms.Textarea()
+            'description' : forms.Textarea(),
+            'machine' : forms.Select()
         }
         labels = {
             "reference_number" : "Introduce el numero de referencia",
